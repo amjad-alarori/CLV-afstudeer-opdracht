@@ -6,6 +6,10 @@
             @if (Route::has('login'))
                 <div class="space-x-4">
                     @auth
+                        <button  onclick="window.location.href='/edit-users'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        Edit Roles and Permessions 
+                        </button>
+
                         <a
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -13,6 +17,7 @@
                         >
                             Log out
                         </a>
+                      
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -40,7 +45,9 @@
                     </h1>
 
                     <h5 class="admin">Welcome to Admin Page</h5>
-                    
+
+                  
+
                 </div>
             </div>
         </div>
