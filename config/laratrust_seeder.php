@@ -14,11 +14,10 @@ return [
     'roles_structure' => [
         'admin' => [
             'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
         'marketer' => [
-            'users' => 'c,r,u,d',
+            'users' => 'r',
             'profile' => 'r,u'
         ],
         'cleint' => [
