@@ -21,7 +21,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
 Route::view('/', 'welcome')->name('home');
+
+Route::view('/admin', 'admin/home')->name('admin/home');
+Route::view('/marketer', 'marketer/home')->name('marketer/home');
+
+
 
 Route::middleware('guest')->group(function () {
     Route::get('login', Login::class)
@@ -53,4 +61,13 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+});
+
+
+Route::middleware('guest')->group(function () {
+    Route::get('login', Login::class)
+        ->name('login');
+
+    Route::get('register', Register::class)
+        ->name('register');
 });

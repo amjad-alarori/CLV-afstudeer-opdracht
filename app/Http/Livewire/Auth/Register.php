@@ -45,8 +45,18 @@ class Register extends Component
 
         Auth::login($user, true);
 
-        return redirect()->intended(route('home'));
-    }
+    
+        if(Auth::user()->hasRole('admin')) {
+            return redirect()->intended(route('admin/home'));
+        } elseif(Auth::user()->hasRole('marketer')){
+            return redirect()->intended(route('marketer/home'));
+        } elseif(Auth::user()->hasRole('cleint')){
+            return redirect()->intended(route('home'));
+     }
+
+     return redirect()->intended(route('home'));
+        }
+        
 
     public function render()
     {

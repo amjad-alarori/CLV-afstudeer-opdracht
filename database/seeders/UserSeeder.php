@@ -17,30 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-    //    $user = User::create([
-    //        'name' => 'admin',
-    //        'email' => 'admin@clv.com',
-    //        'password' => bcrypt('admin'),
-    //    ]);
-
-    //    $user->attachRole('admin');
-
-    //    $user = User::create([
-    //     'name' => 'marketer',
-    //     'email' => 'marketer@clv.com',
-    //     'password' => bcrypt('marketer'),
-    // ]);
-
-    //     $user->attachRole('marketer');
-
-    //     $user = User::create([
-    //      'name' => 'cleint',
-    //      'email' => 'cleint@clv.com',
-    //      'password' => bcrypt('cleint'),
-    //     ]);
-
-    //     $user->attachRole('cleint');
-
+ 
        
     }
 }
