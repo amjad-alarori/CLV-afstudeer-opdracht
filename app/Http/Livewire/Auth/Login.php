@@ -37,7 +37,7 @@ class Login extends Component
         } elseif(Auth::user()->hasRole('marketer')){
             return redirect()->intended(route('marketer/home'));
         } elseif(Auth::user()->hasRole('cleint')){
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('cleint/home'));
      }
 
         

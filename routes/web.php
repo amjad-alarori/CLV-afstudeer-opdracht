@@ -26,8 +26,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 
-Route::view('/admin', 'admin/home')->name('admin/home');
-Route::view('/marketer', 'marketer/home')->name('marketer/home');
+
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
+    Route::view('/admin', 'admin/home')->name('admin/home');
+   
+});
+
+Route::group(['prefix' => 'marketer', 'middleware' => ['role:marketer']], function() {
+    Route::view('/marketer', 'marketer/home')->name('marketer/home');
+   
+});
+
+Route::group(['prefix' => 'cleint', 'middleware' => ['role:cleint']], function() {
+    Route::view('/cleint', 'cleint/home')->name('cleint/home');
+   
+});
+
 
 
 
