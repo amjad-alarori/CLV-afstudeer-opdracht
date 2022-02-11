@@ -6,14 +6,14 @@
             @if (Route::has('login'))
                 <div class="space-x-4">
                     @auth
-                        <button  onclick="window.location.href='/edit-users'" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button  onclick="window.location.href='/edit-users'" class="py-2 px-3 bg-gray-700 text-white text-sm font-semibold rounded-md shadow-lg shadow-cyan-500/50 focus:outline-none">
                         Edit Roles and Permessions 
                         </button>
 
                         <a
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                            class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+                            class="py-2 px-3 bg-gray-700 text-white text-sm font-semibold rounded-md shadow-lg shadow-cyan-500/50 focus:outline-none""
                         >
                             Log out
                         </a>
