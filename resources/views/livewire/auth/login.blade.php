@@ -1,4 +1,6 @@
-@section('title', 'Sign in to your account')
+
+
+
 
 <div>
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
