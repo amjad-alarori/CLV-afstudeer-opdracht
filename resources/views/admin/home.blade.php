@@ -43,6 +43,7 @@
 			<div class="w-1/2 pl-2 md:pl-0">
 				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#"> 
 					<i class="text-blue-400 pr-3"></i> Welcome to Admin panel
+                    
 				</a>
             </div>
 			<div class="w-1/2 pr-0">
