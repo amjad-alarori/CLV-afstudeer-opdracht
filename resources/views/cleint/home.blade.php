@@ -42,7 +42,7 @@
 				
 			<div class="w-1/2 pl-2 md:pl-0">
 				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#"> 
-					<i class="text-blue-400 pr-3"></i> Welcome to Cleint panel
+                <h5 class="font-bold uppercase text-gray-600">Welcome to Cleint Panel</h5>
 				</a>
             </div>
 			<div class="w-1/2 pr-0">
@@ -51,7 +51,7 @@
                 @if (Route::has('login'))
                 <div class="space-x-4">
                     @auth
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="py-2 px-3 bg-gray-700 text-white text-sm font-semibold rounded-md shadow-lg shadow-cyan-500/50 focus:outline-none"">Log out</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mr-4 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                     @endauth
                 </div>
