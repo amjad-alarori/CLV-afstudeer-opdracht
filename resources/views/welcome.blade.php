@@ -24,28 +24,20 @@
       <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
         <div class="flex items-center flex-1">
           <div class="flex items-center justify-between w-full md:w-auto">
-            <a href="#">
-              <span class="sr-only">Workflow</span>
-              <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="">
+            <a href="https://gmu.online/">
+            
+              <img class="h-8 w-auto sm:h-10" src="{{asset('favicon.ico')}}" alt="">
             </a>
-            <div class="-mr-2 flex items-center md:hidden">
-              <button type="button" class="bg-gray-900 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus-ring-inset focus:ring-white" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <!-- Heroicon name: outline/menu -->
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
+          
           </div>
           <div class="hidden space-x-8 md:flex md:ml-10">
-            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Product</a>
+            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Products</a>
 
             <a href="#" class="text-base font-medium text-white hover:text-gray-300">Features</a>
 
-            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Marketplace</a>
+            <a href="#" class="text-base font-medium text-white hover:text-gray-300">About Us</a>
 
-            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Company</a>
+            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Contact</a>
           </div>
         </div>
         @if (Route::has('login'))
@@ -54,7 +46,7 @@
                         <a
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                            class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+                            class="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
                         >
                             Log out
                         </a>
@@ -63,11 +55,14 @@
                             @csrf
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">Log in</a>
+                    
+                    <div class="flex items-stretch ...">
+                          <a href="{{ route('login') }}" class="mr-4 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">Register</a>
-                        @endif
+                          @if (Route::has('register'))
+                           <a href="{{ route('register') }}" class="ml-2 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Register</a>
+                          @endif
+                        </div>
                     @endauth
                 </div>
             @endif
@@ -84,41 +79,7 @@
         From: "opacity-100 scale-100"
         To: "opacity-0 scale-95"
     -->
-    <div class="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top md:hidden">
-      <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-        <div class="px-5 pt-4 flex items-center justify-between">
-          <div>
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
-          </div>
-          <div class="-mr-2">
-            <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600">
-              <span class="sr-only">Close menu</span>
-              <!-- Heroicon name: outline/x -->
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div class="pt-5 pb-6">
-          <div class="px-2 space-y-1">
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">Product</a>
-
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">Features</a>
-
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">Marketplace</a>
-
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50">Company</a>
-          </div>
-          <div class="mt-6 px-5">
-            <a href="#" class="block text-center w-full py-3 px-4 rounded-md shadow bg-indigo-600 text-white font-medium hover:bg-indigo-700">Start free trial</a>
-          </div>
-          <div class="mt-6 px-5">
-            <p class="text-center text-base font-medium text-gray-500">Existing customer? <a href="#" class="text-gray-900 hover:underline">Login</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  
   </header>
 
   <main>
@@ -127,33 +88,13 @@
         <div class="lg:grid lg:grid-cols-2 lg:gap-8">
           <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
             <div class="lg:py-24">
-              <a href="#" class="inline-flex items-center text-white bg-black rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-200">
-                <span class="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-indigo-500 rounded-full">We're hiring</span>
-                <span class="ml-4 text-sm">Visit our careers page</span>
-                <!-- Heroicon name: solid/chevron-right -->
-                <svg class="ml-2 w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                </svg>
-              </a>
+            
               <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                <span class="block">A better way to</span>
-                <span class="block text-indigo-400">ship web apps</span>
+                <span class="block">GMU. ONLINE</span>
+                <span class="block text-indigo-400">DATA GEDREVEN ONLINE MARKETING</span>
               </h1>
-              <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat.</p>
-              <div class="mt-10 sm:mt-12">
-                <form action="#" class="sm:max-w-xl sm:mx-auto lg:mx-0">
-                  <div class="sm:flex">
-                    <div class="min-w-0 flex-1">
-                      <label for="email" class="sr-only">Email address</label>
-                      <input id="email" type="email" placeholder="Enter your email" class="block w-full px-4 py-3 rounded-md border-0 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900">
-                    </div>
-                    <div class="mt-3 sm:mt-0 sm:ml-3">
-                      <button type="submit" class="block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900">Start free trial</button>
-                    </div>
-                  </div>
-                  <p class="mt-3 text-sm text-gray-300 sm:mt-4">Start your free 14-day trial, no credit card necessary. By providing your email, you agree to our <a href="#" class="font-medium text-white">terms of service</a>.</p>
-                </form>
-              </div>
+              <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Wij zijn een big data marketing agency. In tegenstelling tot veel traditionele AdWords-bureaus maken wij gebruik van onze eigen innovatieve Big Data software. Wij combineren de beste expertise met onze software en besparen zo veel tijd om weer te investeren in uw online marketing. Terwijl verschillende berekeningen en advertenties worden geautomatiseerd, kan onze Google AdWords specialist zich focussen op het behalen van hoge rendementen en verhogen van uw winstgevendheid en vindbaarheid.</p>
+             
             </div>
           </div>
           <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
@@ -178,9 +119,9 @@
   </div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
     <div class="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
-      <h2 class="text-sm font-semibold text-indigo-300 tracking-wide uppercase">Valuable Metrics</h2>
+      <h2 class="text-sm font-semibold text-indigo-300 tracking-wide uppercase">DE BESTE GOOGLE ADWORDS SPECIALISTEN</h2>
       <p class="mt-3 text-3xl font-extrabold text-white">Get actionable data that will help grow your business</p>
-      <p class="mt-5 text-lg text-gray-300">Rhoncus sagittis risus arcu erat lectus bibendum. Ut in adipiscing quis in viverra tristique sem. Ornare feugiat viverra eleifend fusce orci in quis amet. Sit in et vitae tortor, massa. Dapibus laoreet amet lacus nibh integer quis. Eu vulputate diam sit tellus quis at.</p>
+      <p class="mt-5 text-lg text-gray-300">Als partner van uw onderneming geloven we dat Big Data- diepteanalyse door onze online marketingexperts onmisbaar is.</p>
       <div class="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
         <p>
           <span class="block text-2xl font-bold text-white">8K+</span>
@@ -314,48 +255,7 @@
         </div>
       </div>
       <div class="mt-12 xl:mt-0">
-        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Language &amp; Currency</h3>
-        <form class="mt-4 sm:max-w-xs">
-          <fieldset class="w-full">
-            <label for="language" class="sr-only">Language</label>
-            <div class="relative">
-              <select id="language" name="language" class="appearance-none block w-full bg-none bg-gray-700 border border-transparent rounded-md py-2 pl-3 pr-10 text-base text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm">
-                <option selected>English</option>
-                <option>French</option>
-                <option>German</option>
-                <option>Japanese</option>
-                <option>Spanish</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                <!-- Heroicon name: solid/chevron-down -->
-                <svg class="h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </div>
-            </div>
-          </fieldset>
-          <fieldset class="mt-4 w-full">
-            <label for="currency" class="sr-only">Currency</label>
-            <div class="mt-1.5 relative">
-              <select id="currency" name="currency" class="appearance-none w-full bg-none bg-gray-700 border border-transparent rounded-md block py-2 pl-3 pr-10 text-base text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm">
-                <option>ARS</option>
-                <option selected>AUD</option>
-                <option>CAD</option>
-                <option>CHF</option>
-                <option>EUR</option>
-                <option>GBP</option>
-                <option>JPY</option>
-                <option>USD</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                <!-- Heroicon name: solid/chevron-down -->
-                <svg class="h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </div>
-            </div>
-          </fieldset>
-        </form>
+        
       </div>
     </div>
     <div class="border-t border-gray-700 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0">
@@ -408,7 +308,7 @@
           </svg>
         </a>
       </div>
-      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; 2020 Workflow, Inc. All rights reserved.</p>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; 2022 GMU, Inc. All rights reserved.</p>
     </div>
   </div>
 </footer>
