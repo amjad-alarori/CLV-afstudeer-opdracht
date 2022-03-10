@@ -9,6 +9,7 @@ use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\rfmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')->name('home');
 
 
+ 
+Route::get('/test', [rfmController::class, 'guzzleGet']);
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {

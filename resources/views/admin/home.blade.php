@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-  
 
-        
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
     <title>Tailwind Starter Template - Night Admin Template: Tailwind Toolbox</title>
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
-	
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
@@ -29,26 +29,26 @@
 		.border-black-alt {
 			border-color: #191919;
 		}
-		
+
 	</style>
 
 </head>
 <body class="bg-black-alt font-sans leading-normal tracking-normal">
 
 <nav id="header" class="bg-gray-900 fixed w-full z-10 top-0 shadow">
-	
+
 
 		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
-				
+
 			<div class="w-1/2 pl-2 md:pl-0">
-				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#"> 
+				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#">
                 <h5 class="font-bold uppercase text-gray-600">Welcome to Admin Panel</h5>
-                    
+
 				</a>
             </div>
 			<div class="w-1/2 pr-0">
 				<div class="flex relative inline-block float-right">
-				
+
                 @if (Route::has('login'))
                 <div class="space-x-4">
 
@@ -102,21 +102,21 @@
                         </a>
                     </li>
 				</ul>
-				
-				
-				
+
+
+
 			</div>
-			
+
 		</div>
 	</nav>
 
 	<!--Container-->
 	<div class="container w-full mx-auto pt-20">
-		
+
 		<div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
-			
+
 			<!--Console Content-->
-			
+
 			<div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
@@ -213,6 +213,14 @@
 			<!--Divider-->
 			<hr class="border-b-2 border-gray-600 my-8 mx-4">
 
+            <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                <select class="mr-4 bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" id= "select">
+                    <option>Webshop Amsterdam</option>
+                    <option>Webshop Meppel</option>
+                    <option>Webshop Dubai</option>
+                </select>
+            </div>
+
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 
                 <div class="w-full md:w-1/2 p-3">
@@ -222,35 +230,132 @@
                             <h5 class="font-bold uppercase text-gray-600">Graph</h5>
                         </div>
                         <div class="p-5">
-                            <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
+                            <script src="https://code.highcharts.com/highcharts.js"></script>
+                            <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+                            <style>
+                                .highcharts-figure,
+                                .highcharts-data-table table {
+                                    min-width: 310px;
+                                    max-width: 800px;
+                                    margin: 1em auto;
+                                }
+
+                                #container {
+                                    height: 400px;
+                                }
+
+                                .highcharts-data-table table {
+                                    font-family: Verdana, sans-serif;
+                                    border-collapse: collapse;
+                                    border: 1px solid #ebebeb;
+                                    margin: 10px auto;
+                                    text-align: center;
+                                    width: 100%;
+                                    max-width: 500px;
+                                }
+
+                                .highcharts-data-table caption {
+                                    padding: 1em 0;
+                                    font-size: 1.2em;
+                                    color: #555;
+                                }
+
+                                .highcharts-data-table th {
+                                    font-weight: 600;
+                                    padding: 0.5em;
+                                }
+
+                                .highcharts-data-table td,
+                                .highcharts-data-table th,
+                                .highcharts-data-table caption {
+                                    padding: 0.5em;
+                                }
+
+                                .highcharts-data-table thead tr,
+                                .highcharts-data-table tr:nth-child(even) {
+                                    background: #f8f8f8;
+                                }
+
+                                .highcharts-data-table tr:hover {
+                                    background: #f1f7ff;
+                                }
+
+                            </style>
+                            <figure class="highcharts-figure">
+                                <div id="container"></div>
+
+                            </figure>
+
                             <script>
-                                new Chart(document.getElementById("chartjs-7"), {
-                                    "type": "bar",
-                                    "data": {
-                                        "labels": ["January", "February", "March", "April"],
-                                        "datasets": [{
-                                            "label": "Page Impressions",
-                                            "data": [10, 20, 30, 40],
-                                            "borderColor": "rgb(255, 99, 132)",
-                                            "backgroundColor": "rgba(255, 99, 132, 0.2)"
-                                        }, {
-                                            "label": "Adsense Clicks",
-                                            "data": [5, 15, 10, 30],
-                                            "type": "line",
-                                            "fill": false,
-                                            "borderColor": "rgb(54, 162, 235)"
+                                Highcharts.chart('container', {
+                                    title: {
+                                        text: 'Combination chart'
+                                    },
+                                    xAxis: {
+                                        categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+                                    },
+                                    labels: {
+                                        items: [{
+                                            html: 'Total fruit consumption',
+                                            style: {
+                                                left: '50px',
+                                                top: '18px',
+                                                color: ( // theme
+                                                    Highcharts.defaultOptions.title.style &&
+                                                    Highcharts.defaultOptions.title.style.color
+                                                ) || 'black'
+                                            }
                                         }]
                                     },
-                                    "options": {
-                                        "scales": {
-                                            "yAxes": [{
-                                                "ticks": {
-                                                    "beginAtZero": true
-                                                }
-                                            }]
+                                    series: [{
+                                        type: 'column',
+                                        name: 'Jane',
+                                        data: [3, 2, 1, 3, 4]
+                                    }, {
+                                        type: 'column',
+                                        name: 'John',
+                                        data: [2, 3, 5, 7, 6]
+                                    }, {
+                                        type: 'column',
+                                        name: 'Joe',
+                                        data: [4, 3, 3, 9, 0]
+                                    }, {
+                                        type: 'spline',
+                                        name: 'Average',
+                                        data: [3, 2.67, 3, 6.33, 3.33],
+                                        marker: {
+                                            lineWidth: 2,
+                                            lineColor: Highcharts.getOptions().colors[3],
+                                            fillColor: 'white'
                                         }
-                                    }
+                                    }, {
+                                        type: 'pie',
+                                        name: 'Total consumption',
+                                        data: [{
+                                            name: 'Jane',
+                                            y: 13,
+                                            color: Highcharts.getOptions().colors[0] // Jane's color
+                                        }, {
+                                            name: 'John',
+                                            y: 23,
+                                            color: Highcharts.getOptions().colors[1] // John's color
+                                        }, {
+                                            name: 'Joe',
+                                            y: 19,
+                                            color: Highcharts.getOptions().colors[2] // Joe's color
+                                        }],
+                                        center: [100, 80],
+                                        size: 100,
+                                        showInLegend: false,
+                                        dataLabels: {
+                                            enabled: false
+                                        }
+                                    }]
                                 });
+
                             </script>
                         </div>
                     </div>
@@ -356,7 +461,7 @@
                             <h5 class="font-bold uppercase text-gray-600">Template</h5>
                         </div>
                         <div class="p-5">
-             
+
                         </div>
                     </div>
                     <!--/Template Card-->
@@ -393,7 +498,7 @@
                                         <td>Darth Vader</td>
                                         <td>Dark</td>
                                         <td>Sith</td>
-                                    </tr>                                   
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -406,16 +511,16 @@
 
 
             </div>
-								
-			<!--/ Console Content-->
-					
-		</div>
-		
 
-	</div> 
+			<!--/ Console Content-->
+
+		</div>
+
+
+	</div>
 	<!--/container-->
-	
-	<footer class="bg-gray-900 border-t border-gray-400 shadow">	
+
+	<footer class="bg-gray-900 border-t border-gray-400 shadow">
 		<div class="container max-w-md mx-auto flex py-8">
 
 			<div class="w-full mx-auto flex flex-wrap">
@@ -423,11 +528,11 @@
 					<div class="px-8">
 						<h3 class="font-bold font-bold text-gray-100">About</h3>
 						<p class="py-4 text-gray-600 text-sm">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia. 
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
 						</p>
 					</div>
 				</div>
-				
+
 				<div class="flex w-full md:w-1/2">
 					<div class="px-8">
 					<h3 class="font-bold font-bold text-gray-100">Social</h3>
@@ -445,24 +550,24 @@
 					</div>
 				</div>
 			</div>
-        
 
-		
+
+
 		</div>
 	</footer>
 
 <script>
-	
-	
+
+
 	/*Toggle dropdown list*/
 	/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
 	var userMenuDiv = document.getElementById("userMenu");
 	var userMenu = document.getElementById("userButton");
-	
+
 	var navMenuDiv = document.getElementById("nav-content");
 	var navMenu = document.getElementById("nav-toggle");
-	
+
 	document.onclick = check;
 
 	function check(e){
@@ -481,7 +586,7 @@
 		  userMenuDiv.classList.add("invisible");
 		}
 	  }
-	  
+
 	  //Nav Menu
 	  if (!checkParent(target, navMenuDiv)) {
 		// click NOT on the menu
@@ -495,7 +600,7 @@
 		  navMenuDiv.classList.add("hidden");
 		}
 	  }
-	  
+
 	}
 
 	function checkParent(t, elm) {
@@ -512,5 +617,5 @@
 </body>
 </html>
 
-      
+
 @endsection

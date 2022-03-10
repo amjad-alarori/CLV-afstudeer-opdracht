@@ -99,8 +99,8 @@
                             <i class="fa fa-wallet fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Payments</span>
                         </a>
                     </li>
+
 				</ul>
-				
 				
 				
 			</div>
@@ -108,6 +108,8 @@
 		</div>
 	</nav>
 
+
+    
 	<!--Container-->
 	<div class="container w-full mx-auto pt-20">
 		
@@ -211,8 +213,15 @@
 			<!--Divider-->
 			<hr class="border-b-2 border-gray-600 my-8 mx-4">
 
-            <div class="flex flex-row flex-wrap flex-grow mt-2">
+            <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                <select class="mr-4 bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" id= "select">
+                    <option>Webshop Amsterdam</option>
+                    <option>Webshop Meppel</option>
+                    <option>Webshop Dubai</option>
+                </select>
+            </div>
 
+            <div class="flex flex-row flex-wrap flex-grow mt-2">
                 <div class="w-full md:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
