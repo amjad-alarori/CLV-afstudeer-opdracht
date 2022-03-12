@@ -20,5 +20,10 @@
         "sass": "^1.32",
         "sass-loader": "^8.0",
         "tailwindcss": "^2.2"
+    },
+    "dependencies": {
+        "chart.js": "^3.7.1",
+        "chartjs-plugin-datalabels": "^2.0.0",
+        "echarts": "^5.3.1"
     }
 }

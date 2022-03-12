@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+  
 
-
-
+        
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +14,14 @@
     <title>Tailwind Starter Template - Night Admin Template: Tailwind Toolbox</title>
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
-
+	
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<style>
 		.bg-black-alt  {
 			background:#191919;
@@ -29,29 +32,39 @@
 		.border-black-alt {
 			border-color: #191919;
 		}
-
+		
 	</style>
 
 </head>
 <body class="bg-black-alt font-sans leading-normal tracking-normal">
-
+        <script>
+                /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("header").style.top = "0";
+            } else {
+                document.getElementById("header").style.top = "-150px";
+            }
+            prevScrollpos = currentScrollPos;
+            }
+        </script>
 <nav id="header" class="bg-gray-900 fixed w-full z-10 top-0 shadow">
-
+	
 
 		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
-
+				
 			<div class="w-1/2 pl-2 md:pl-0">
-				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#">
+				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#"> 
                 <h5 class="font-bold uppercase text-gray-600">Welcome to Admin Panel</h5>
-
 				</a>
             </div>
 			<div class="w-1/2 pr-0">
 				<div class="flex relative inline-block float-right">
-
+				
                 @if (Route::has('login'))
                 <div class="space-x-4">
-
                     @auth
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mr-4 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
@@ -101,22 +114,24 @@
                             <i class="fa fa-wallet fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Payments</span>
                         </a>
                     </li>
+
 				</ul>
-
-
-
+				
+				
 			</div>
-
+			
 		</div>
 	</nav>
 
+
+    
 	<!--Container-->
 	<div class="container w-full mx-auto pt-20">
-
+		
 		<div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
-
+			
 			<!--Console Content-->
-
+			
 			<div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
@@ -222,7 +237,6 @@
             </div>
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
-
                 <div class="w-full md:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
@@ -230,132 +244,67 @@
                             <h5 class="font-bold uppercase text-gray-600">Graph</h5>
                         </div>
                         <div class="p-5">
-                            <script src="https://code.highcharts.com/highcharts.js"></script>
-                            <script src="https://code.highcharts.com/modules/series-label.js"></script>
-                            <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                            <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-                            <style>
-                                .highcharts-figure,
-                                .highcharts-data-table table {
-                                    min-width: 310px;
-                                    max-width: 800px;
-                                    margin: 1em auto;
-                                }
-
-                                #container {
-                                    height: 400px;
-                                }
-
-                                .highcharts-data-table table {
-                                    font-family: Verdana, sans-serif;
-                                    border-collapse: collapse;
-                                    border: 1px solid #ebebeb;
-                                    margin: 10px auto;
-                                    text-align: center;
-                                    width: 100%;
-                                    max-width: 500px;
-                                }
-
-                                .highcharts-data-table caption {
-                                    padding: 1em 0;
-                                    font-size: 1.2em;
-                                    color: #555;
-                                }
-
-                                .highcharts-data-table th {
-                                    font-weight: 600;
-                                    padding: 0.5em;
-                                }
-
-                                .highcharts-data-table td,
-                                .highcharts-data-table th,
-                                .highcharts-data-table caption {
-                                    padding: 0.5em;
-                                }
-
-                                .highcharts-data-table thead tr,
-                                .highcharts-data-table tr:nth-child(even) {
-                                    background: #f8f8f8;
-                                }
-
-                                .highcharts-data-table tr:hover {
-                                    background: #f1f7ff;
-                                }
-
-                            </style>
-                            <figure class="highcharts-figure">
-                                <div id="container"></div>
-
-                            </figure>
-
+                            <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
-                                Highcharts.chart('container', {
-                                    title: {
-                                        text: 'Combination chart'
-                                    },
-                                    xAxis: {
-                                        categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
-                                    },
-                                    labels: {
-                                        items: [{
-                                            html: 'Total fruit consumption',
-                                            style: {
-                                                left: '50px',
-                                                top: '18px',
-                                                color: ( // theme
-                                                    Highcharts.defaultOptions.title.style &&
-                                                    Highcharts.defaultOptions.title.style.color
-                                                ) || 'black'
-                                            }
-                                        }]
-                                    },
-                                    series: [{
-                                        type: 'column',
-                                        name: 'Jane',
-                                        data: [3, 2, 1, 3, 4]
-                                    }, {
-                                        type: 'column',
-                                        name: 'John',
-                                        data: [2, 3, 5, 7, 6]
-                                    }, {
-                                        type: 'column',
-                                        name: 'Joe',
-                                        data: [4, 3, 3, 9, 0]
-                                    }, {
-                                        type: 'spline',
-                                        name: 'Average',
-                                        data: [3, 2.67, 3, 6.33, 3.33],
-                                        marker: {
-                                            lineWidth: 2,
-                                            lineColor: Highcharts.getOptions().colors[3],
-                                            fillColor: 'white'
-                                        }
-                                    }, {
-                                        type: 'pie',
-                                        name: 'Total consumption',
-                                        data: [{
-                                            name: 'Jane',
-                                            y: 13,
-                                            color: Highcharts.getOptions().colors[0] // Jane's color
-                                        }, {
-                                            name: 'John',
-                                            y: 23,
-                                            color: Highcharts.getOptions().colors[1] // John's color
-                                        }, {
-                                            name: 'Joe',
-                                            y: 19,
-                                            color: Highcharts.getOptions().colors[2] // Joe's color
-                                        }],
-                                        center: [100, 80],
-                                        size: 100,
-                                        showInLegend: false,
-                                        dataLabels: {
-                                            enabled: false
-                                        }
-                                    }]
-                                });
+                            // setup 
+                            const data = {
+                            datasets: [{
+                                label: 'RFM Results',
+                                data: [
+                                                        {x: 2, y: 3, r:1, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 5, y: 5, r:5, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 3, y: 3, r:4, cleintID: "34576345" , cleintStatus: 'Need Attiontion'}
+                                                    ],
+                                                    backgroundColor: [
+                                                        'rgba(255, 26, 104, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)',
+                                                        'rgba(153, 102, 255, 0.2)',
+                                                        'rgba(255, 159, 64, 0.2)',
+                                                        'rgba(0, 0, 0, 0.2)'
+                                                        ],
+                                                        borderColor: [
+                                                        'rgba(255, 26, 104, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)',
+                                                        'rgba(255, 159, 64, 1)',
+                                                        'rgba(0, 0, 0, 1)'
+                                                        ],
+                                                        borderWidth: 1
+                                                    }]
+                            };
 
+                            // config 
+                            const config = {
+                            type: 'bubble',
+                            data,
+                            options: {
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: (context) => {
+                                                console.log(context)
+                                                return `Cleint ID: ${context.raw.cleintID},  Monetory: ${context.raw.r},  ${context.raw.cleintStatus}`
+                                            }
+                                        }
+                                    }
+                                },
+                                scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                                }
+                            }
+                            };
+
+                            // render init block
+                            const myChart = new Chart(
+                            document.getElementById('chartjs-7'),
+                            config
+                            );
                             </script>
                         </div>
                     </div>
@@ -391,7 +340,7 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div class="w-full md:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
                         <div class="border-b border-gray-800 p-3">
@@ -429,16 +378,19 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+               
+                
+                <div class="w-full md:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
                         <div class="border-b border-gray-800 p-3">
                             <h5 class="font-bold uppercase text-gray-600">Graph</h5>
                         </div>
-                        <div class="p-5"><canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
+                        <div class="p-5">
+                            <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
                                 new Chart(document.getElementById("chartjs-4"), {
-                                    "type": "doughnut",
+                                    "type": "bar",
                                     "data": {
                                         "labels": ["P1", "P2", "P3"],
                                         "datasets": [{
@@ -454,18 +406,8 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
-                    <!--Template Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow">
-                        <div class="border-b border-gray-800 p-3">
-                            <h5 class="font-bold uppercase text-gray-600">Template</h5>
-                        </div>
-                        <div class="p-5">
-
-                        </div>
-                    </div>
-                    <!--/Template Card-->
-                </div>
+                
+                
 
                 <div class="w-full p-3">
                     <!--Table Card-->
@@ -498,7 +440,7 @@
                                         <td>Darth Vader</td>
                                         <td>Dark</td>
                                         <td>Sith</td>
-                                    </tr>
+                                    </tr>                                   
                                 </tbody>
                             </table>
 
@@ -511,16 +453,16 @@
 
 
             </div>
-
+								
 			<!--/ Console Content-->
-
+					
 		</div>
+		
 
-
-	</div>
+	</div> 
 	<!--/container-->
-
-	<footer class="bg-gray-900 border-t border-gray-400 shadow">
+	
+	<footer class="bg-gray-900 border-t border-gray-400 shadow">	
 		<div class="container max-w-md mx-auto flex py-8">
 
 			<div class="w-full mx-auto flex flex-wrap">
@@ -528,11 +470,11 @@
 					<div class="px-8">
 						<h3 class="font-bold font-bold text-gray-100">About</h3>
 						<p class="py-4 text-gray-600 text-sm">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia. 
 						</p>
 					</div>
 				</div>
-
+				
 				<div class="flex w-full md:w-1/2">
 					<div class="px-8">
 					<h3 class="font-bold font-bold text-gray-100">Social</h3>
@@ -550,24 +492,24 @@
 					</div>
 				</div>
 			</div>
+        
 
-
-
+		
 		</div>
 	</footer>
 
 <script>
-
-
+	
+	
 	/*Toggle dropdown list*/
 	/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
 	var userMenuDiv = document.getElementById("userMenu");
 	var userMenu = document.getElementById("userButton");
-
+	
 	var navMenuDiv = document.getElementById("nav-content");
 	var navMenu = document.getElementById("nav-toggle");
-
+	
 	document.onclick = check;
 
 	function check(e){
@@ -586,7 +528,7 @@
 		  userMenuDiv.classList.add("invisible");
 		}
 	  }
-
+	  
 	  //Nav Menu
 	  if (!checkParent(target, navMenuDiv)) {
 		// click NOT on the menu
@@ -600,7 +542,7 @@
 		  navMenuDiv.classList.add("hidden");
 		}
 	  }
-
+	  
 	}
 
 	function checkParent(t, elm) {
@@ -617,5 +559,5 @@
 </body>
 </html>
 
-
+      
 @endsection

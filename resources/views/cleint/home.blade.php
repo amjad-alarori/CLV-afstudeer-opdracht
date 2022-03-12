@@ -17,8 +17,10 @@
 	
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<style>
 		.bg-black-alt  {
 			background:#191919;
@@ -34,7 +36,19 @@
 
 </head>
 <body class="bg-black-alt font-sans leading-normal tracking-normal">
-
+        <script>
+                /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+            var prevScrollpos = window.pageYOffset;
+            window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("header").style.top = "0";
+            } else {
+                document.getElementById("header").style.top = "-150px";
+            }
+            prevScrollpos = currentScrollPos;
+            }
+        </script>
 <nav id="header" class="bg-gray-900 fixed w-full z-10 top-0 shadow">
 	
 
@@ -231,33 +245,71 @@
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
-                                new Chart(document.getElementById("chartjs-7"), {
-                                    "type": "bar",
-                                    "data": {
-                                        "labels": ["January", "February", "March", "April"],
-                                        "datasets": [{
-                                            "label": "Page Impressions",
-                                            "data": [10, 20, 30, 40],
-                                            "borderColor": "rgb(255, 99, 132)",
-                                            "backgroundColor": "rgba(255, 99, 132, 0.2)"
-                                        }, {
-                                            "label": "Adsense Clicks",
-                                            "data": [5, 15, 10, 30],
-                                            "type": "line",
-                                            "fill": false,
-                                            "borderColor": "rgb(54, 162, 235)"
-                                        }]
-                                    },
-                                    "options": {
-                                        "scales": {
-                                            "yAxes": [{
-                                                "ticks": {
-                                                    "beginAtZero": true
-                                                }
-                                            }]
+                            // setup 
+                            const data = {
+                            datasets: [{
+                                label: 'RFM Results',
+                                data: [
+                                                        {x: 10, y: 6, r:10, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 2, y: 4, r:7, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 4, y: 7, r:6, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 15, y: 44, r:4, cleintID: "3242" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 62, y: 33, r:10, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 33, y: 55, r:7, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 54, y: 56, r:6, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 34, y: 23, r:4, cleintID: "3242" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 23, y: 64, r:3, cleintID: "764564" , cleintStatus: 'Need Attiontion'}
+                                                    ],
+                                                    backgroundColor: [
+                                                        'rgba(255, 26, 104, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)',
+                                                        'rgba(153, 102, 255, 0.2)',
+                                                        'rgba(255, 159, 64, 0.2)',
+                                                        'rgba(0, 0, 0, 0.2)'
+                                                        ],
+                                                        borderColor: [
+                                                        'rgba(255, 26, 104, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)',
+                                                        'rgba(255, 159, 64, 1)',
+                                                        'rgba(0, 0, 0, 1)'
+                                                        ],
+                                                        borderWidth: 1
+                                                    }]
+                            };
+
+                            // config 
+                            const config = {
+                            type: 'bubble',
+                            data,
+                            options: {
+                                plugins: {
+                                    tooltip: {
+                                        callbacks: {
+                                            label: (context) => {
+                                                console.log(context)
+                                                return `Cleint ID: ${context.raw.cleintID},  Monetory: ${context.raw.r},  ${context.raw.cleintStatus}`
+                                            }
                                         }
                                     }
-                                });
+                                },
+                                scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                                }
+                            }
+                            };
+
+                            // render init block
+                            const myChart = new Chart(
+                            document.getElementById('chartjs-7'),
+                            config
+                            );
                             </script>
                         </div>
                     </div>
@@ -293,7 +345,7 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div class="w-full md:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
                         <div class="border-b border-gray-800 p-3">
@@ -331,7 +383,9 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+               
+                
+                <div class="w-full md:w-1/2 p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
                         <div class="border-b border-gray-800 p-3">
@@ -340,7 +394,7 @@
                         <div class="p-5"><canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
                                 new Chart(document.getElementById("chartjs-4"), {
-                                    "type": "doughnut",
+                                    "type": "bar",
                                     "data": {
                                         "labels": ["P1", "P2", "P3"],
                                         "datasets": [{
@@ -356,18 +410,7 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
-                    <!--Template Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow">
-                        <div class="border-b border-gray-800 p-3">
-                            <h5 class="font-bold uppercase text-gray-600">Template</h5>
-                        </div>
-                        <div class="p-5">
-             
-                        </div>
-                    </div>
-                    <!--/Template Card-->
-                </div>
+                
 
                 <div class="w-full p-3">
                     <!--Table Card-->
