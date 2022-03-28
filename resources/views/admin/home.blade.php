@@ -251,27 +251,21 @@
                             datasets: [{
                                 label: 'RFM Results',
                                 data: [
-                                                        {x: 2, y: 3, r:1, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 5, y: 5, r:5, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 3, y: 3, r:4, cleintID: "34576345" , cleintStatus: 'Need Attiontion'}
+                                                        {x: 27, y: 4, r:1, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 34, y: 3, r:2, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 11, y: 6, r:4, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 26, y: 7, r:6, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 12, y: 2, r:6, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 21, y: 8, r:8, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 33, y: 9, r:8, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 52, y: 4, r:10, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
+                                                        {x: 44, y: 3, r:10, cleintID: "34576345" , cleintStatus: 'Need Attiontion'}
                                                     ],
                                                     backgroundColor: [
-                                                        'rgba(255, 26, 104, 0.2)',
-                                                        'rgba(54, 162, 235, 0.2)',
-                                                        'rgba(255, 206, 86, 0.2)',
-                                                        'rgba(75, 192, 192, 0.2)',
-                                                        'rgba(153, 102, 255, 0.2)',
-                                                        'rgba(255, 159, 64, 0.2)',
-                                                        'rgba(0, 0, 0, 0.2)'
+                                                        'rgba(255, 26, 104, 0.2)'
                                                         ],
                                                         borderColor: [
-                                                        'rgba(255, 26, 104, 1)',
-                                                        'rgba(54, 162, 235, 1)',
-                                                        'rgba(255, 206, 86, 1)',
-                                                        'rgba(75, 192, 192, 1)',
-                                                        'rgba(153, 102, 255, 1)',
-                                                        'rgba(255, 159, 64, 1)',
-                                                        'rgba(0, 0, 0, 1)'
+                                                        'rgba(255, 26, 104, 1)'
                                                         ],
                                                         borderWidth: 1
                                                     }]
@@ -321,7 +315,7 @@
                             <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
                                 new Chart(document.getElementById("chartjs-0"), {
-                                    "type": "line",
+                                    "type": " ",
                                     "data": {
                                         "labels": ["January", "February", "March", "April", "May", "June", "July"],
                                         "datasets": [{
