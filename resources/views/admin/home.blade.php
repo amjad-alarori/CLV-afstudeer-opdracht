@@ -2,9 +2,6 @@
 
 @section('content')
   
-
-        
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -235,7 +232,7 @@
                     <option>Webshop Dubai</option>
                 </select>
             </div>
-
+            
             <div class="flex flex-row flex-wrap flex-grow mt-2">
                 <div class="w-full md:w-1/2 p-3">
                     <!--Graph Card-->
@@ -246,6 +243,11 @@
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
+
+                            let arr = JSON.parse({!! json_encode($data) !!});
+                            console.log(arr);
+                           
+
                             // setup 
                             const data = {
                             datasets: [{

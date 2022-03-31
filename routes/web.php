@@ -29,11 +29,12 @@ Route::view('/', 'welcome')->name('home');
 
 
  
-Route::get('/test', [rfmController::class, 'guzzleGet']);
+// Route::get('/test', [rfmController::class, 'guzzleGet']);
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
-    Route::view('/admin', 'admin/home')->name('admin/home');
+    Route::view('/admin/home', 'admin/home')->name('admin/home');
+    Route::get('/admin/home', [rfmController::class, 'guzzleGet']);
    
 });
 

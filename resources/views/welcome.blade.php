@@ -40,6 +40,7 @@
             <a href="#" class="text-base font-medium text-white hover:text-gray-300">Contact</a>
           </div>
         </div>
+        
         @if (Route::has('login'))
                 <div class="space-x-4">
                     @auth
