@@ -257,7 +257,7 @@
                                  }
                                 array.push(newArray)
                             })
-                            console.log(array);
+                           
 
                             // setup 
                             const data = {
