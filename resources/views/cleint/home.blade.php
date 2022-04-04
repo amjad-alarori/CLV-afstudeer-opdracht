@@ -236,7 +236,7 @@
             </div>
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
-                <div class="w-full md:w-1/2 p-3">
+                <div class="w-full p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
                         <div class="border-b border-gray-800 p-3">
@@ -245,38 +245,32 @@
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
+                            let array = [];
+                            let arr = JSON.parse({!! json_encode($data) !!});
+                            arr.forEach((current)=>{
+                                newArray = {
+                                    x: current['frequency_score'],
+                                    y: current['recency_score'],
+                                    r: current['monetary_score'],
+                                    cleintID: current['customer_id'],
+                                    cleintStatus: current['segment']
+                                 }
+                                array.push(newArray)
+                            })
+                            console.log(array);
+
                             // setup 
                             const data = {
                             datasets: [{
                                 label: 'RFM Results',
-                                data: [
-                                                        {x: 10, y: 6, r:10, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 2, y: 4, r:7, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 4, y: 7, r:6, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 15, y: 44, r:4, cleintID: "3242" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 62, y: 33, r:10, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 33, y: 55, r:7, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 54, y: 56, r:6, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 34, y: 23, r:4, cleintID: "3242" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 23, y: 64, r:3, cleintID: "764564" , cleintStatus: 'Need Attiontion'}
-                                                    ],
+                                data: 
+                                                        array
+                                                    ,
                                                     backgroundColor: [
-                                                        'rgba(255, 26, 104, 0.2)',
-                                                        'rgba(54, 162, 235, 0.2)',
-                                                        'rgba(255, 206, 86, 0.2)',
-                                                        'rgba(75, 192, 192, 0.2)',
-                                                        'rgba(153, 102, 255, 0.2)',
-                                                        'rgba(255, 159, 64, 0.2)',
-                                                        'rgba(0, 0, 0, 0.2)'
+                                                        'rgba(255, 26, 104, 0.2)'
                                                         ],
                                                         borderColor: [
-                                                        'rgba(255, 26, 104, 1)',
-                                                        'rgba(54, 162, 235, 1)',
-                                                        'rgba(255, 206, 86, 1)',
-                                                        'rgba(75, 192, 192, 1)',
-                                                        'rgba(153, 102, 255, 1)',
-                                                        'rgba(255, 159, 64, 1)',
-                                                        'rgba(0, 0, 0, 1)'
+                                                        'rgba(255, 26, 104, 1)'
                                                         ],
                                                         borderWidth: 1
                                                     }]

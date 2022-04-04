@@ -73,12 +73,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
 
 
 Route::group(['prefix' => 'marketer', 'middleware' => ['role:marketer']], function() {
-    Route::view('/marketer', 'marketer/home')->name('marketer/home');
+    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/marketer/home'); 
    
 });
 
 Route::group(['prefix' => 'cleint', 'middleware' => ['role:cleint']], function() {
-    Route::view('/cleint', 'cleint/home')->name('cleint/home');
+    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/cleint/home'); 
    
 });
 

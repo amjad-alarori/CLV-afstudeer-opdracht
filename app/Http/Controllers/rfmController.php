@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 
 class rfmController extends Controller
 {
+   
     public function guzzleGet()
     {
         $aData = [];
@@ -34,8 +35,11 @@ class rfmController extends Controller
             }
         }
 
-        return view('admin/home')->with(['data' => json_encode($aData)]);
-
+       
+        $user = Auth::user()->name;
+        return view("".$user."/home")->with(['data' => json_encode($aData)]);
+    
+    
     }
 
     protected function guzzleGetData($sCursor = null)
@@ -61,6 +65,8 @@ class rfmController extends Controller
         return [];
     }
 
+
+    
 
     
 }
