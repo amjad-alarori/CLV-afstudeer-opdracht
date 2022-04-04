@@ -247,9 +247,9 @@
                             let arr = JSON.parse({!! json_encode($data) !!});
                             arr.forEach((current)=>{
                                 newArray = {
-                                    x: current['frequency_score'],
-                                    y: current['recency_score'],
-                                    r: current['monetary_score'],
+                                    x: current['frequency'],
+                                    y: current['recency'],
+                                    r: 2,
                                     cleintID: current['customer_id'],
                                     cleintStatus: current['segment']
                                  }
