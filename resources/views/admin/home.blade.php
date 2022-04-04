@@ -234,7 +234,7 @@
             </div>
             
             <div class="flex flex-row flex-wrap flex-grow mt-2">
-                <div class="w-full md:w-1/2 p-3">
+                <div class="w-full p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
                         <div class="border-b border-gray-800 p-3">
@@ -243,26 +243,27 @@
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
-
+                            let array = [];
                             let arr = JSON.parse({!! json_encode($data) !!});
-                            console.log(arr);
-                           
+                            arr.forEach((current)=>{
+                                newArray = {
+                                    x: current['frequency_score'],
+                                    y: current['recency_score'],
+                                    r: current['monetary_score'],
+                                    cleintID: current['customer_id'],
+                                    cleintStatus: current['segment']
+                                 }
+                                array.push(newArray)
+                            })
+                            console.log(array);
 
                             // setup 
                             const data = {
                             datasets: [{
                                 label: 'RFM Results',
-                                data: [
-                                                        {x: 27, y: 4, r:1, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 34, y: 3, r:2, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 11, y: 6, r:4, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 26, y: 7, r:6, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 12, y: 2, r:6, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 21, y: 8, r:8, cleintID: "34576345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 33, y: 9, r:8, cleintID: "12345" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 52, y: 4, r:10, cleintID: "52354" , cleintStatus: 'Need Attiontion'},
-                                                        {x: 44, y: 3, r:10, cleintID: "34576345" , cleintStatus: 'Need Attiontion'}
-                                                    ],
+                                data: 
+                                                        array
+                                                    ,
                                                     backgroundColor: [
                                                         'rgba(255, 26, 104, 0.2)'
                                                         ],
