@@ -46,6 +46,35 @@
             }
             prevScrollpos = currentScrollPos;
             }
+
+            let array = [];
+                            let arr = JSON.parse({!! json_encode($data) !!});
+                            arr.forEach((current)=>{
+                                newArray = {
+                                    x: current['frequency'],
+                                    y: current['recency'],
+                                    r: 2,
+                                    cleintID: current['customer_id'],
+                                    cleintStatus: current['segment'],
+                                    totalRevenue: current['monetary']
+                                 }
+                                array.push(newArray)
+                            })
+
+                            Array.prototype.sum = function (prop) {
+                            var sum = 0
+                            for ( var i = 0, _len = this.length; i < _len; i++ ) {
+                                sum += this[i][prop]
+                            }
+                            return sum
+                        }
+
+                        total = array.sum("totalRevenue")
+                        let newCustomers = 0;
+                        for (let i = 0; i < array.length; i++) {
+                        if (array[i].cleintStatus == 'New Customers') newCustomers++;
+                        }
+                        
         </script>
 <nav id="header" class="bg-gray-900 fixed w-full z-10 top-0 shadow">
 	
@@ -139,7 +168,7 @@
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="font-bold uppercase text-gray-400">Total Revenue</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">$3249 <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+                                <h3 id="total" class="font-bold text-3xl text-gray-600">&euro;<script>document.write( Math.ceil(total))</script><span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -153,8 +182,8 @@
                                 <div class="rounded p-3 bg-pink-600"><i class="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">Total Users</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">249 <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
+                                <h5 class="font-bold uppercase text-gray-400">Total Customers</h5>
+                                <h3 class="font-bold text-3xl text-gray-600"><script>document.write(array.length)</script> <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -168,58 +197,14 @@
                                 <div class="rounded p-3 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">New Users</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">2 <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3>
+                                <h5 class="font-bold uppercase text-gray-400">New Customers</h5>
+                                <h3 class="font-bold text-3xl text-gray-600"><script>document.write(newCustomers)</script> <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-blue-600"><i class="fas fa-server fa-2x fa-fw fa-inverse"></i></div>
-                            </div>
-                            <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">Server Uptime</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">152 days</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-indigo-600"><i class="fas fa-tasks fa-2x fa-fw fa-inverse"></i></div>
-                            </div>
-                            <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">To Do List</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">7 tasks</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-red-600"><i class="fas fa-inbox fa-2x fa-fw fa-inverse"></i></div>
-                            </div>
-                            <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">Issues</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">3 <span class="text-red-500"><i class="fas fa-caret-up"></i></span></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
+                
             </div>
 
 			<!--Divider-->
@@ -243,20 +228,7 @@
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
-                            let array = [];
-                            let arr = JSON.parse({!! json_encode($data) !!});
-                            arr.forEach((current)=>{
-                                newArray = {
-                                    x: current['frequency'],
-                                    y: current['recency'],
-                                    r: 2,
-                                    cleintID: current['customer_id'],
-                                    cleintStatus: current['segment']
-                                 }
-                                array.push(newArray)
-                            })
-                            
-
+                           
                             // setup 
                             const data = {
                             datasets: [{
@@ -284,7 +256,7 @@
                                         callbacks: {
                                             label: (context) => {
                                                 console.log(context)
-                                                return `Cleint ID: ${context.raw.cleintID},  Monetory: ${context.raw.r},  ${context.raw.cleintStatus}`
+                                                return `Cleint ID: ${context.raw.cleintID},  ${context.raw.cleintStatus}`
                                             }
                                         }
                                     }
@@ -308,76 +280,9 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full md:w-1/2 p-3">
-                    <!--Graph Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow">
-                        <div class="border-b border-gray-800 p-3">
-                            <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                        </div>
-                        <div class="p-5">
-                            <canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
-                            <script>
-                                new Chart(document.getElementById("chartjs-0"), {
-                                    "type": " ",
-                                    "data": {
-                                        "labels": ["January", "February", "March", "April", "May", "June", "July"],
-                                        "datasets": [{
-                                            "label": "Views",
-                                            "data": [65, 59, 80, 81, 56, 55, 40],
-                                            "fill": false,
-                                            "borderColor": "rgb(75, 192, 192)",
-                                            "lineTension": 0.1
-                                        }]
-                                    },
-                                    "options": {}
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <!--/Graph Card-->
-                </div>
-
-                <div class="w-full md:w-1/2 p-3">
-                    <!--Graph Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow">
-                        <div class="border-b border-gray-800 p-3">
-                            <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                        </div>
-                        <div class="p-5">
-                            <canvas id="chartjs-1" class="chartjs" width="undefined" height="undefined"></canvas>
-                            <script>
-                                new Chart(document.getElementById("chartjs-1"), {
-                                    "type": "bar",
-                                    "data": {
-                                        "labels": ["January", "February", "March", "April", "May", "June", "July"],
-                                        "datasets": [{
-                                            "label": "Likes",
-                                            "data": [65, 59, 80, 81, 56, 55, 40],
-                                            "fill": false,
-                                            "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
-                                            "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
-                                            "borderWidth": 1
-                                        }]
-                                    },
-                                    "options": {
-                                        "scales": {
-                                            "yAxes": [{
-                                                "ticks": {
-                                                    "beginAtZero": true
-                                                }
-                                            }]
-                                        }
-                                    }
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <!--/Graph Card-->
-                </div>
-
                
                 
-                <div class="w-full md:w-1/2 p-3">
+                <div class="w-full p-3">
                     <!--Graph Card-->
                     <div class="bg-gray-900 border border-gray-800 rounded shadow">
                         <div class="border-b border-gray-800 p-3">
@@ -386,16 +291,31 @@
                         <div class="p-5">
                             <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
+                                
+                                var res = array.reduce(function(obj, v) {
+                                obj[v.cleintStatus] = (obj[v.cleintStatus] || 0) + 1;
+                                return obj;
+                                }, {})
                                 new Chart(document.getElementById("chartjs-4"), {
                                     "type": "bar",
                                     "data": {
-                                        "labels": ["P1", "P2", "P3"],
+                                        "labels": Object.keys(res),
                                         "datasets": [{
-                                            "label": "Issues",
-                                            "data": [300, 50, 100],
-                                            "backgroundColor": ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
+                                            "label": "Cleints",
+                                            "data": Object.values(res),
+                                            "backgroundColor": ["rgba(255, 26, 104, 0.2)"],
+                                            "borderColor": ['rgba(255, 26, 104, 1)'],
+                                            "borderWidth": 1
                                         }]
+                                    },
+                                    "options": {
+                                    "plugins": {
+                                        "title": {
+                                            "display": true,
+                                            "text": 'Segments of all cleints'
+                                        }
                                     }
+                                }
                                 });
                             </script>
                         </div>
