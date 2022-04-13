@@ -205,54 +205,52 @@
 			<hr class="border-b-2 border-gray-600 my-8 mx-4">
            
             <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-           
             <button onclick="xlsDownload();" id="download" class="mr-4 bg-green-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-indigo-500">Download xslx RFM Overview</button>
-    
             <button onclick="csvDownload();" id="download" class="mr-4 bg-green-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-indigo-500">Download csv RFM Overview</button>
             </div>
             <script>
-               
-    function xlsDownload()
-    {
-        var createXLSLFormatObj = [];
+                function xlsDownload()
+                {
+                     // Convert to xlsx
+                    var createXLSLFormatObj = [];
 
-        /* XLS Head Columns */
-        var xlsHeader = ["customer_id", "recency", "frequency", "monetary", "recency_score", "frequency_score", "monetary_score", "rfm_score", "segment"];
+                    /* XLS Head Columns */
+                    var xlsHeader = ["customer_id", "recency", "frequency", "monetary", "recency_score", "frequency_score", "monetary_score", "rfm_score", "segment"];
 
-        /* XLS Rows Data */
-        var xlsRows = Object.values(list);
-
-
-        createXLSLFormatObj.push(xlsHeader);
-        $.each(xlsRows, function(index, value) {
-            var innerRowData = [];
-            $("tbody").append('<tr><td>' + value.EmployeeID + '</td><td>' + value.FullName + '</td></tr>');
-            $.each(value, function(ind, val) {
-
-                innerRowData.push(val);
-            });
-            createXLSLFormatObj.push(innerRowData);
-        });
+                    /* XLS Rows Data */
+                    var xlsRows = Object.values(list);
 
 
-        /* File Name */
-        var filename = "RFM_Export.xlsx";
+                    createXLSLFormatObj.push(xlsHeader);
+                    $.each(xlsRows, function(index, value) {
+                        var innerRowData = [];
+                        $("tbody").append('<tr><td>' + value.EmployeeID + '</td><td>' + value.FullName + '</td></tr>');
+                        $.each(value, function(ind, val) {
 
-        /* Sheet Name */
-        var ws_name = "RFM Results";
+                            innerRowData.push(val);
+                        });
+                        createXLSLFormatObj.push(innerRowData);
+                    });
 
-        if (typeof console !== 'undefined') console.log(new Date());
-        var wb = XLSX.utils.book_new(),
-            ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
 
-        /* Add worksheet to workbook */
-        XLSX.utils.book_append_sheet(wb, ws, ws_name);
+                    /* File Name */
+                    var filename = "RFM_Export.xlsx";
 
-        /* Write workbook and Download */
-        if (typeof console !== 'undefined') console.log(new Date());
-        XLSX.writeFile(wb, filename);
-        if (typeof console !== 'undefined') console.log(new Date());
-     }
+                    /* Sheet Name */
+                    var ws_name = "RFM Results";
+
+                    if (typeof console !== 'undefined') console.log(new Date());
+                    var wb = XLSX.utils.book_new(),
+                        ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
+
+                    /* Add worksheet to workbook */
+                    XLSX.utils.book_append_sheet(wb, ws, ws_name);
+
+                    /* Write workbook and Download */
+                    if (typeof console !== 'undefined') console.log(new Date());
+                    XLSX.writeFile(wb, filename);
+                    if (typeof console !== 'undefined') console.log(new Date());
+                }
             </script>
 
 
