@@ -7,6 +7,13 @@ module.exports = {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
         },
+        colors: {
+            'Oranje': '#EC4E12',
+            'Roze': '#F10051',
+            'Cyaan': '#00E0E3',
+            'Grijs': '#E6E6E6',
+            'Off-Black': '#161616'
+          },
     },
     variants: {
         extend: {
@@ -33,5 +40,5 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
-    ],
+    ]
 };

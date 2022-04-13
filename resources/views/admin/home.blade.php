@@ -19,6 +19,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.tutorialjinni.com/jquery-csv/1.0.11/jquery.csv.min.js"></script>
+    <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
 	<style>
 		.bg-black-alt  {
 			background:#191919;
@@ -34,6 +37,7 @@
 
 </head>
 <body class="bg-black-alt font-sans leading-normal tracking-normal">
+
         <script>
                 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
             var prevScrollpos = window.pageYOffset;
@@ -60,6 +64,7 @@
                                  }
                                 array.push(newArray)
                             })
+                          
 
                             Array.prototype.sum = function (prop) {
                             var sum = 0
@@ -75,41 +80,33 @@
                         if (array[i].cleintStatus == 'New Customers') newCustomers++;
                         }
                         
+                        let list = [];
+                        let downloadArr = JSON.parse({!! json_encode($data) !!});
+                        downloadArr.forEach((old)=>{
+                                secArray = {
+                                    customer_id: old['customer_id'],
+                                    recency: old['recency'],
+                                    frequency: old['frequency'],
+                                    monetary: old['monetary'],
+                                    recency_score: old['recency_score'],
+                                    frequency_score: old['frequency_score'],
+                                    monetary_score: old['monetary_score'],
+                                    rfm_score: old['rfm_score'],
+                                    segment: old['segment']
+                                    
+                                 }
+                                list.push(secArray)
+                            })
+               
+                       
+                        
         </script>
 <nav id="header" class="bg-gray-900 fixed w-full z-10 top-0 shadow">
 	
 
-		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
-				
+		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">	
 			<div class="w-1/2 pl-2 md:pl-0">
-				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="#"> 
-                <h5 class="font-bold uppercase text-gray-600">Welcome to Admin Panel</h5>
-				</a>
-            </div>
-			<div class="w-1/2 pr-0">
-				<div class="flex relative inline-block float-right">
-				
-                @if (Route::has('login'))
-                <div class="space-x-4">
-                    @auth
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mr-4 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log out</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
-                    @endauth
-                </div>
-                 @endif
-
-
-					<div class="block lg:hidden pr-4">
-					<button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-100 hover:border-teal-500 appearance-none focus:outline-none">
-						<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-					</button>
-				</div>
-				</div>
-
-			</div>
-
-
-			<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-900 z-20" id="nav-content">
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-900 z-20" id="nav-content">
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
 					<li class="mr-6 my-2 md:my-0">
                         <a href="{{ url('/') }}" class="block py-1 md:py-3 pl-1 align-middle text-blue-400 no-underline hover:text-gray-100 border-b-2 border-blue-400 hover:border-blue-400">
@@ -125,26 +122,23 @@
                     </li>
                     @endauth
                     @endif
-                    <li class="mr-6 my-2 md:my-0">
-                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-purple-400">
-                            <i class="fa fa-envelope fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Messages</span>
-                        </a>
-                    </li>
-                    <li class="mr-6 my-2 md:my-0">
-                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-green-400">
-                            <i class="fas fa-chart-area fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Analytics</span>
-                        </a>
-                    </li>
-                    <li class="mr-6 my-2 md:my-0">
-                        <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-red-400">
-                            <i class="fa fa-wallet fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Payments</span>
-                        </a>
-                    </li>
-
-				</ul>
-				
-				
+				</ul>	
 			</div>
+            </div>
+			<div class="w-1/2 pr-0">
+				<div class="flex relative inline-block float-right">
+                @if (Route::has('login'))
+                <div class="space-x-4">
+                    @auth
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mr-4 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                    @endauth
+                </div>
+                 @endif
+			</div>
+
+
+		
 			
 		</div>
 	</nav>
@@ -164,7 +158,7 @@
                     <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-green-600"><i class="fa fa-wallet fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3"><i class="fa fa-wallet fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="font-bold uppercase text-gray-400">Total Revenue</h5>
@@ -179,7 +173,7 @@
                     <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-pink-600"><i class="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3"><i class="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="font-bold uppercase text-gray-400">Total Customers</h5>
@@ -194,11 +188,11 @@
                     <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-yellow-600"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="font-bold uppercase text-gray-400">New Customers</h5>
-                                <h3 class="font-bold text-3xl text-gray-600"><script>document.write(newCustomers)</script> <span class="text-yellow-600"><i class="fas fa-caret-up"></i></span></h3>
+                                <h3 class="font-bold text-3xl text-gray-600"><script>document.write(newCustomers)</script> <span class="text-green-600"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                     </div>
@@ -209,15 +203,80 @@
 
 			<!--Divider-->
 			<hr class="border-b-2 border-gray-600 my-8 mx-4">
-
+           
             <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-                <select class="mr-4 bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" id= "select">
-                    <option>Webshop Amsterdam</option>
-                    <option>Webshop Meppel</option>
-                    <option>Webshop Dubai</option>
-                </select>
+           
+            <button onclick="xlsDownload();" id="download" class="mr-4 bg-green-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-indigo-500">Download xslx RFM Overview</button>
+    
+            <button onclick="csvDownload();" id="download" class="mr-4 bg-green-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-indigo-500">Download csv RFM Overview</button>
             </div>
-            
+            <script>
+               
+    function xlsDownload()
+    {
+        var createXLSLFormatObj = [];
+
+        /* XLS Head Columns */
+        var xlsHeader = ["customer_id", "recency", "frequency", "monetary", "recency_score", "frequency_score", "monetary_score", "rfm_score", "segment"];
+
+        /* XLS Rows Data */
+        var xlsRows = Object.values(list);
+
+
+        createXLSLFormatObj.push(xlsHeader);
+        $.each(xlsRows, function(index, value) {
+            var innerRowData = [];
+            $("tbody").append('<tr><td>' + value.EmployeeID + '</td><td>' + value.FullName + '</td></tr>');
+            $.each(value, function(ind, val) {
+
+                innerRowData.push(val);
+            });
+            createXLSLFormatObj.push(innerRowData);
+        });
+
+
+        /* File Name */
+        var filename = "RFM_Export.xlsx";
+
+        /* Sheet Name */
+        var ws_name = "RFM Results";
+
+        if (typeof console !== 'undefined') console.log(new Date());
+        var wb = XLSX.utils.book_new(),
+            ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
+
+        /* Add worksheet to workbook */
+        XLSX.utils.book_append_sheet(wb, ws, ws_name);
+
+        /* Write workbook and Download */
+        if (typeof console !== 'undefined') console.log(new Date());
+        XLSX.writeFile(wb, filename);
+        if (typeof console !== 'undefined') console.log(new Date());
+     }
+            </script>
+
+
+            <script>
+                // Convert to csv
+                function csvDownload() {
+                    const csv = $.csv.fromObjects(list);
+
+                // Download file as csv function
+                const downloadBlobAsFile = function(csv, filename){
+                    var downloadLink = document.createElement("a");
+                    var blob = new Blob([csv], { type: 'text/csv' });
+                    var url = URL.createObjectURL(blob);
+                    downloadLink.href = url;
+                    downloadLink.download = filename;
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                }
+
+                // Download csv file
+                downloadBlobAsFile(csv, 'RFM_Export.csv');
+                }
+          </script>
             <div class="flex flex-row flex-wrap flex-grow mt-2">
                 <div class="w-full p-3">
                     <!--Graph Card-->
