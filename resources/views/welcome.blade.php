@@ -20,7 +20,7 @@
 -->
 <div class="relative overflow-hidden">
   <header class="relative">
-    <div class="bg-gray-900 pt-6">
+    <div class="bg-RFM-Black pt-6">
       <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
         <div class="flex items-center flex-1">
           <div class="flex items-center justify-between w-full md:w-auto">
@@ -30,15 +30,7 @@
             </a>
           
           </div>
-          <div class="hidden space-x-8 md:flex md:ml-10">
-            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Products</a>
-
-            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Features</a>
-
-            <a href="#" class="text-base font-medium text-white hover:text-gray-300">About Us</a>
-
-            <a href="#" class="text-base font-medium text-white hover:text-gray-300">Contact</a>
-          </div>
+          
         </div>
         
         @if (Route::has('login'))
@@ -47,7 +39,7 @@
                         <a
                             href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                            class="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
+                            class="w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Pink_hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
                         >
                             Log out
                         </a>
@@ -58,10 +50,10 @@
                     @else
                     
                     <div class="flex items-stretch ...">
-                          <a href="{{ route('login') }}" class="mr-4 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log in</a>
+                          <a href="{{ route('login') }}" class="mr-4 w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log in</a>
 
                           @if (Route::has('register'))
-                           <a href="{{ route('register') }}" class="ml-2 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Register</a>
+                           <a href="{{ route('register') }}" class="ml-2 w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Pink_hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Register</a>
                           @endif
                         </div>
                     @endauth
@@ -84,15 +76,15 @@
   </header>
 
   <main>
-    <div class="pt-10 bg-gray-900 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+    <div class="pt-10 bg-RFM-Black sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
       <div class="mx-auto max-w-7xl lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-8">
           <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
             <div class="lg:py-24">
             
               <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-                <span class="block">GMU. ONLINE</span>
-                <span class="block text-indigo-400">DATA GEDREVEN ONLINE MARKETING</span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange xl:text-5xl">GMU. ONLINE</span>
+                <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange xl:text-5xl">DATA GEDREVEN ONLINE MARKETING</span>
               </h1>
               <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Wij zijn een big data marketing agency. In tegenstelling tot veel traditionele AdWords-bureaus maken wij gebruik van onze eigen innovatieve Big Data software. Wij combineren de beste expertise met onze software en besparen zo veel tijd om weer te investeren in uw online marketing. Terwijl verschillende berekeningen en advertenties worden geautomatiseerd, kan onze Google AdWords specialist zich focussen op het behalen van hoge rendementen en verhogen van uw winstgevendheid en vindbaarheid.</p>
              
@@ -109,38 +101,37 @@
     </div>
 
     <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="relative bg-gray-900">
+<div class="relative bg-RFM-Black">
   <div class="h-80 w-full absolute bottom-0 xl:inset-0 xl:h-full">
     <div class="h-full w-full xl:grid xl:grid-cols-2">
       <div class="h-full xl:relative xl:col-start-2">
         <img class="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0" src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100" alt="People working on laptops">
-        <div aria-hidden="true" class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-gray-900 xl:inset-y-0 xl:left-0 xl:h-full xl:w-32 xl:bg-gradient-to-r"></div>
+        <div aria-hidden="true" class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-RFM-Black xl:inset-y-0 xl:left-0 xl:h-full xl:w-32 xl:bg-gradient-to-r"></div>
       </div>
     </div>
   </div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
     <div class="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
-      <h2 class="text-sm font-semibold text-indigo-300 tracking-wide uppercase">DE BESTE GOOGLE ADWORDS SPECIALISTEN</h2>
-      <p class="mt-3 text-3xl font-extrabold text-white">Get actionable data that will help grow your business</p>
+      <p class="mt-3 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange">Get actionable data that will help grow your business</p>
       <p class="mt-5 text-lg text-gray-300">Als partner van uw onderneming geloven we dat Big Data- diepteanalyse door onze online marketingexperts onmisbaar is.</p>
       <div class="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
         <p>
-          <span class="block text-2xl font-bold text-white">8K+</span>
+          <span class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">8K+</span>
           <span class="mt-1 block text-base text-gray-300"><span class="font-medium text-white">Companies</span> use laoreet amet lacus nibh integer quis.</span>
         </p>
 
         <p>
-          <span class="block text-2xl font-bold text-white">25K+</span>
+          <span class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">25K+</span>
           <span class="mt-1 block text-base text-gray-300"><span class="font-medium text-white">Countries around the globe</span> lacus nibh integer quis.</span>
         </p>
 
         <p>
-          <span class="block text-2xl font-bold text-white">98%</span>
+          <span class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">98%</span>
           <span class="mt-1 block text-base text-gray-300"><span class="font-medium text-white">Customer satisfaction</span> laoreet amet lacus nibh integer quis.</span>
         </p>
 
         <p>
-          <span class="block text-2xl font-bold text-white">12M+</span>
+          <span class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">12M+</span>
           <span class="mt-1 block text-base text-gray-300"><span class="font-medium text-white">Issues resolved</span> lacus nibh integer quis.</span>
         </p>
       </div>
@@ -165,7 +156,7 @@
   }
   ```
 -->
-<footer class="bg-gray-900" aria-labelledby="footer-heading">
+<footer class="bg-RFM-Black" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
     <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
@@ -268,7 +259,7 @@
         <label for="email-address" class="sr-only">Email address</label>
         <input type="email" name="email-address" id="email-address" autocomplete="email" required class="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400 sm:max-w-xs" placeholder="Enter your email">
         <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-          <button type="submit" class="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Subscribe</button>
+          <button type="submit" class="w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Subscribe</button>
         </div>
       </form>
     </div>
