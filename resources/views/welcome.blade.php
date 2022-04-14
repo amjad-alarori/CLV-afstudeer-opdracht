@@ -90,17 +90,19 @@
              
             </div>
           </div>
-          <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
+          <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
             <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
               <!-- Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ -->
-              <img class="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="{{asset('background.png')}}" alt="">
+              <img class="" src="{{asset('background.png')}}" alt="">
             </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
 
-    <!-- This example requires Tailwind CSS v2.0+ -->
+
 <div class="relative bg-RFM-Black">
   <div class="h-80 w-full absolute bottom-0 xl:inset-0 xl:h-full">
     <div class="h-full w-full xl:grid xl:grid-cols-2">
