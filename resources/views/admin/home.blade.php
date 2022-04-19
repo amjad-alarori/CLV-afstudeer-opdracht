@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tailwind Starter Template - Night Admin Template: Tailwind Toolbox</title>
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
 	
@@ -22,9 +21,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.tutorialjinni.com/jquery-csv/1.0.11/jquery.csv.min.js"></script>
     <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 	<style>
 		.bg-black-alt  {
-			background:#191919;
+			background:#161616;
 		}
 		.text-black-alt  {
 			color:#191919;
@@ -36,7 +37,7 @@
 	</style>
 
 </head>
-<body class="bg-black-alt font-sans leading-normal tracking-normal">
+<body class="bg-RFM-Black font-sans leading-normal tracking-normal">
 
         <script>
                 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
@@ -101,22 +102,22 @@
                        
                         
         </script>
-<nav id="header" class="bg-gray-900 fixed w-full z-10 top-0 shadow">
+<nav id="header" class="bg-RFM-Black fixed w-full z-10 top-0 shadow">
 	
 
 		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">	
 			<div class="w-1/2 pl-2 md:pl-0">
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-900 z-20" id="nav-content">
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-RFM-Black z-20" id="nav-content">
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
 					<li class="mr-6 my-2 md:my-0">
-                        <a href="{{ url('/') }}" class="block py-1 md:py-3 pl-1 align-middle text-blue-400 no-underline hover:text-gray-100 border-b-2 border-blue-400 hover:border-blue-400">
-                            <i class="fas fa-home fa-fw mr-3 text-blue-400"></i><span class="pb-1 md:pb-0 text-sm">Home</span>
+                        <a href="{{ url('/') }}" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-RFM-Pink">
+                            <i class="fas fa-home fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Home</span>
                         </a>
                     </li>
                     @if (Laratrust::hasRole('admin'))
                     @auth
 					<li class="mr-6 my-2 md:my-0">
-                        <a href="#"  onclick="window.location.href='/edit-users'" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-pink-400">
+                        <a href="#"  onclick="window.location.href='/edit-users'" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-RFM-Pink">
                             <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Edit Roles and Permessions</span>
                         </a>
                     </li>
@@ -130,7 +131,7 @@
                 @if (Route::has('login'))
                 <div class="space-x-4">
                     @auth
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mr-4 w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log out</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Pink_hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                     @endauth
                 </div>
@@ -155,60 +156,73 @@
 			<div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
+                    <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
+                    <div class="bg-RFM-Black">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3"><i class="fa fa-wallet fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3"><i class="fas fa-wallet" style="font-size:30px; color:gray"></i></div>
                             </div>
+
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">Total Revenue</h5>
-                                <h3 id="total" class="font-bold text-3xl text-gray-600">&euro;<script>document.write( Math.ceil(total))</script><span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+                                <h5 class="text-base font-extrabold text-2xl text-gray-400">Total Revenue</h5>
+                                <h3 id="total" class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">&euro;<script>document.write( Math.ceil(total))</script><span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
+                        </div>
                         </div>
                     </div>
                     <!--/Metric Card-->
                 </div>
                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
+                    <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
+                    <div class="bg-RFM-Black">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3"><i class="fas fa-users fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3"><i class="fas fa-users" style="font-size:30px; color:gray"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">Total Customers</h5>
-                                <h3 class="font-bold text-3xl text-gray-600"><script>document.write(array.length)</script> <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
+                                <h5 class="text-base font-extrabold text-2xl text-gray-400">Total Customers</h5>
+                                <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange"><script>document.write(array.length)</script> <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
                             </div>
+                        </div>
                         </div>
                     </div>
                     <!--/Metric Card-->
                 </div>
                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow p-2">
+                    <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
+                    <div class="bg-RFM-Black">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3"><i class="fas fa-user-plus fa-2x fa-fw fa-inverse"></i></div>
+                                <div class="rounded p-3"><i class="fas fa-user-plus"style="font-size:30px; color:gray"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-400">New Customers</h5>
-                                <h3 class="font-bold text-3xl text-gray-600"><script>document.write(newCustomers)</script> <span class="text-green-600"><i class="fas fa-caret-up"></i></span></h3>
+                                <h5 class="text-base font-extrabold text-2xl text-gray-400">New Customers</h5>
+                                <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange"><script>document.write(newCustomers)</script> <span class="text-green-600"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
+                        </div>
                         </div>
                     </div>
                     <!--/Metric Card-->
                 </div>
                 
             </div>
+<!-- 
+            <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
+                    <div class="bg-RFM-Black"> -->
 
 			<!--Divider-->
-			<hr class="border-b-2 border-gray-600 my-8 mx-4">
+         
+			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
+                  
            
+
             <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-            <button onclick="xlsDownload();" id="download" class="mr-4 bg-green-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-indigo-500">Download xslx RFM Overview</button>
-            <button onclick="csvDownload();" id="download" class="mr-4 bg-green-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-800 focus:ring-indigo-500">Download csv RFM Overview</button>
+            <!-- <button onclick="xlsDownload();" id="download" class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Download xslx RFM Overview</button> -->
+            <button onclick="csvDownload();" id="download" class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-gray-200 hover:bg-RFM-Black">Download RFM Overview</button>
             </div>
-            <script>
+            <!-- <script>
                 function xlsDownload()
                 {
                      // Convert to xlsx
@@ -251,7 +265,7 @@
                     XLSX.writeFile(wb, filename);
                     if (typeof console !== 'undefined') console.log(new Date());
                 }
-            </script>
+            </script> -->
 
 
             <script>
@@ -278,10 +292,8 @@
             <div class="flex flex-row flex-wrap flex-grow mt-2">
                 <div class="w-full p-3">
                     <!--Graph Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow">
-                        <div class="border-b border-gray-800 p-3">
-                            <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                        </div>
+                    <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
+                    <div class="bg-RFM-Black">
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
@@ -294,10 +306,10 @@
                                                         array
                                                     ,
                                                     backgroundColor: [
-                                                        'rgba(255, 26, 104, 0.2)'
+                                                        'rgba(241, 0, 81, 0.2)'
                                                         ],
                                                         borderColor: [
-                                                        'rgba(255, 26, 104, 1)'
+                                                        'rgba(241, 0, 81, 1)'
                                                         ],
                                                         borderWidth: 1
                                                     }]
@@ -334,17 +346,20 @@
                             </script>
                         </div>
                     </div>
+                        </div>
                     <!--/Graph Card-->
                 </div>
 
                
-                
+               
+
+
                 <div class="w-full p-3">
                     <!--Graph Card-->
-                    <div class="bg-gray-900 border border-gray-800 rounded shadow">
-                        <div class="border-b border-gray-800 p-3">
-                            <h5 class="font-bold uppercase text-gray-600">Graph</h5>
-                        </div>
+                    
+                    <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
+                    <div class="bg-RFM-Black">
+                        
                         <div class="p-5">
                             <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script>
@@ -360,8 +375,8 @@
                                         "datasets": [{
                                             "label": "Cleints",
                                             "data": Object.values(res),
-                                            "backgroundColor": ["rgba(255, 26, 104, 0.2)"],
-                                            "borderColor": ['rgba(255, 26, 104, 1)'],
+                                            "backgroundColor": ["rgba(241, 0, 81, 0.2)"],
+                                            "borderColor": ['rgba(241, 0, 81, 1)'],
                                             "borderWidth": 1
                                         }]
                                     },
@@ -377,6 +392,7 @@
                             </script>
                         </div>
                     </div>
+                    </div>
                     <!--/Graph Card-->
                 </div>
             </div>
@@ -388,42 +404,48 @@
 
 	</div> 
 	<!--/container-->
-	
-	<footer class="bg-gray-900 border-t border-gray-400 shadow">	
-		<div class="container max-w-md mx-auto flex py-8">
+
+    
+			<!--Divider-->
+			<hr class="border-b-2 border-RFM-Orange my-8 mx-4">
+           
+   
+        <footer class="bg-RFM-Black">	
+		    <div class="container max-w-md mx-auto flex py-8">
 
 			<div class="w-full mx-auto flex flex-wrap">
 				<div class="flex w-full md:w-1/2 ">
 					<div class="px-8">
-						<h3 class="font-bold font-bold text-gray-100">About</h3>
-						<p class="py-4 text-gray-600 text-sm">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel mi ut felis tempus commodo nec id erat. Suspendisse consectetur dapibus velit ut lacinia. 
+						<h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
+						<p class="mt-1 block text-base text-gray-300">
+                        Designers en developers weten wij altijd het maximale uit de e-commerce van onze klanten te halen.
 						</p>
 					</div>
 				</div>
 				
 				<div class="flex w-full md:w-1/2">
 					<div class="px-8">
-					<h3 class="font-bold font-bold text-gray-100">Social</h3>
-						<ul class="list-reset items-center text-sm pt-3">
+					<h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">Social</h3>
+						<ul class="flex" style="justify-content: center; grid-gap: 20px;">
 						  <li>
-							<a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
+							<a class="mt-1 block text-base text-gray-300" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"><p><i class="fab fa-linkedin fa-spin" style="font-size:30px"></i></p></a>
 						  </li>
 						  <li>
-							<a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
+							<a class="mt-1 block text-base text-gray-300" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"><p><i class="fab fa-instagram fa-spin" style="font-size:30px"></i></p></a>
 						  </li>
 							<li>
-							<a class="inline-block text-gray-600 no-underline hover:text-gray-100 hover:text-underline py-1" href="#">Add social link</a>
+							<a class="mt-1 block text-base text-gray-300" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"><p><i class="fab fa-facebook fa-spin" style="font-size:30px"></i></p></a>
 						  </li>
 						</ul>
 					</div>
 				</div>
 			</div>
         
-
-		
-		</div>
-	</footer>
+            <ul>
+                <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li><li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li><li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li></ul>
+        </div>
+	    </footer>
+ 
 
 <script>
 	
