@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+ 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @hasSection('title')
@@ -31,5 +32,9 @@
         @yield('body')
 
         @livewireScripts
+
+        <section id="loading">
+    <div id="loading-content"></div>
+  </section>
     </body>
 </html>
