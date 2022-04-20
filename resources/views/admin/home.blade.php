@@ -22,7 +22,9 @@
     <script src="https://cdn.tutorialjinni.com/jquery-csv/1.0.11/jquery.csv.min.js"></script>
     <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 	<style>
 		.bg-black-alt  {
 			background:#161616;
@@ -33,7 +35,11 @@
 		.border-black-alt {
 			border-color: #191919;
 		}
-		
+        #chartdiv {
+        width: 100%;
+        height: 500px;
+        }
+        
 	</style>
 
 </head>
@@ -268,6 +274,7 @@
                 }
             </script> -->
 
+        
 
             <script>
                 // Convert to csv
@@ -290,6 +297,250 @@
                 downloadBlobAsFile(csv, 'RFM_Export.csv');
                 }
           </script>
+
+            <div class="flex flex-row flex-wrap flex-grow mt-2">
+                <div class="w-full p-3">
+                    <!--Graph Card-->
+                    <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
+                         <div class="bg-RFM-Black">
+                                 <div class="p-5">
+                                     <div id="chartdiv"></div>
+                                </div>
+                        </div>
+                    </div>
+                    <!--/Graph Card-->
+                </div>
+            </div>
+
+            <script>
+                    /**
+                 * ---------------------------------------
+                 * This demo was created using amCharts 5.
+                 * 
+                 * For more information visit:
+                 * https://www.amcharts.com/
+                 * 
+                 * Documentation is available at:
+                 * https://www.amcharts.com/docs/v5/
+                 * ---------------------------------------
+                 */
+
+                // Create root element
+                // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+                var root = am5.Root.new("chartdiv");
+
+
+                // Set themes
+                // https://www.amcharts.com/docs/v5/concepts/themes/
+                var myTheme = am5themes_Animated.new(root);
+
+                myTheme.rule("AxisLabel").setAll({
+                fill: am5.color(0x7a7a7a)
+                });
+
+                root.setThemes([
+                myTheme
+                ]);
+
+                // Create chart
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/
+                var chart = root.container.children.push(am5xy.XYChart.new(root, {
+                panX: true,
+                panY: true,
+                wheelY: "zoomXY",
+                pinchZoomX:true,
+                pinchZoomY:true,
+                }));
+
+                // Create axes
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+                var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+                renderer: am5xy.AxisRendererX.new(root, {}),
+                tooltip: am5.Tooltip.new(root, {})
+                }));
+
+
+                xAxis.children.moveValue(am5.Label.new(root, {
+                text: "Monetory →",
+                fill: am5.color(0x7a7a7a),
+                x: am5.p50,
+                centerX: am5.p50
+                }), xAxis.children.length - 1);
+
+                var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+                renderer: am5xy.AxisRendererY.new(root, {
+                    inversed: false
+                }),
+                tooltip: am5.Tooltip.new(root, {})
+                }));
+
+                yAxis.children.moveValue(am5.Label.new(root, {
+                rotation: -90,
+                text: "Recency →",
+                fill: am5.color(0x7a7a7a),
+                y: am5.p50,
+                centerX: am5.p50
+                }), 0);
+
+
+                // Create series
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+                var series = chart.series.push(am5xy.LineSeries.new(root, {
+                calculateAggregates: true,
+                xAxis: xAxis,
+                yAxis: yAxis,
+                valueYField: "y",
+                valueXField: "x",
+                valueField: "value",
+                seriesTooltipTarget:"bullet",
+                tooltip: am5.Tooltip.new(root, {
+                    pointerOrientation: "horizontal",
+                    labelText: "[bold]{title}[/]\nLife expectancy: {valueY.formatNumber('#.0')}\nGDP: {valueX.formatNumber('#,###.')}\nPopulation: {value.formatNumber('#,###.')}"
+                })
+                }));
+
+                series.strokes.template.set("visible", false);
+
+
+                // Add bullet
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+                var circleTemplate = am5.Template.new({});
+                circleTemplate.adapters.add("fill", function(fill, target) {
+                var dataItem = target.dataItem;
+                if (dataItem) {
+                    return am5.Color.fromString(dataItem.dataContext.color);
+                }
+                return fill
+                });
+                series.bullets.push(function() {
+                var bulletCircle = am5.Circle.new(root, {
+                    radius: 5,
+                    fill: series.get("fill"),
+                    fillOpacity: 0.8
+                }, circleTemplate);
+                return am5.Bullet.new(root, {
+                    sprite: bulletCircle
+                });
+                });
+
+
+                // Add heat rule
+                // https://www.amcharts.com/docs/v5/concepts/settings/heat-rules/
+                series.set("heatRules", [{
+                target: circleTemplate,
+                min: 3,
+                max: 60,
+                dataField: "value",
+                key: "radius"
+                }]);
+
+                // Set data
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
+                series.data.setAll([
+                
+                {
+                    "title": "United Kingdom",
+                    "id": "GB",
+                    "color": "#d8854f",
+                    "continent": "europe",
+                    "x": 31295.1431522074,
+                    "y": 80.396,
+                    "value": 62798099
+                },
+                {
+                    "title": "United States",
+                    "id": "US",
+                    "color": "#a7a737",
+                    "continent": "north_america",
+                    "x": 42296.2316492477,
+                    "y": 78.797,
+                    "value": 315791284
+                },
+                {
+                    "title": "Uruguay",
+                    "id": "UY",
+                    "color": "#86a965",
+                    "continent": "south_america",
+                    "x": 13179.2310803465,
+                    "y": 77.084,
+                    "value": 3391428
+                },
+                {
+                    "title": "Uzbekistan",
+                    "id": "UZ",
+                    "color": "#eea638",
+                    "continent": "asia",
+                    "x": 3117.27386553102,
+                    "y": 68.117,
+                    "value": 28077486
+                },
+                {
+                    "title": "Venezuela",
+                    "id": "VE",
+                    "color": "#86a965",
+                    "continent": "south_america",
+                    "x": 11685.1771941737,
+                    "y": 74.477,
+                    "value": 29890694
+                },
+                {
+                    "title": "West Bank and Gaza",
+                    "id": "PS",
+                    "color": "#eea638",
+                    "continent": "asia",
+                    "x": 4328.39115760087,
+                    "y": 73.018,
+                    "value": 4270791
+                },
+                {
+                    "title": "Vietnam",
+                    "id": "VN",
+                    "color": "#eea638",
+                    "continent": "asia",
+                    "x": 3073.64961158389,
+                    "y": 75.793,
+                    "value": 89730274
+                },
+                {
+                    "title": "Yemen, Rep.",
+                    "id": "YE",
+                    "color": "#eea638",
+                    "continent": "asia",
+                    "x": 2043.7877761328,
+                    "y": 62.923,
+                    "value": 25569263
+                }
+                ]);
+
+                
+                // Add cursor
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+                chart.set("cursor", am5xy.XYCursor.new(root, {
+                xAxis: xAxis,
+                yAxis: yAxis,
+                snapToSeries: [series]
+                }));
+
+
+                // Add scrollbars
+                // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+                chart.set("scrollbarX", am5.Scrollbar.new(root, {
+                orientation: "horizontal"
+                }));
+
+                chart.set("scrollbarY", am5.Scrollbar.new(root, {
+                orientation: "vertical"
+                }));
+
+                
+
+                // Make stuff animate on load
+                // https://www.amcharts.com/docs/v5/concepts/animations/
+                series.appear(1000);
+                chart.appear(1000, 100);
+                </script>
+
+
             <div class="flex flex-row flex-wrap flex-grow mt-2">
                 <div class="w-full p-3">
                     <!--Graph Card-->
