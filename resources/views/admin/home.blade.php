@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
-	
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
@@ -25,7 +25,7 @@
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-    
+
 	<style>
 		.bg-black-alt  {
 			background:#161616;
@@ -38,9 +38,9 @@
 		}
         #chartdiv {
         width: 100%;
-        height: 600px;
+        height: 700px;
         }
-        
+
 	</style>
 
 </head>
@@ -60,7 +60,7 @@
             prevScrollpos = currentScrollPos;
             }
 
-       
+
 
             let array = [];
                             let arr = JSON.parse({!! json_encode($data) !!});
@@ -76,7 +76,7 @@
                                  }
                                 array.push(newArray)
                             })
-                          
+
 
                             Array.prototype.sum = function (prop) {
                             var sum = 0
@@ -91,7 +91,7 @@
                         for (let i = 0; i < array.length; i++) {
                         if (array[i].clientStatus == 'New Customers') newCustomers++;
                         }
-                        
+
                         let list = [];
                         let downloadArr = JSON.parse({!! json_encode($data) !!});
                         downloadArr.forEach((old)=>{
@@ -105,18 +105,18 @@
                                     monetary_score: old['monetary_score'],
                                     rfm_score: old['rfm_score'],
                                     segment: old['segment']
-                                    
+
                                  }
                                 list.push(secArray)
                             })
-               
-                       
-                        
+
+
+
         </script>
         <nav id="header" class="bg-RFM-Black fixed w-full z-10 top-0 shadow">
-	
 
-		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">	
+
+		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
 			<div class="w-1/2 pl-2 md:pl-0">
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-RFM-Black z-20" id="nav-content">
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
@@ -134,7 +134,7 @@
                     </li>
                     @endauth
                     @endif
-				</ul>	
+				</ul>
 			</div>
             </div>
 			<div class="w-1/2 pr-0">
@@ -150,20 +150,20 @@
 			</div>
 
 
-		
-			
+
+
 		</div>
 	</nav>
 
 
-    
+
 	<!--Container-->
 	<div class="container w-full mx-auto pt-20">
-		
+
 		<div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
-			
+
 			<!--Console Content-->
-			
+
 			<div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
@@ -217,17 +217,17 @@
                     </div>
                     <!--/Metric Card-->
                 </div>
-                
+
             </div>
-<!-- 
+<!--
             <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                     <div class="bg-RFM-Black"> -->
 
 			<!--Divider-->
-         
+
 			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
-                  
-           
+
+
 
             <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
             <!-- <button onclick="xlsDownload();" id="download" class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Download xslx RFM Overview</button> -->
@@ -278,7 +278,7 @@
                 }
             </script> -->
 
-        
+
 
             <script>
                 // Convert to csv
@@ -302,11 +302,11 @@
                 }
           </script>
 
-           
-                
-            
 
-            
+
+
+
+
 
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
@@ -317,12 +317,12 @@
                         <div class="p-5">
                             <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
                             <script> -->
-<!--                            
-                            // setup 
+<!--
+                            // setup
                             const data = {
                             datasets: [{
                                 label: 'RFM Results',
-                                data: 
+                                data:
                                                         array
                                                     ,
                                                     backgroundColor: [
@@ -335,7 +335,7 @@
                                                     }]
                             };
 
-                            // config 
+                            // config
                             const config = {
                             type: 'bubble',
                             data,
@@ -369,8 +369,8 @@
                     <!--/Graph Card-->
                 <!-- </div> -->
 
-               
-               
+
+
 
                 <div class="w-full p-3">
                     <!--Graph Card-->
@@ -383,10 +383,10 @@
                                             /**
                                          * ---------------------------------------
                                          * This demo was created using amCharts 5.
-                                         * 
+                                         *
                                          * For more information visit:
                                          * https://www.amcharts.com/
-                                         * 
+                                         *
                                          * Documentation is available at:
                                          * https://www.amcharts.com/docs/v5/
                                          * ---------------------------------------
@@ -509,8 +509,8 @@
                                         array.forEach((current)=>{
                                             let randomColor = Math.floor(Math.random()*16777215).toString(16);
 
-                                            newArray = 
-                                
+                                            newArray =
+
                                                     {
                                                         "title": current.clientID,
                                                         "id": current.clientID,
@@ -526,11 +526,11 @@
 
 
                                             series.data.setAll(
-                                                    
+
                                                 bubbleArray
                                             );
 
-                                        
+
                                         // Add cursor
                                         // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
                                         chart.set("cursor", am5xy.XYCursor.new(root, {
@@ -550,7 +550,7 @@
                                         orientation: "vertical"
                                         }));
 
-                                        
+
 
                                         // Make stuff animate on load
                                         // https://www.amcharts.com/docs/v5/concepts/animations/
@@ -562,7 +562,7 @@
                     </div>
                     <!--/Graph Card-->
                 </div>
-                      
+
                 <div class="w-full p-3">
                     <!--Graph Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
@@ -576,7 +576,7 @@
                                         }
                                      </style>
                                      <div id="chartdivBar" width="undefined" height="undefined"></div>
-                                     
+
                                      <script>
                                         am5.ready(function() {
 
@@ -603,7 +603,7 @@
                                         var chart = root.container.children.push(am5xy.XYChart.new(root, {
                                         panX: true,
                                         panY: true,
-                                       
+
                                         pinchZoomX:true
                                         }));
 
@@ -625,7 +625,7 @@
 
                                         var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
                                         maxDeviation: 0.3,
-                                        categoryField: "country",
+                                        categoryField: "segment",
                                         renderer: xRenderer,
                                         tooltip: am5.Tooltip.new(root, {})
                                         }));
@@ -644,7 +644,7 @@
                                         yAxis: yAxis,
                                         valueYField: "value",
                                         sequencedInterpolation: true,
-                                        categoryXField: "country",
+                                        categoryXField: "segment",
                                         tooltip: am5.Tooltip.new(root, {
                                             labelText:"{valueY}"
                                         })
@@ -658,46 +658,15 @@
                                         series.columns.template.adapters.add("stroke", function(stroke, target) {
                                         return chart.get("colors").getIndex(series.columns.indexOf(target));
                                         });
+                                            var res = array.reduce(function(obj, v) {
+                                                obj[v.clientStatus] = (obj[v.clientStatus] || 0) + 1;
+                                                return obj;
+                                            }, {})
 
+                                            var seg = Object.keys(res).map((k) => ({segment: k, value: res[k]}));
 
                                         // Set data
-                                        var data = [{
-                                        country: "USA",
-                                        value: 2025
-                                        }, {
-                                        country: "China",
-                                        value: 1882
-                                        }, {
-                                        country: "Japan",
-                                        value: 1809
-                                        }, {
-                                        country: "Germany",
-                                        value: 1322
-                                        }, {
-                                        country: "UK",
-                                        value: 1122
-                                        }, {
-                                        country: "France",
-                                        value: 1114
-                                        }, {
-                                        country: "India",
-                                        value: 984
-                                        }, {
-                                        country: "Spain",
-                                        value: 711
-                                        }, {
-                                        country: "Netherlands",
-                                        value: 665
-                                        }, {
-                                        country: "Russia",
-                                        value: 580
-                                        }, {
-                                        country: "South Korea",
-                                        value: 443
-                                        }, {
-                                        country: "Canada",
-                                        value: 441
-                                        }];
+                                        var data = seg;
 
                                         xAxis.data.setAll(data);
                                         series.data.setAll(data);
@@ -716,64 +685,20 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full p-3">
-                    <!--Graph Card-->
-                    
-                    <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
-                    <div class="bg-RFM-Black">
-                        
-                        <div class="p-5">
-                            <canvas id="chartjs-4" class="chartjs" width="undefined" height="undefined"></canvas>
-                            <script>
-                                
-                                var res = array.reduce(function(obj, v) {
-                                obj[v.clientStatus] = (obj[v.clientStatus] || 0) + 1;
-                                return obj;
-                                }, {})
-                                new Chart(document.getElementById("chartjs-4"), {
-                                    "type": "bar",
-                                    "data": {
-                                        "labels": Object.keys(res),
-                                        "datasets": [{
-                                            "label": "Clients",
-                                            "data": Object.values(res),
-                                            "backgroundColor": ["rgba(241, 0, 81, 0.2)"],
-                                            "borderColor": ['rgba(241, 0, 81, 1)'],
-                                            "borderWidth": 1
-                                        }]
-                                    },
-                                    "options": {
-                                    "plugins": {
-                                        "title": {
-                                            "display": true,
-                                            "text": 'Segments of all clients'
-                                        }
-                                    }
-                                }
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    </div>
-                    <!--/Graph Card-->
-                </div>
-            </div>
-            
-								
 			<!--/ Console Content-->
-					
-		</div>
-		
 
-	</div> 
+		</div>
+
+
+	</div>
 	<!--/container-->
 
-    
+
 			<!--Divider-->
 			<hr class="border-b-2 border-RFM-Orange my-8 mx-4">
-           
-   
-        <footer class="bg-RFM-Black">	
+
+
+        <footer class="bg-RFM-Black">
 		    <div class="container max-w-md mx-auto flex py-8">
 
 			<div class="w-full mx-auto flex flex-wrap">
@@ -785,7 +710,7 @@
 						</p>
 					</div>
 				</div>
-				
+
 				<div class="flex w-full md:w-1/2">
 					<div class="px-8">
 					<h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">Social</h3>
@@ -803,25 +728,25 @@
 					</div>
 				</div>
 			</div>
-        
+
             <ul>
                 <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li><li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li><li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li></ul>
         </div>
 	    </footer>
- 
+
 
 <script>
-	
-	
+
+
 	/*Toggle dropdown list*/
 	/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
 	var userMenuDiv = document.getElementById("userMenu");
 	var userMenu = document.getElementById("userButton");
-	
+
 	var navMenuDiv = document.getElementById("nav-content");
 	var navMenu = document.getElementById("nav-toggle");
-	
+
 	document.onclick = check;
 
 	function check(e){
@@ -840,7 +765,7 @@
 		  userMenuDiv.classList.add("invisible");
 		}
 	  }
-	  
+
 	  //Nav Menu
 	  if (!checkParent(target, navMenuDiv)) {
 		// click NOT on the menu
@@ -854,7 +779,7 @@
 		  navMenuDiv.classList.add("hidden");
 		}
 	  }
-	  
+
 	}
 
 	function checkParent(t, elm) {
@@ -871,5 +796,5 @@
 </body>
 </html>
 
-      
+
 @endsection
