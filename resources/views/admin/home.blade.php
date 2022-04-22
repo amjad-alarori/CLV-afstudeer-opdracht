@@ -2,119 +2,76 @@
 
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="description here">
-    <meta name="keywords" content="keywords,here">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.tutorialjinni.com/jquery-csv/1.0.11/jquery.csv.min.js"></script>
-    <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
-    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
 	<style>
-		.bg-black-alt  {
-			background:#161616;
-		}
-		.text-black-alt  {
-			color:#191919;
-		}
-		.border-black-alt {
-			border-color: #191919;
-		}
-        #chartdiv {
+
+        #bubbleChart {
         width: 100%;
         height: 700px;
         }
+        #barChart {
+            width: 100%;
+            height: 700px;
+        }
+
 
 	</style>
 
-</head>
-
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
-
         <script>
-                /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-            var prevScrollpos = window.pageYOffset;
-            window.onscroll = function() {
-            var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById("header").style.top = "0";
-            } else {
-                document.getElementById("header").style.top = "-150px";
-            }
-            prevScrollpos = currentScrollPos;
-            }
-
-
-
             let array = [];
-                            let arr = JSON.parse({!! json_encode($data) !!});
-                            arr.forEach((current)=>{
-                                newArray = {
-                                    x: current['frequency'],
-                                    y: current['recency'],
-                                    r: 2,
-                                    clientID: current['customer_id'],
-                                    clientStatus: current['segment'],
-                                    totalRevenue: current['monetary'],
-                                    color: "##F10051",
-                                 }
-                                array.push(newArray)
-                            })
+            let arr = JSON.parse({!! json_encode($data) !!});
+            arr.forEach((current)=>{
+                newArray = {
+                    x: current['frequency'],
+                    y: current['recency'],
+                    clientID: current['customer_id'],
+                    clientStatus: current['segment'],
+                    totalRevenue: current['monetary'],
+                    color: "##F10051",
+                }
+                array.push(newArray)
+            })
 
+            //Code to count the costumers per segment in the data array
 
-                            Array.prototype.sum = function (prop) {
-                            var sum = 0
-                            for ( var i = 0, _len = this.length; i < _len; i++ ) {
-                                sum += this[i][prop]
-                            }
-                            return sum
-                        }
+            Array.prototype.sum = function (prop) {
+            var sum = 0
+            for ( var i = 0, _len = this.length; i < _len; i++ ) {
+                sum += this[i][prop]
+            }
+            return sum
+            }
+            total = array.sum("totalRevenue")
 
-                        total = array.sum("totalRevenue")
-                        let newCustomers = 0;
-                        for (let i = 0; i < array.length; i++) {
-                        if (array[i].clientStatus == 'New Customers') newCustomers++;
-                        }
+            //Code to count the new costumers in the data array
+            let newCustomers = 0;
+            for (let i = 0; i < array.length; i++) {
+            if (array[i].clientStatus == 'New Customers') newCustomers++;
+            }
 
-                        let list = [];
-                        let downloadArr = JSON.parse({!! json_encode($data) !!});
-                        downloadArr.forEach((old)=>{
-                                secArray = {
-                                    customer_id: old['customer_id'],
-                                    recency: old['recency'],
-                                    frequency: old['frequency'],
-                                    monetary: old['monetary'],
-                                    recency_score: old['recency_score'],
-                                    frequency_score: old['frequency_score'],
-                                    monetary_score: old['monetary_score'],
-                                    rfm_score: old['rfm_score'],
-                                    segment: old['segment']
+            // Code to remap the array to delete the not nedded data and prepare it to download
+            let list = [];
+            let downloadArr = JSON.parse({!! json_encode($data) !!});
+            downloadArr.forEach((old)=>{
+                    secArray = {
+                        customer_id: old['customer_id'],
+                        recency: old['recency'],
+                        frequency: old['frequency'],
+                        monetary: old['monetary'],
+                        recency_score: old['recency_score'],
+                        frequency_score: old['frequency_score'],
+                        monetary_score: old['monetary_score'],
+                        rfm_score: old['rfm_score'],
+                        segment: old['segment']
 
-                                 }
-                                list.push(secArray)
-                            })
-
-
-
+                     }
+                    list.push(secArray)
+                })
         </script>
-        <nav id="header" class="bg-RFM-Black fixed w-full z-10 top-0 shadow">
 
+        <nav id="header" class="bg-RFM-Black fixed w-full z-10 top-0 shadow"></nav>
 
 		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
 			<div class="w-1/2 pl-2 md:pl-0">
@@ -148,12 +105,8 @@
                 </div>
                  @endif
 			</div>
-
-
-
-
 		</div>
-	</nav>
+
 
 
 
@@ -219,66 +172,19 @@
                 </div>
 
             </div>
-<!--
-            <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
-                    <div class="bg-RFM-Black"> -->
 
 			<!--Divider-->
 
 			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
 
 
-
-            <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-            <!-- <button onclick="xlsDownload();" id="download" class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Download xslx RFM Overview</button> -->
-            <button onclick="csvDownload();" id="download" class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-gray-200 hover:bg-RFM-Black">Download RFM Overview</button>
-            </div>
-            <!-- <script>
-                function xlsDownload()
-                {
-                     // Convert to xlsx
-                    var createXLSLFormatObj = [];
-
-                    /* XLS Head Columns */
-                    var xlsHeader = ["customer_id", "recency", "frequency", "monetary", "recency_score", "frequency_score", "monetary_score", "rfm_score", "segment"];
-
-                    /* XLS Rows Data */
-                    var xlsRows = Object.values(list);
-
-
-                    createXLSLFormatObj.push(xlsHeader);
-                    $.each(xlsRows, function(index, value) {
-                        var innerRowData = [];
-                        $("tbody").append('<tr><td>' + value.EmployeeID + '</td><td>' + value.FullName + '</td></tr>');
-                        $.each(value, function(ind, val) {
-
-                            innerRowData.push(val);
-                        });
-                        createXLSLFormatObj.push(innerRowData);
-                    });
-
-
-                    /* File Name */
-                    var filename = "RFM_Export.xlsx";
-
-                    /* Sheet Name */
-                    var ws_name = "RFM Results";
-
-                    if (typeof console !== 'undefined') console.log(new Date());
-                    var wb = XLSX.utils.book_new(),
-                        ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
-
-                    /* Add worksheet to workbook */
-                    XLSX.utils.book_append_sheet(wb, ws, ws_name);
-
-                    /* Write workbook and Download */
-                    if (typeof console !== 'undefined') console.log(new Date());
-                    XLSX.writeFile(wb, filename);
-                    if (typeof console !== 'undefined') console.log(new Date());
-                }
-            </script> -->
-
-
+            @if (Laratrust::hasRole('admin'))
+                @auth
+                    <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                        <button onclick="csvDownload();" id="download" class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-gray-200 hover:bg-RFM-Black">Download RFM Overview</button>
+                    </div>
+                @endauth
+            @endif
 
             <script>
                 // Convert to csv
@@ -310,92 +216,17 @@
 
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
-                <!-- <div class="w-full p-3"> -->
-                    <!--Graph Card-->
-                    <!-- <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
-                    <div class="bg-RFM-Black">
-                        <div class="p-5">
-                            <canvas id="chartjs-7" class="chartjs" width="undefined" height="undefined"></canvas>
-                            <script> -->
-<!--
-                            // setup
-                            const data = {
-                            datasets: [{
-                                label: 'RFM Results',
-                                data:
-                                                        array
-                                                    ,
-                                                    backgroundColor: [
-                                                        'rgba(241, 0, 81, 0.2)'
-                                                        ],
-                                                        borderColor: [
-                                                        'rgba(241, 0, 81, 1)'
-                                                        ],
-                                                        borderWidth: 1
-                                                    }]
-                            };
-
-                            // config
-                            const config = {
-                            type: 'bubble',
-                            data,
-                            options: {
-                                plugins: {
-                                    tooltip: {
-                                        callbacks: {
-                                            label: (context) => {
-                                                return `Client ID: ${context.raw.clientID},  ${context.raw.clientStatus}`
-                                            }
-                                        }
-                                    }
-                                },
-                                scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                                }
-                            }
-                            };
-
-                            // render init block
-                            const myChart = new Chart(
-                            document.getElementById('chartjs-7'),
-                            config
-                            );
-                            </script>
-                        </div>
-                    </div>
-                        </div> -->
-                    <!--/Graph Card-->
-                <!-- </div> -->
-
-
-
-
                 <div class="w-full p-3">
                     <!--Graph Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                          <div class="bg-RFM-Black">
                                  <div class="p-5">
                                      <!-- <div id="chartdiv"></div> -->
-                                     <div id="chartdiv" width="undefined" height="undefined"></div>
+                                     <div id="bubbleChart"></div>
                                      <script>
-                                            /**
-                                         * ---------------------------------------
-                                         * This demo was created using amCharts 5.
-                                         *
-                                         * For more information visit:
-                                         * https://www.amcharts.com/
-                                         *
-                                         * Documentation is available at:
-                                         * https://www.amcharts.com/docs/v5/
-                                         * ---------------------------------------
-                                         */
-
                                         // Create root element
                                         // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-                                        var root = am5.Root.new("chartdiv");
-
+                                        var root = am5.Root.new("bubbleChart");
 
                                         // Set themes
                                         // https://www.amcharts.com/docs/v5/concepts/themes/
@@ -568,21 +399,13 @@
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                          <div class="bg-RFM-Black">
                                  <div class="p-5">
-                                     <!-- <div id="chartdiv"></div> -->
-                                     <style>
-                                         #chartdivBar {
-                                        width: 100%;
-                                        height: 600px;
-                                        }
-                                     </style>
-                                     <div id="chartdivBar" width="undefined" height="undefined"></div>
-
+                                     <div id="barChart" width="undefined" height="undefined"></div>
                                      <script>
                                         am5.ready(function() {
 
                                         // Create root element
                                         // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-                                        var root = am5.Root.new("chartdivBar");
+                                        var root = am5.Root.new("barChart");
 
 
                                         // Set themes
@@ -686,17 +509,12 @@
                 </div>
 
 			<!--/ Console Content-->
-
-		</div>
-
-
-	</div>
+        </div>
+    </div>
 	<!--/container-->
 
-
-			<!--Divider-->
-			<hr class="border-b-2 border-RFM-Orange my-8 mx-4">
-
+    <!--Divider-->
+    <hr class="border-b-2 border-RFM-Orange my-8 mx-4">
 
         <footer class="bg-RFM-Black">
 		    <div class="container max-w-md mx-auto flex py-8">
@@ -730,68 +548,12 @@
 			</div>
 
             <ul>
-                <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li><li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li><li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li></ul>
-        </div>
+                <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li>
+                <li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li>
+                <li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li>
+            </ul>
+         </div>
 	    </footer>
-
-
-<script>
-
-
-	/*Toggle dropdown list*/
-	/*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-	var userMenuDiv = document.getElementById("userMenu");
-	var userMenu = document.getElementById("userButton");
-
-	var navMenuDiv = document.getElementById("nav-content");
-	var navMenu = document.getElementById("nav-toggle");
-
-	document.onclick = check;
-
-	function check(e){
-	  var target = (e && e.target) || (event && event.srcElement);
-
-	  //User Menu
-	  if (!checkParent(target, userMenuDiv)) {
-		// click NOT on the menu
-		if (checkParent(target, userMenu)) {
-		  // click on the link
-		  if (userMenuDiv.classList.contains("invisible")) {
-			userMenuDiv.classList.remove("invisible");
-		  } else {userMenuDiv.classList.add("invisible");}
-		} else {
-		  // click both outside link and outside menu, hide menu
-		  userMenuDiv.classList.add("invisible");
-		}
-	  }
-
-	  //Nav Menu
-	  if (!checkParent(target, navMenuDiv)) {
-		// click NOT on the menu
-		if (checkParent(target, navMenu)) {
-		  // click on the link
-		  if (navMenuDiv.classList.contains("hidden")) {
-			navMenuDiv.classList.remove("hidden");
-		  } else {navMenuDiv.classList.add("hidden");}
-		} else {
-		  // click both outside link and outside menu, hide menu
-		  navMenuDiv.classList.add("hidden");
-		}
-	  }
-
-	}
-
-	function checkParent(t, elm) {
-	  while(t.parentNode) {
-		if( t == elm ) {return true;}
-		t = t.parentNode;
-	  }
-	  return false;
-	}
-
-
-</script>
 
 </body>
 </html>
