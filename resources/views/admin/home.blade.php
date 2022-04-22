@@ -604,7 +604,7 @@
                                         panX: true,
                                         panY: true,
 
-                                        pinchZoomX:true
+                                        pinchZoomX:false
                                         }));
 
                                         // Add cursor
