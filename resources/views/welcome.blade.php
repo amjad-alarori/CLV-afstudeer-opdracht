@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-   
+
      <!--
-  This example requires Tailwind CSS v2.0+ 
-  
+  This example requires Tailwind CSS v2.0+
+
   This example requires some changes to your config:
-  
+
   ```
   // tailwind.config.js
   module.exports = {
@@ -25,14 +25,14 @@
         <div class="flex items-center flex-1">
           <div class="flex items-center justify-between w-full md:w-auto">
             <a href="https://gmu.online/">
-            
+
               <img class="h-8 w-auto sm:h-10" src="{{asset('favicon.png')}}" alt="">
             </a>
-          
+
           </div>
-          
+
         </div>
-        
+
         @if (Route::has('login'))
                 <div class="space-x-4">
                     @auth
@@ -48,7 +48,7 @@
                             @csrf
                         </form>
                     @else
-                    
+
                     <div class="flex items-stretch ...">
                           <a href="{{ route('login') }}" class="mr-4 w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log in</a>
 
@@ -72,22 +72,22 @@
         From: "opacity-100 scale-100"
         To: "opacity-0 scale-95"
     -->
-  
+
   </header>
 
   <main>
-    <div class="pt-10 bg-RFM-Black sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+    <div class="pt-10 bg-RFM-Black sm:pt-16 lg:pt-40 lg:pb-14 lg:overflow-hidden">
       <div class="mx-auto max-w-7xl lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-8">
           <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
             <div class="lg:py-24">
-            
+
               <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                 <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange xl:text-5xl">GMU. ONLINE</span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange xl:text-5xl">DATA GEDREVEN ONLINE MARKETING</span>
               </h1>
               <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Wij zijn een big data marketing agency. In tegenstelling tot veel traditionele AdWords-bureaus maken wij gebruik van onze eigen innovatieve Big Data software. Wij combineren de beste expertise met onze software en besparen zo veel tijd om weer te investeren in uw online marketing. Terwijl verschillende berekeningen en advertenties worden geautomatiseerd, kan onze Google AdWords specialist zich focussen op het behalen van hoge rendementen en verhogen van uw winstgevendheid en vindbaarheid.</p>
-             
+
             </div>
           </div>
           <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
@@ -99,7 +99,7 @@
         </div>
       </div>
     </div>
- 
+
 
 <div class="relative bg-RFM-Black">
   <div class="h-80 w-full absolute bottom-0 xl:inset-0 xl:h-full">
@@ -141,10 +141,10 @@
 
 
 <!--
-  This example requires Tailwind CSS v2.0+ 
-  
+  This example requires Tailwind CSS v2.0+
+
   This example requires some changes to your config:
-  
+
   ```
   // tailwind.config.js
   module.exports = {
@@ -247,7 +247,7 @@
         </div>
       </div>
       <div class="mt-12 xl:mt-0">
-        
+
       </div>
     </div>
     <div class="border-t border-gray-700 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0">
