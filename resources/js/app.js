@@ -1,21 +1,16 @@
-require('./bootstrap');
+import {createApp} from "vue";
 
-// Convert to csv
-function csvDownload() {
-    const csv = $.csv.fromObjects(list);
+import csv_download from "./components/csv_download";
 
-    // Download file as csv function
-    const downloadBlobAsFile = function(csv, filename){
-        var downloadLink = document.createElement("a");
-        var blob = new Blob([csv], { type: 'text/csv' });
-        var url = URL.createObjectURL(blob);
-        downloadLink.href = url;
-        downloadLink.download = filename;
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    }
 
-    // Download csv file
-    downloadBlobAsFile(csv, 'RFM_Export.csv');
-}
+const app = createApp({
+});
+
+app.component('csv_download', csv_download);
+
+
+// mount the app to the DOM
+app.mount('#app');
+
+require("./bootstrap");
+

@@ -34,6 +34,7 @@
         "jquery": "^3.6.0",
         "tailwindcss-border-gradient-radius": "^3.0.1",
         "vue": "^3.2.31",
-        "vue-spinner": "^1.0.4"
+        "vue-spinner": "^1.0.4",
+        "xlsx": "^0.18.5"
     }
 }

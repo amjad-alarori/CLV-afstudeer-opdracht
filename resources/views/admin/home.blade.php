@@ -17,7 +17,6 @@
 
 
 	</style>
-
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
         <script>
             let array = [];
@@ -177,42 +176,46 @@
 
 			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
 
+            <script>
+                let result = arr.reduce(function (r, a) {
+                    r[a.segment] = r[a.segment] || [];
+                    r[a.segment].push(a);
+                    return r;
+                }, Object.create(null));
+
+                const replaceKeys = (result, mapping) =>
+                    Object.fromEntries(
+                        Object.entries(result).map(([k, v]) => [mapping[k] || k, v])
+                    )
+
+                const mapping = {
+                    'About to Sleep': 'About_To_Sleep',
+                    'At Risk': 'At_Risk',
+                    "Can't Loose": 'Cant_Loose',
+                    'Champions': 'Champions',
+                    'Hibernating': 'Hibernating',
+                    'Loyal Customers': 'Loyal_Customers',
+                    'Need Attention': 'Need_Attention',
+                    'New Customers': 'New_Customers',
+                    'Potential Loyalists': 'Potential_Loyalists',
+                    'Promising': 'Promising'
+                }
+                newResult = replaceKeys(result, mapping)
+
+            </script>
+            <div id="app">
+                <csv_download :data=newResult></csv_download>
+            </div>
 
             @if (Laratrust::hasRole('admin'))
                 @auth
                     <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
-                        <button onclick="csvDownload();" id="download" class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-gray-200 hover:bg-RFM-Black">Download RFM Overview</button>
+                        <div id="app">
+                            <csv_download :data=newResult></csv_download>
+                        </div>
                     </div>
                 @endauth
             @endif
-
-            <script>
-                // Convert to csv
-                function csvDownload() {
-                    const csv = $.csv.fromObjects(list);
-
-                // Download file as csv function
-                const downloadBlobAsFile = function(csv, filename){
-                    var downloadLink = document.createElement("a");
-                    var blob = new Blob([csv], { type: 'text/csv' });
-                    var url = URL.createObjectURL(blob);
-                    downloadLink.href = url;
-                    downloadLink.download = filename;
-                    document.body.appendChild(downloadLink);
-                    downloadLink.click();
-                    document.body.removeChild(downloadLink);
-                }
-
-                // Download csv file
-                downloadBlobAsFile(csv, 'RFM_Export.csv');
-                }
-          </script>
-
-
-
-
-
-
 
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
