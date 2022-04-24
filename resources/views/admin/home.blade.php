@@ -14,8 +14,6 @@
             width: 100%;
             height: 700px;
         }
-
-
 	</style>
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
         <script>
@@ -112,7 +110,7 @@
 	<!--Container-->
 	<div class="container w-full mx-auto pt-20">
 
-		<div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+		<div class="w-full px-4 md:px-0 md:mt-8 mb-8 text-gray-800 leading-normal">
 
 			<!--Console Content-->
 
@@ -209,13 +207,21 @@
 
             @if (Laratrust::hasRole('admin'))
                 @auth
-                    <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
                         <div id="app">
                             <csv_download :data=newResult></csv_download>
                         </div>
                     </div>
                 @endauth
             @endif
+
+
+
+
+
+
+
+
+
 
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
