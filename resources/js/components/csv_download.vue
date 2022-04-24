@@ -35,16 +35,16 @@ export default {
             // add Worksheet to Workbook
             // Workbook contains one or more worksheets
 
-            XLSX.utils.book_append_sheet(wb, About_to_Sleep, 'About_To_Sleep') // sheetAName is name of Worksheet
-            XLSX.utils.book_append_sheet(wb, At_Risk, 'At_Risk')
-            XLSX.utils.book_append_sheet(wb, Cant_Loose, 'Cant_Loose')
-            XLSX.utils.book_append_sheet(wb, Champions, 'Champions')
-            XLSX.utils.book_append_sheet(wb, Hibernating, 'Hibernating')
-            XLSX.utils.book_append_sheet(wb, Loyal_Customers, 'Loyal_Customers')
-            XLSX.utils.book_append_sheet(wb, Need_Attention, 'Need_Attention')
-            XLSX.utils.book_append_sheet(wb, New_Customers, 'New_Customers')
-            XLSX.utils.book_append_sheet(wb, Potential_Loyalists, 'Potential_Loyalists')
-            XLSX.utils.book_append_sheet(wb, Promising, 'Promising')
+                        XLSX.utils.book_append_sheet(wb, About_to_Sleep, 'About_To_Sleep') // sheetAName is name of Worksheet
+                        XLSX.utils.book_append_sheet(wb, At_Risk, 'At_Risk')
+                        XLSX.utils.book_append_sheet(wb, Cant_Loose, 'Cant_Loose')
+                        XLSX.utils.book_append_sheet(wb, Champions, 'Champions')
+                        XLSX.utils.book_append_sheet(wb, Hibernating, 'Hibernating')
+                        XLSX.utils.book_append_sheet(wb, Loyal_Customers, 'Loyal_Customers')
+                        XLSX.utils.book_append_sheet(wb, Need_Attention, 'Need_Attention')
+                        XLSX.utils.book_append_sheet(wb, New_Customers, 'New_Customers')
+                        XLSX.utils.book_append_sheet(wb, Potential_Loyalists, 'Potential_Loyalists')
+                        XLSX.utils.book_append_sheet(wb, Promising, 'Promising')
 
             // export Excel file
             XLSX.writeFile(wb, 'RFM_Results.xlsx') // name of the file is 'book.xlsx'
