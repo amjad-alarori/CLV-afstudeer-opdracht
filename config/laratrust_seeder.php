@@ -20,7 +20,7 @@ return [
             'users' => 'r',
             'profile' => 'r,u'
         ],
-        'cleint' => [
+        'client' => [
             'profile' => 'r,u',
         ]
     ],

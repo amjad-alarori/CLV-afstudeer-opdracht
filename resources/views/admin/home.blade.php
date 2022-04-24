@@ -2,10 +2,7 @@
 
 @section('content')
 
-
-
 	<style>
-
         #bubbleChart {
         width: 100%;
         height: 700px;
@@ -15,6 +12,7 @@
             height: 700px;
         }
 	</style>
+
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
         <script>
             let array = [];
@@ -107,10 +105,10 @@
 
 
 
-	<!--Container-->
-	<div class="container w-full mx-auto pt-20">
+    <!--Container-->
+    <div class="container w-full mx-auto pt-20">
 
-		<div class="w-full px-4 md:px-0 md:mt-8 mb-8 text-gray-800 leading-normal">
+        <div class="w-full px-4 md:px-0 md:mt-8 mb-8 text-gray-800 leading-normal">
 
 			<!--Console Content-->
 
@@ -201,11 +199,9 @@
                 newResult = replaceKeys(result, mapping)
 
             </script>
-            <div id="app">
-                <csv_download :data=newResult></csv_download>
-            </div>
 
-            @if (Laratrust::hasRole('admin'))
+
+            @if (Laratrust::hasRole(['admin', 'marketer']))
                 @auth
                         <div id="app">
                             <csv_download :data=newResult></csv_download>
@@ -225,6 +221,7 @@
 
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
+{{--                bubble chart--}}
                 <div class="w-full p-3">
                     <!--Graph Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
@@ -511,61 +508,66 @@
 
                                         }); // end am5.ready()
                                         </script>
-                                </div>
-                        </div>
+                                 </div>
+                         </div>
                     </div>
                     <!--/Graph Card-->
                 </div>
+            </div>
 
-			<!--/ Console Content-->
-        </div>
+        <!--/ Console Content-->
+
     </div>
-	<!--/container-->
 
-    <!--Divider-->
-    <hr class="border-b-2 border-RFM-Orange my-8 mx-4">
+
+        </div>
+        <!--/container-->
+
+
+        <!--Divider-->
+        <hr class="border-b-2 border-RFM-Orange my-8 mx-4">
+
 
         <footer class="bg-RFM-Black">
-		    <div class="container max-w-md mx-auto flex py-8">
+            <div class="container max-w-md mx-auto flex py-8">
 
-			<div class="w-full mx-auto flex flex-wrap">
-				<div class="flex w-full md:w-1/2 ">
-					<div class="px-8">
-						<h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
-						<p class="mt-1 block text-base text-gray-300">
-                        Designers en developers weten wij altijd het maximale uit de e-commerce van onze klanten te halen.
-						</p>
-					</div>
-				</div>
+                <div class="w-full mx-auto flex flex-wrap">
+                    <div class="flex w-full md:w-1/2 ">
+                        <div class="px-8">
+                            <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
+                            <p class="mt-1 block text-base text-gray-300">
+                                Designers en developers weten wij altijd het maximale uit de e-commerce van onze klanten te halen.
+                            </p>
+                        </div>
+                    </div>
 
-				<div class="flex w-full md:w-1/2">
-					<div class="px-8">
-					<h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">Social</h3>
-						<ul class="flex" style="justify-content: center; grid-gap: 20px;">
-						  <li>
-							<a class="mt-1 block text-base text-gray-300" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"><p><i class="fab fa-linkedin fa-spin" style="font-size:30px"></i></p></a>
-						  </li>
-						  <li>
-							<a class="mt-1 block text-base text-gray-300" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"><p><i class="fab fa-instagram fa-spin" style="font-size:30px"></i></p></a>
-						  </li>
-							<li>
-							<a class="mt-1 block text-base text-gray-300" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"><p><i class="fab fa-facebook fa-spin" style="font-size:30px"></i></p></a>
-						  </li>
-						</ul>
-					</div>
-				</div>
-			</div>
+                    <div class="flex w-full md:w-1/2">
+                        <div class="px-8">
+                            <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">Social</h3>
+                            <ul class="flex" style="justify-content: center; grid-gap: 20px;">
+                                <li>
+                                    <a class="mt-1 block text-base text-gray-300" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"><p><i class="fab fa-linkedin fa-spin" style="font-size:30px"></i></p></a>
+                                </li>
+                                <li>
+                                    <a class="mt-1 block text-base text-gray-300" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"><p><i class="fab fa-instagram fa-spin" style="font-size:30px"></i></p></a>
+                                </li>
+                                <li>
+                                    <a class="mt-1 block text-base text-gray-300" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"><p><i class="fab fa-facebook fa-spin" style="font-size:30px"></i></p></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-            <ul>
-                <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li>
-                <li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li>
-                <li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li>
-            </ul>
-         </div>
-	    </footer>
+                <ul>
+                    <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li><li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li><li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li></ul>
+            </div>
+        </footer>
+
+
 
 </body>
-</html>
+    </html>
 
 
 @endsection

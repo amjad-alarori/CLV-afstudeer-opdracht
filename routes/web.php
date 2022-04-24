@@ -36,7 +36,7 @@ Route::middleware('guest')->group(function () {
 
     Route::get('register', Register::class)
         ->name('register');
-        
+
 });
 
 Route::get('password/reset', Email::class)
@@ -63,23 +63,23 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 
- 
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
-    
-    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/admin/home'); 
+
+    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/admin/home');
 });
 
 
 
 Route::group(['prefix' => 'marketer', 'middleware' => ['role:marketer']], function() {
-    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/marketer/home'); 
-   
+    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/marketer/home');
+
 });
 
-Route::group(['prefix' => 'cleint', 'middleware' => ['role:cleint']], function() {
-    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/cleint/home'); 
-   
+Route::group(['prefix' => 'client', 'middleware' => ['role:client']], function() {
+    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/client/home');
+
 });
 
 
