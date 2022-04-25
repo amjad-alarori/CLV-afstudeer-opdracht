@@ -41,6 +41,7 @@
   <div></div>
 </div>
 <div class="content">
+
     <style>
   .content{
     display: none;
@@ -71,6 +72,14 @@
     }
     
   }
+  #bubbleChart {
+        width: 100%;
+        height: 700px;
+        }
+    #barChart {
+        width: 100%;
+        height: 700px;
+        }
 </style>
 <script>
   $(window).on('load', function(){

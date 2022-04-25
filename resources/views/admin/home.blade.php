@@ -2,16 +2,6 @@
 
 @section('content')
 
-	<style>
-        #bubbleChart {
-        width: 100%;
-        height: 700px;
-        }
-        #barChart {
-            width: 100%;
-            height: 700px;
-        }
-	</style>
 
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
         <script>
