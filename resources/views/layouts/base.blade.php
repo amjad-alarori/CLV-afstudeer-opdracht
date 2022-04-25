@@ -37,7 +37,47 @@
         <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
         <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     </head>
-
+    <div class="loader">
+  <div></div>
+</div>
+<div class="content">
+    <style>
+  .content{
+    display: none;
+  }
+  .loader{
+    height: 100vh;
+    width: 100vw;overflow: hidden;
+    background-color: #161616;
+    position: absolute;
+  }
+  .loader>div{
+    height: 100px;
+    width:100px;
+    border: 15px solid #45474b;
+    border-top-color: #004195;
+    position: absolute;
+    margin:auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+  }
+  @keyframes spin {
+    100%{
+      transform: rotate(360deg);
+    }
+    
+  }
+</style>
+<script>
+  $(window).on('load', function(){
+   $(".loader").fadeOut(1000);
+   $(".content").fadeIn(1000);
+  });
+</script>
     <body>
         @yield('body')
 

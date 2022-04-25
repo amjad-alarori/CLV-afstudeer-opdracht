@@ -2,22 +2,7 @@
 
 @section('content')
 
-     <!--
-  This example requires Tailwind CSS v2.0+
 
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <div class="relative overflow-hidden">
   <header class="relative">
     <div class="bg-RFM-Black pt-6">
@@ -140,22 +125,6 @@
 </div>
 
 
-<!--
-  This example requires Tailwind CSS v2.0+
-
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <footer class="bg-RFM-Black" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -308,5 +277,8 @@
     <!-- More main page content here... -->
   </main>
 </div>
+</div>
 
 @endsection
+
+
