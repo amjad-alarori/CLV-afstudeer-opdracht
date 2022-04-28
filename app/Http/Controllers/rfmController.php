@@ -22,7 +22,9 @@ class rfmController extends Controller
             }
             else
             {
+                
                 $aData = array_merge($aData, $aResponse['data']);
+              
 
                 if(empty($aResponse['meta']['next_cursor']))
                 {

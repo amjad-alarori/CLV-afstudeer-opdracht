@@ -48,7 +48,8 @@
   }
   .loader{
     height: 100vh;
-    width: 100vw;overflow: hidden;
+    width: 100vw;
+    overflow: hidden;
     background-color: #161616;
     position: absolute;
   }
@@ -83,8 +84,8 @@
 </style>
 <script>
   $(window).on('load', function(){
-   $(".loader").fadeOut(1000);
-   $(".content").fadeIn(1000);
+   $(".loader").fadeOut(2000);
+   $(".content").fadeIn(2000);
   });
 </script>
     <body>

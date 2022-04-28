@@ -16,9 +16,10 @@
                     totalRevenue: current['monetary'],
                     color: "##F10051",
                 }
+               
                 array.push(newArray)
             })
-
+         
             //Code to count the costumers per segment in the data array
 
             Array.prototype.sum = function (prop) {
@@ -163,7 +164,22 @@
 			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
 
             <script>
-                let result = arr.reduce(function (r, a) {
+                 data = arr.map(item => { 
+                return {
+                    "customer_id": item.customer_id,
+                    "frequency": item.frequency,
+                    "frequency_score": item.frequency_score,
+                    "monetary": item.monetary,
+                    "monetary_score": item.monetary_score,
+                    "recency": item.recency,
+                    "recency_score": item.recency_score,
+                    "rfm_score": item.rfm_score,
+                    "segment": item.segment
+                }
+                });
+
+
+                let result = data.reduce(function (r, a) {
                     r[a.segment] = r[a.segment] || [];
                     r[a.segment].push(a);
                     return r;
@@ -173,7 +189,7 @@
                     Object.fromEntries(
                         Object.entries(result).map(([k, v]) => [mapping[k] || k, v])
                     )
-
+                        
                 const mapping = {
                     'About to Sleep': 'About_To_Sleep',
                     'At Risk': 'At_Risk',
@@ -199,15 +215,6 @@
                     </div>
                 @endauth
             @endif
-
-
-
-
-
-
-
-
-
 
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
@@ -255,7 +262,7 @@
 
 
                                         xAxis.children.moveValue(am5.Label.new(root, {
-                                        text: "Monetory →",
+                                        text: "Frequency →",
                                         fill: am5.color(0x7a7a7a),
                                         x: am5.p50,
                                         centerX: am5.p50
@@ -288,7 +295,7 @@
                                         seriesTooltipTarget:"bullet",
                                         tooltip: am5.Tooltip.new(root, {
                                             pointerOrientation: "horizontal",
-                                            labelText: "[bold]Client ID: {title} [/]\nTotal Revenue: {value.formatNumber('#,###.')}\nSegment: {continent}"
+                                            labelText: "[bold]Client ID: {title} [/]\nTotal Revenue: €{value.formatNumber('#,###.')}\nSegment: {continent}"
                                         })
                                         }));
 
@@ -343,8 +350,8 @@
                                                         "id": current.clientID,
                                                         "color": "#" + randomColor,
                                                         "continent": current.clientStatus,
-                                                        "x": current.x,
-                                                        "y": current.y,
+                                                        "x": current.x, //frequency
+                                                        "y": current.y, // recency
                                                         "value": current.totalRevenue
                                                     },
 
