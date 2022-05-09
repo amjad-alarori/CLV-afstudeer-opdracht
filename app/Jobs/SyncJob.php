@@ -75,8 +75,6 @@ class SyncJob implements ShouldQueue
 
         
         return $aData;
-        // $user = Auth::user()->name;
-        // return view("admin/home")->with(['data' => json_encode($aData)]);
 
 
     }
