@@ -57,7 +57,7 @@
     height: 100px;
     width:100px;
     border: 15px solid #45474b;
-    border-top-color: #004195;
+    border-top-color: #F10051;
     position: absolute;
     margin:auto;
     top: 0;
@@ -84,8 +84,8 @@
 </style>
 <script>
   $(window).on('load', function(){
-   $(".loader").fadeOut(2000);
-   $(".content").fadeIn(2000);
+   $(".loader").fadeOut(1000);
+   $(".content").fadeIn(1000);
   });
 </script>
     <body>

@@ -12,9 +12,9 @@ class rfmController extends Controller
 
     public function index(){
 
-        $user = Auth::user()->name;
+       
         $data = Rfm::all('RFM');        
-        return view ("".$user."/home", ["data" => json_encode($data[0]['RFM'])]);
+        return view ("/dashboard", ["data" => json_encode($data[0]['RFM'])]);
     }
    
 

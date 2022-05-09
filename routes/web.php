@@ -66,22 +66,12 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
+Route::group(['middleware' => ['role:admin|marketer|client']], function() {
 
-    Route::get('/home', [rfmController::class, 'index'])->name('/admin/home');
+    Route::get('/dashboard', [rfmController::class, 'index'])->name('/dashboard');
 });
 
 
-
-Route::group(['prefix' => 'marketer', 'middleware' => ['role:marketer']], function() {
-    Route::get('/home', [rfmController::class, 'index'])->name('/marketer/home');
-
-});
-
-Route::group(['prefix' => 'client', 'middleware' => ['role:client']], function() {
-    Route::get('/home', [rfmController::class, 'index'])->name('/client/home');
-
-});
 
 
 
