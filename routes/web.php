@@ -11,6 +11,7 @@ use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\rfmController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,18 +68,18 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function() {
 
-    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/admin/home');
+    Route::get('/home', [rfmController::class, 'index'])->name('/admin/home');
 });
 
 
 
 Route::group(['prefix' => 'marketer', 'middleware' => ['role:marketer']], function() {
-    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/marketer/home');
+    Route::get('/home', [rfmController::class, 'index'])->name('/marketer/home');
 
 });
 
 Route::group(['prefix' => 'client', 'middleware' => ['role:client']], function() {
-    Route::get('/home', [rfmController::class, 'guzzleGet'])->name('/client/home');
+    Route::get('/home', [rfmController::class, 'index'])->name('/client/home');
 
 });
 

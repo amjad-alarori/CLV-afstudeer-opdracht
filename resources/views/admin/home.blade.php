@@ -6,7 +6,8 @@
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
         <script>
             let array = [];
-            let arr = JSON.parse({!! json_encode($data) !!});
+            let arr = JSON.parse({!! $data !!});
+            
             arr.forEach((current)=>{
                 newArray = {
                     x: current['frequency'],
