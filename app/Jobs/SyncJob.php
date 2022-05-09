@@ -1,21 +1,47 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Jobs;
 
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Rfm;
+use DB;
 
-class DataSyncJob implements ShouldQueue
+class SyncJob implements ShouldQueue
 {
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Execute the job.
+     *
+     * @return void
+     */
     public function handle()
     {
         $syncedResults = $this->guzzleGet();
-
         Rfm::truncate();
-        $rfm = new Rfm();
+        
         /**
          * @var \Illuminate\Database\Eloquent\Model $rfm
          */
-        $rfm->save($syncedResults);
+        DB::table('rfms')->insert(['RFM' => json_encode($syncedResults), "created_at" =>  date('Y-m-d H:i:s'),
+        "updated_at" => date('Y-m-d H:i:s')]);
+ 
     }
 
     public function guzzleGet()
@@ -45,13 +71,16 @@ class DataSyncJob implements ShouldQueue
                 }
             }
         }
+        
 
-
-        $user = Auth::user()->name;
-        return view("".$user."/home")->with(['data' => json_encode($aData)]);
+        
+        return $aData;
+        // $user = Auth::user()->name;
+        // return view("admin/home")->with(['data' => json_encode($aData)]);
 
 
     }
+    
 
     protected function guzzleGetData($sCursor = null)
     {
@@ -75,5 +104,4 @@ class DataSyncJob implements ShouldQueue
 
         return [];
     }
-
 }
