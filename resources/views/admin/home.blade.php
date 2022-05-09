@@ -16,10 +16,10 @@
                     totalRevenue: current['monetary'],
                     color: "##F10051",
                 }
-               
+
                 array.push(newArray)
             })
-         
+
             //Code to count the costumers per segment in the data array
 
             Array.prototype.sum = function (prop) {
@@ -37,24 +37,6 @@
             if (array[i].clientStatus == 'New Customers') newCustomers++;
             }
 
-            // Code to remap the array to delete the not nedded data and prepare it to download
-            let list = [];
-            let downloadArr = JSON.parse({!! json_encode($data) !!});
-            downloadArr.forEach((old)=>{
-                    secArray = {
-                        customer_id: old['customer_id'],
-                        recency: old['recency'],
-                        frequency: old['frequency'],
-                        monetary: old['monetary'],
-                        recency_score: old['recency_score'],
-                        frequency_score: old['frequency_score'],
-                        monetary_score: old['monetary_score'],
-                        rfm_score: old['rfm_score'],
-                        segment: old['segment']
-
-                     }
-                    list.push(secArray)
-                })
         </script>
 
         <nav id="header" class="bg-RFM-Black fixed w-full z-10 top-0 shadow"></nav>
@@ -164,7 +146,7 @@
 			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
 
             <script>
-                 data = arr.map(item => { 
+                 data = arr.map(item => {
                 return {
                     "customer_id": item.customer_id,
                     "frequency": item.frequency,
@@ -189,7 +171,7 @@
                     Object.fromEntries(
                         Object.entries(result).map(([k, v]) => [mapping[k] || k, v])
                     )
-                        
+
                 const mapping = {
                     'About to Sleep': 'About_To_Sleep',
                     'At Risk': 'At_Risk',
