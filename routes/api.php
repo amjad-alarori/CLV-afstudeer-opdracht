@@ -18,4 +18,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/rfms', [rfmController::class, 'api']);
+
+Route::group(['middleware' => ['role:admin|marketer']], function() {
+
+    Route::get('/rfms', [rfmController::class, 'api']);
+});
+
+
