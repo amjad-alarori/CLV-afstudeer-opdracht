@@ -3,26 +3,7 @@
 @section('content')
 
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
-<script>
 
-
-    // data = arr.map(item => {
-    //     return {
-    //         "customer_id": item.customer_id,
-    //         "frequency": item.frequency,
-    //         "frequency_score": item.frequency_score,
-    //         "monetary": "€" + item.monetary,
-    //         "monetary_score": item.monetary_score,
-    //         "recency": item.recency,
-    //         "recency_score": item.recency_score,
-    //         "rfm_score": item.rfm_score,
-    //         "segment": item.segment
-    //     }
-    // });
-
-
-
-</script>
         <script>
             let array = [];
             let arr = @json($data);

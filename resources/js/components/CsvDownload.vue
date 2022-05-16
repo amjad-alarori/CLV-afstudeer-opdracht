@@ -12,9 +12,7 @@
 import writeFileXLSX from 'xlsx';
 
 export default {
-
     data: () => ({
-
     }),
 
     methods: {
