@@ -16,6 +16,9 @@ class rfmController extends Controller
     }
 
 
+    public function api(){
 
+        return Rfm::all();
+    }
 
 }

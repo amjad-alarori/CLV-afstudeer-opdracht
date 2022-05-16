@@ -2,8 +2,27 @@
 
 @section('content')
 
-
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
+<script>
+
+
+    // data = arr.map(item => {
+    //     return {
+    //         "customer_id": item.customer_id,
+    //         "frequency": item.frequency,
+    //         "frequency_score": item.frequency_score,
+    //         "monetary": "€" + item.monetary,
+    //         "monetary_score": item.monetary_score,
+    //         "recency": item.recency,
+    //         "recency_score": item.recency_score,
+    //         "rfm_score": item.rfm_score,
+    //         "segment": item.segment
+    //     }
+    // });
+
+
+
+</script>
         <script>
             let array = [];
             let arr = @json($data);
@@ -145,56 +164,10 @@
 			<!--Divider-->
 
 			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
-
-            <script>
-                 data = arr.map(item => {
-                return {
-                    "customer_id": item.customer_id,
-                    "frequency": item.frequency,
-                    "frequency_score": item.frequency_score,
-                    "monetary": "€" + item.monetary,
-                    "monetary_score": item.monetary_score,
-                    "recency": item.recency,
-                    "recency_score": item.recency_score,
-                    "rfm_score": item.rfm_score,
-                    "segment": item.segment
-                }
-                });
-
-
-                let result = data.reduce(function (r, a) {
-                    r[a.segment] = r[a.segment] || [];
-                    r[a.segment].push(a);
-                    return r;
-                }, Object.create(null));
-
-                const replaceKeys = (result, mapping) =>
-                    Object.fromEntries(
-                        Object.entries(result).map(([k, v]) => [mapping[k] || k, v])
-                    )
-
-                const mapping = {
-                    'About to Sleep': 'About_To_Sleep',
-                    'At Risk': 'At_Risk',
-                    "Can't Loose": 'Cant_Loose',
-                    'Champions': 'Champions',
-                    'Hibernating': 'Hibernating',
-                    'Loyal Customers': 'Loyal_Customers',
-                    'Need Attention': 'Need_Attention',
-                    'New Customers': 'New_Customers',
-                    'Potential Loyalists': 'Potential_Loyalists',
-                    'Promising': 'Promising'
-                }
-                newResult = replaceKeys(result, mapping)
-
-
-            </script>
-
-
             @if (Laratrust::hasRole(['admin', 'marketer']))
                 @auth
                         <div id="app">
-                            <csv-download :data=newResult></csv-download>
+                            <csv-download></csv-download>
                         </div>
                     </div>
                 @endauth

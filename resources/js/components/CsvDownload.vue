@@ -7,28 +7,66 @@
 
 <script>
 
+
+
 import writeFileXLSX from 'xlsx';
 
 export default {
+
     data: () => ({
-        newResult
+
     }),
 
     methods: {
         onexport () { // On Click Excel download button
+            getData();
+            async function getData(){
+                const url = 'http://clv.test/api/rfms';
+                const response = await fetch(url);
+                const datapoints = await response.json();
+
+                return datapoints;
+            };
+            getData().then(datapoints => {
+                let result = datapoints.reduce(function (r, a) {
+                    r[a.segment] = r[a.segment] || [];
+                    r[a.segment].push(a);
+                    return r;
+                }, Object.create(null));
+
+                const replaceKeys = (result, mapping) =>
+                    Object.fromEntries(
+                        Object.entries(result).map(([k, v]) => [mapping[k] || k, v])
+                    )
+
+                const mapping = {
+                    'About to Sleep': 'About_To_Sleep',
+                    'At Risk': 'At_Risk',
+                    "Can't Loose": 'Cant_Loose',
+                    'Champions': 'Champions',
+                    'Hibernating': 'Hibernating',
+                    'Loyal Customers': 'Loyal_Customers',
+                    'Need Attention': 'Need_Attention',
+                    'New Customers': 'New_Customers',
+                    'Potential Loyalists': 'Potential_Loyalists',
+                    'Promising': 'Promising'
+                }
+               let newResult = replaceKeys(result, mapping)
+
+
 
             // export json to Worksheet of Excel
             // only array possible
-            var About_to_Sleep = XLSX.utils.json_to_sheet(this.newResult.About_To_Sleep)
-            var At_Risk = XLSX.utils.json_to_sheet(this.newResult.At_Risk)
-            var Cant_Loose = XLSX.utils.json_to_sheet(this.newResult.Cant_Loose)
-            var Champions = XLSX.utils.json_to_sheet(this.newResult.Champions)
-            var Hibernating = XLSX.utils.json_to_sheet(this.newResult.Hibernating)
-            var Loyal_Customers = XLSX.utils.json_to_sheet(this.newResult.Loyal_Customers)
-            var Need_Attention = XLSX.utils.json_to_sheet(this.newResult.Need_Attention)
-            var New_Customers = XLSX.utils.json_to_sheet(this.newResult.New_Customers)
-            var Potential_Loyalists = XLSX.utils.json_to_sheet(this.newResult.Potential_Loyalists)
-            var Promising = XLSX.utils.json_to_sheet(this.newResult.Promising)
+            var About_to_Sleep = XLSX.utils.json_to_sheet(newResult.About_To_Sleep)
+            var At_Risk = XLSX.utils.json_to_sheet(newResult.At_Risk)
+            var Cant_Loose = XLSX.utils.json_to_sheet(newResult.Cant_Loose)
+            var Champions = XLSX.utils.json_to_sheet(newResult.Champions)
+            var Hibernating = XLSX.utils.json_to_sheet(newResult.Hibernating)
+            var Loyal_Customers = XLSX.utils.json_to_sheet(newResult.Loyal_Customers)
+            var Need_Attention = XLSX.utils.json_to_sheet(newResult.Need_Attention)
+            var New_Customers = XLSX.utils.json_to_sheet(newResult.New_Customers)
+            var Potential_Loyalists = XLSX.utils.json_to_sheet(newResult.Potential_Loyalists)
+            var Promising = XLSX.utils.json_to_sheet(newResult.Promising)
 
             // A workbook is the name given to an Excel file
             var wb = XLSX.utils.book_new() // make Workbook of Excel
@@ -49,6 +87,7 @@ export default {
 
             // export Excel file
             XLSX.writeFile(wb, 'RFM_Results.xlsx') // name of the file is 'book.xlsx'
+            })
         }
     }
 }
