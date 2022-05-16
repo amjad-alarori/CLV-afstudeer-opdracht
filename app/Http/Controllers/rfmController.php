@@ -12,11 +12,9 @@ class rfmController extends Controller
 
     public function index(){
 
-       
-        $data = Rfm::all('RFM');        
-        return view ("/dashboard", ["data" => json_encode($data[0]['RFM'])]);
+        return view ("/dashboard", ["data" => Rfm::all()]);
     }
-   
+
 
 
 

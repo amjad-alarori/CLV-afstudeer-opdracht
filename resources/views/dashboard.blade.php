@@ -6,8 +6,8 @@
 <body class="bg-RFM-Black font-sans leading-normal tracking-normal">
         <script>
             let array = [];
-            let arr = JSON.parse({!! $data !!});
-            
+            let arr = @json($data);
+
             arr.forEach((current)=>{
                 newArray = {
                     x: current['frequency'],
@@ -152,7 +152,7 @@
                     "customer_id": item.customer_id,
                     "frequency": item.frequency,
                     "frequency_score": item.frequency_score,
-                    "monetary": item.monetary,
+                    "monetary": "€" + item.monetary,
                     "monetary_score": item.monetary_score,
                     "recency": item.recency,
                     "recency_score": item.recency_score,
@@ -186,6 +186,7 @@
                     'Promising': 'Promising'
                 }
                 newResult = replaceKeys(result, mapping)
+
 
             </script>
 
