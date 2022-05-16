@@ -19,9 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['middleware' => ['role:admin|marketer']], function() {
 
-    Route::get('/rfms', [rfmController::class, 'api']);
-});
-
-
+Route::get('/rfms', [rfmController::class, 'api']);
