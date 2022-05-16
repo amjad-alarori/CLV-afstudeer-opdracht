@@ -194,7 +194,7 @@
             @if (Laratrust::hasRole(['admin', 'marketer']))
                 @auth
                         <div id="app">
-                            <csv_download :data=newResult></csv_download>
+                            <csv-download :data=newResult></csv-download>
                         </div>
                     </div>
                 @endauth

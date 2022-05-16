@@ -1,12 +1,13 @@
 import {createApp} from "vue";
 
-import csv_download from "./components/csv_download";
+import CsvDownload from "./components/CsvDownload";
 
 
 const app = createApp({
 });
 
-app.component('csv_download', csv_download);
+
+app.component('CsvDownload', CsvDownload);
 
 
 // mount the app to the DOM
