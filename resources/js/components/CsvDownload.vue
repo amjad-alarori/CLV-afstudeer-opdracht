@@ -21,7 +21,7 @@ export default {
         onexport () { // On Click Excel download button
             getData();
             async function getData(){
-                const url = 'http://clv.test/api/rfms';
+                const url = 'https://rfm.gmu.online/api/rfms';
                 const response = await fetch(url);
                 const datapoints = await response.json();
 
