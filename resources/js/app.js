@@ -5,6 +5,7 @@ import BubbleChart from "./components/BubbleChart";
 import NewCustomers from "./components/NewCustomers";
 import TotalCustomer from "./components/TotalCustomer";
 import TotalRevenue from "./components/TotalRevenue";
+import BarChart from "./components/BarChart";
 
 
 const XslxComponent = createApp({
@@ -43,6 +44,13 @@ const totalRevenue = createApp({
     }
 }).mount('#total_revenue');
 
+
+const barChart = createApp({
+    render: ()=>h(BarChart),
+    components: {
+        BarChart,
+    }
+}).mount('#bar_chart');
 require("./bootstrap");
 
 
