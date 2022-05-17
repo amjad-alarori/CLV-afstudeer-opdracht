@@ -21,7 +21,7 @@
                 array.push(newArray)
             })
 
-            //Code to parse the strings value to numbers in the array
+            //Code to parse the strings value to numbers in the whole array
 
             for(var i = 0; i < arr.length; i++){
                 var obj = arr[i];
@@ -137,9 +137,8 @@
                             <div class="flex-shrink pr-4">
                                 <div class="rounded p-3"><i class="fas fa-users" style="font-size:30px; color:gray"></i></div>
                             </div>
-                            <div class="flex-1 text-right md:text-center">
-                                <h5 class="text-base font-extrabold text-2xl text-gray-400">Total Customers</h5>
-                                <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange"><script>document.write(array.length)</script> <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
+                            <div id="total_customers">
+                                <total-customers></total-customers>
                             </div>
                         </div>
                         </div>
