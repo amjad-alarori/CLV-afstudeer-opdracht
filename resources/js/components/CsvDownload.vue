@@ -26,7 +26,20 @@ export default {
                 return datapoints;
             };
             getData().then(datapoints => {
-                let result = datapoints.reduce(function (r, a) {
+                let data = datapoints.map(item => {
+                    return {
+                        "customer_id": item.customer_id,
+                        "frequency": item.frequency,
+                        "frequency_score": item.frequency_score,
+                        "monetary": "€" + item.monetary,
+                        "monetary_score": item.monetary_score,
+                        "recency": item.recency,
+                        "recency_score": item.recency_score,
+                        "rfm_score": item.rfm_score,
+                        "segment": item.segment
+                    }
+                });
+                let result = data.reduce(function (r, a) {
                     r[a.segment] = r[a.segment] || [];
                     r[a.segment].push(a);
                     return r;

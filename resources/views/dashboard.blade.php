@@ -21,22 +21,51 @@
                 array.push(newArray)
             })
 
-            //Code to count the costumers per segment in the data array
+            //Code to parse the strings value to numbers in the array
 
-            Array.prototype.sum = function (prop) {
-            var sum = 0
-            for ( var i = 0, _len = this.length; i < _len; i++ ) {
-                sum += this[i][prop]
+            for(var i = 0; i < arr.length; i++){
+                var obj = arr[i];
+                for(var prop in obj){
+                    if(obj.hasOwnProperty(prop) && obj[prop] !== null && !isNaN(obj[prop])){
+                        obj[prop] = +obj[prop];
+                    }
+                }
             }
-            return sum
-            }
-            total = array.sum("totalRevenue")
+
+            //code to sum the total value of the monetary
+            var res = arr.reduce(function(_this, val) {
+                return _this + val.monetary
+            }, 0);
+
 
             //Code to count the new costumers in the data array
             let newCustomers = 0;
             for (let i = 0; i < array.length; i++) {
             if (array[i].clientStatus == 'New Customers') newCustomers++;
             }
+
+
+            //Code to set up the bubble chart
+            let bubbleArray = [];
+
+
+            array.forEach((current)=>{
+                let randomColor = Math.floor(Math.random()*16777215).toString(16);
+
+                newArray =
+
+                    {
+                        "title": current.clientID,
+                        "id": current.clientID,
+                        "color": "#" + randomColor,
+                        "continent": current.clientStatus,
+                        "x": current.x, //frequency
+                        "y": current.y, // recency
+                        "value": current.totalRevenue
+                    },
+
+                    bubbleArray.push(newArray)
+            })
 
         </script>
 
@@ -98,7 +127,7 @@
 
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="text-base font-extrabold text-2xl text-gray-400">Total Revenue</h5>
-                                <h3 id="total" class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">&euro;<script>document.write( Math.ceil(total))</script><span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+                                <h3 id="total" class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">&euro;<script>document.write(Math.round(res))</script> <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
                             </div>
                         </div>
                         </div>
@@ -145,14 +174,14 @@
 			<!--Divider-->
 
 			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
+            <div  id="app">
             @if (Laratrust::hasRole(['admin', 'marketer']))
                 @auth
-                        <div id="app">
                             <csv-download></csv-download>
-                        </div>
-                    </div>
                 @endauth
             @endif
+            </div>
+        </div>
 
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
@@ -274,27 +303,6 @@
 
                                         // Set data
                                         // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Setting_data
-
-                                        let bubbleArray = [];
-
-
-                                        array.forEach((current)=>{
-                                            let randomColor = Math.floor(Math.random()*16777215).toString(16);
-
-                                            newArray =
-
-                                                    {
-                                                        "title": current.clientID,
-                                                        "id": current.clientID,
-                                                        "color": "#" + randomColor,
-                                                        "continent": current.clientStatus,
-                                                        "x": current.x, //frequency
-                                                        "y": current.y, // recency
-                                                        "value": current.totalRevenue
-                                                    },
-
-                                                    bubbleArray.push(newArray)
-                                        })
 
 
                                             series.data.setAll(
@@ -506,3 +514,9 @@
 
 
 @endsection
+<script>
+    import BubbleChart from "../js/components/BubbleChart";
+    export default {
+        components: {BubbleChart}
+    }
+</script>
