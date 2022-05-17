@@ -3,6 +3,9 @@ import {createApp,h} from "vue";
 
 import XslxDownload from "./components/XslxDownload";
 import BubbleChart from "./components/BubbleChart";
+import NewCustomers from "./components/NewCustomers";
+
+
 
 
 const XslxComponent = createApp({
@@ -18,6 +21,14 @@ const buubleComponent = createApp({
         BubbleChart,
     }
 }).mount('#bubble');
+
+const newCustomers = createApp({
+    render: ()=>h(NewCustomers),
+    components: {
+        NewCustomers,
+    }
+}).mount('#new_customers');
+
 
 require("./bootstrap");
 
