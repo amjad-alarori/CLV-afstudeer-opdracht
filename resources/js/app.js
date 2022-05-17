@@ -1,10 +1,10 @@
 import {createApp,h} from "vue";
 
-
 import XslxDownload from "./components/XslxDownload";
 import BubbleChart from "./components/BubbleChart";
 import NewCustomers from "./components/NewCustomers";
 import TotalCustomer from "./components/TotalCustomer";
+import TotalRevenue from "./components/TotalRevenue";
 
 
 const XslxComponent = createApp({
@@ -36,7 +36,13 @@ const totalCustomers = createApp({
     }
 }).mount('#total_customers');
 
-
+const totalRevenue = createApp({
+    render: ()=>h(TotalRevenue),
+    components: {
+        TotalRevenue,
+    }
+}).mount('#total_revenue');
 
 require("./bootstrap");
+
 

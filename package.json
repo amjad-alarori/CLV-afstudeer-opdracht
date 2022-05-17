@@ -32,6 +32,8 @@
     "dependencies": {
         "alpinejs": "^3.10.2",
         "jquery": "^3.6.0",
+        "json-query": "^2.2.2",
+        "searchjs": "^1.1.0",
         "tailwindcss-border-gradient-radius": "^3.0.1",
         "vue": "^3.2.31",
         "vue-spinner": "^1.0.4",

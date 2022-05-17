@@ -21,27 +21,8 @@
                 array.push(newArray)
             })
 
-            //Code to parse the strings value to numbers in the whole array
-
-            for(var i = 0; i < arr.length; i++){
-                var obj = arr[i];
-                for(var prop in obj){
-                    if(obj.hasOwnProperty(prop) && obj[prop] !== null && !isNaN(obj[prop])){
-                        obj[prop] = +obj[prop];
-                    }
-                }
-            }
-
-            //code to sum the total value of the monetary
-            var res = arr.reduce(function(_this, val) {
-                return _this + val.monetary
-            }, 0);
-
-
-
             //Code to set up the bubble chart
             let bubbleArray = [];
-
 
             array.forEach((current)=>{
                 let randomColor = Math.floor(Math.random()*16777215).toString(16);
@@ -120,9 +101,8 @@
                                 <div class="rounded p-3"><i class="fas fa-wallet" style="font-size:30px; color:gray"></i></div>
                             </div>
 
-                            <div class="flex-1 text-right md:text-center">
-                                <h5 class="text-base font-extrabold text-2xl text-gray-400">Total Revenue</h5>
-                                <h3 id="total" class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">&euro;<script>document.write(Math.round(res))</script> <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+                            <div id="total_revenue">
+                                <total-revenue></total-revenue>
                             </div>
                         </div>
                         </div>
