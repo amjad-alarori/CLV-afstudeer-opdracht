@@ -1,18 +1,23 @@
-import {createApp} from "vue";
+import {createApp,h} from "vue";
 
 
-import CsvDownload from "./components/CsvDownload";
+import XslxDownload from "./components/XslxDownload";
 import BubbleChart from "./components/BubbleChart";
 
 
-const app = createApp({
+const XslxComponent = createApp({
+    render: ()=>h(XslxDownload),
     components: {
-        CsvDownload,
+        XslxDownload,
+    }
+}).mount('#xslx');
+
+const buubleComponent = createApp({
+    render: ()=>h(BubbleChart),
+    components: {
         BubbleChart,
     }
-}).mount('#app');
-
-
+}).mount('#bubble');
 
 require("./bootstrap");
 

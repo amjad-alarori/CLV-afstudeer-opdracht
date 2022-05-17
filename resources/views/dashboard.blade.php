@@ -177,12 +177,16 @@
             <div  id="app">
             @if (Laratrust::hasRole(['admin', 'marketer']))
                 @auth
-                            <csv-download></csv-download>
+                        <div id="xslx">
+                            <xslx-download></xslx-download>
+                        </div>
                 @endauth
             @endif
             </div>
         </div>
-
+        <div id="bubble">
+            <bubble-chart></bubble-chart>
+        </div>
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 {{--                bubble chart--}}
