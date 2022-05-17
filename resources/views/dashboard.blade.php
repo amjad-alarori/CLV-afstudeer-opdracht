@@ -21,7 +21,7 @@
                 array.push(newArray)
             })
 
-            //Code to parse the strings value to numbers in the array
+            //Code to parse the strings value to numbers in the whole array
 
             for(var i = 0; i < arr.length; i++){
                 var obj = arr[i];
@@ -37,12 +37,6 @@
                 return _this + val.monetary
             }, 0);
 
-
-            //Code to count the new costumers in the data array
-            let newCustomers = 0;
-            for (let i = 0; i < array.length; i++) {
-            if (array[i].clientStatus == 'New Customers') newCustomers++;
-            }
 
 
             //Code to set up the bubble chart
@@ -70,6 +64,7 @@
         </script>
 
         <nav id="header" class="bg-RFM-Black fixed w-full z-10 top-0 shadow"></nav>
+
 
 		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
 			<div class="w-1/2 pl-2 md:pl-0">
@@ -142,9 +137,8 @@
                             <div class="flex-shrink pr-4">
                                 <div class="rounded p-3"><i class="fas fa-users" style="font-size:30px; color:gray"></i></div>
                             </div>
-                            <div class="flex-1 text-right md:text-center">
-                                <h5 class="text-base font-extrabold text-2xl text-gray-400">Total Customers</h5>
-                                <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange"><script>document.write(array.length)</script> <span class="text-pink-500"><i class="fas fa-exchange-alt"></i></span></h3>
+                            <div id="total_customers">
+                                <total-customers></total-customers>
                             </div>
                         </div>
                         </div>
@@ -159,9 +153,8 @@
                             <div class="flex-shrink pr-4">
                                 <div class="rounded p-3"><i class="fas fa-user-plus"style="font-size:30px; color:gray"></i></div>
                             </div>
-                            <div class="flex-1 text-right md:text-center">
-                                <h5 class="text-base font-extrabold text-2xl text-gray-400">New Customers</h5>
-                                <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange"><script>document.write(newCustomers)</script> <span class="text-green-600"><i class="fas fa-caret-up"></i></span></h3>
+                            <div id="new_customers">
+                                <new-customers></new-customers>
                             </div>
                         </div>
                         </div>
@@ -183,9 +176,6 @@
                 @endauth
             @endif
             </div>
-        </div>
-        <div id="bubble">
-            <bubble-chart></bubble-chart>
         </div>
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
@@ -520,7 +510,8 @@
 @endsection
 <script>
     import BubbleChart from "../js/components/BubbleChart";
+    import NewCustomers from "../js/components/NewCustomers";
     export default {
-        components: {BubbleChart}
+        components: {NewCustomers, BubbleChart}
     }
 </script>
