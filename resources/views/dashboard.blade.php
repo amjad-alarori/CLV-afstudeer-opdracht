@@ -14,7 +14,7 @@
                     y: current['recency'],
                     clientID: current['customer_id'],
                     clientStatus: current['segment'],
-                    totalRevenue: current['monetary'],
+                    totalRevenue: Math.round(current['monetary']),
                     color: "##F10051",
                 }
 
