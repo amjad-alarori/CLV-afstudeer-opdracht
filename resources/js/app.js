@@ -7,9 +7,6 @@ import NewCustomers from "./components/NewCustomers";
 import TotalCustomer from "./components/TotalCustomer";
 
 
-
-
-
 const XslxComponent = createApp({
     render: ()=>h(XslxDownload),
     components: {

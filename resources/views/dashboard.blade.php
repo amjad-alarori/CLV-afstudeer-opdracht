@@ -177,9 +177,6 @@
             @endif
             </div>
         </div>
-        <div id="bubble">
-            <bubble-chart></bubble-chart>
-        </div>
 
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 {{--                bubble chart--}}
