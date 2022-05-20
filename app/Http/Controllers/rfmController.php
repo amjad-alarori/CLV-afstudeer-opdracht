@@ -14,18 +14,8 @@ class rfmController extends Controller
 
     public function index(){
 
-        $pool = Pool::create();
 
-        $pool[] = async(function () {
-            return Rfm::all();
-        })->then(function ($output) {
-            $this->results=$output;
-        });
-
-        await($pool);
-
-        return view('/dashboard',['results' => $this->results]);
-//        return view ("/dashboard", ["data" => Rfm::all()]);
+        return view ("/dashboard", ["data" => Rfm::all()]);
     }
 
 
