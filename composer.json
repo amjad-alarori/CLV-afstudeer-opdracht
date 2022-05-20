@@ -19,6 +19,7 @@
         "livewire/livewire": "^2.10",
         "predis/predis": "^1.1",
         "santigarcor/laratrust": "^6.4",
+        "spatie/async": "^1.5",
         "spatie/laravel-responsecache": "^7.2"
     },
     "require-dev": {

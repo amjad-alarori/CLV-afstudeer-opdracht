@@ -14,7 +14,6 @@ export default {
     data() {
         return {
             newCustomer: [],
-            totalCustomers: []
         };
     },
 
@@ -27,7 +26,6 @@ export default {
                 if (array[i].segment == 'New Customers') newCustomers++;
             }
             this.newCustomer = newCustomers;
-            this.totalCustomers = url.data.length;
         } catch (e) {
             console.error(e);
         }
