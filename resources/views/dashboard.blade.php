@@ -148,12 +148,56 @@
 
                                  </div>
                          </div>
+
                     </div>
+                    <!--Divider-->
+                    <hr class="border-b-2 border-RFM-Orange my-8">
+
+
+                    <footer class="bg-RFM-Black">
+                        <div class="float-left container max-w-md mx-auto flex py-8">
+
+                            <div class="float-left mx-auto flex flex-wrap">
+                                <div class="float-left flex w-full md:w-1/2 ">
+                                    <div class="float-left">
+                                        <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
+                                        <p class="mt-1 block text-base text-gray-300">
+                                            Designers en developers weten wij altijd het maximale uit de e-commerce van onze klanten te halen.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full md:w-1/2">
+                                    <div class="px-8">
+                                        <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">Social</h3>
+                                        <ul class="flex" style="justify-content: center; grid-gap: 20px;">
+                                            <li>
+                                                <a class="mt-1 block text-base text-gray-300" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"><p><i class="fab fa-linkedin fa-spin" style="font-size:30px"></i></p></a>
+                                            </li>
+                                            <li>
+                                                <a class="mt-1 block text-base text-gray-300" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"><p><i class="fab fa-instagram fa-spin" style="font-size:30px"></i></p></a>
+                                            </li>
+                                            <li>
+                                                <a class="mt-1 block text-base text-gray-300" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"><p><i class="fab fa-facebook fa-spin" style="font-size:30px"></i></p></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul>
+                                <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li><li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li><li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li></ul>
+                        </div>
+                    </footer>
                     <!--/Graph Card-->
+
                 </div>
+
             </div>
 
         <!--/ Console Content-->
+
+
 
     </div>
 
@@ -162,45 +206,7 @@
         <!--/container-->
 
 
-        <!--Divider-->
-        <hr class="border-b-2 border-RFM-Orange my-8 mx-4">
 
-
-        <footer class="bg-RFM-Black">
-            <div class="container max-w-md mx-auto flex py-8">
-
-                <div class="w-full mx-auto flex flex-wrap">
-                    <div class="flex w-full md:w-1/2 ">
-                        <div class="px-8">
-                            <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
-                            <p class="mt-1 block text-base text-gray-300">
-                                Designers en developers weten wij altijd het maximale uit de e-commerce van onze klanten te halen.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex w-full md:w-1/2">
-                        <div class="px-8">
-                            <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">Social</h3>
-                            <ul class="flex" style="justify-content: center; grid-gap: 20px;">
-                                <li>
-                                    <a class="mt-1 block text-base text-gray-300" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"><p><i class="fab fa-linkedin fa-spin" style="font-size:30px"></i></p></a>
-                                </li>
-                                <li>
-                                    <a class="mt-1 block text-base text-gray-300" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"><p><i class="fab fa-instagram fa-spin" style="font-size:30px"></i></p></a>
-                                </li>
-                                <li>
-                                    <a class="mt-1 block text-base text-gray-300" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"><p><i class="fab fa-facebook fa-spin" style="font-size:30px"></i></p></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <ul>
-                    <li class="no-childnodes"><a fab="" href="https://nl.linkedin.com/company/global-marketing-unity" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: LinkedIn"></a></li><li class="no-childnodes"><a fab="" href="https://www.instagram.com/gmu_online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Instagram"></a></li><li class="no-childnodes"><a fab="" href="https://www.facebook.com/GMU.online/" rel="nofollow noopener noreferrer" target="_blank" title="Volg ons op: Facebook"></a></li></ul>
-            </div>
-        </footer>
 
 
 
@@ -209,11 +215,4 @@
 
 
 @endsection
-<script>
-    import BubbleChart from "../js/components/BubbleChart";
-    import NewCustomers from "../js/components/NewCustomers";
-    import BarChart from "../js/components/BarChart";
-    export default {
-        components: {BarChart, NewCustomers, BubbleChart}
-    }
-</script>
+
