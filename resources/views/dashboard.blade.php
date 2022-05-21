@@ -61,7 +61,7 @@
                             <div class="flex-shrink pr-4">
                                 <div class="rounded p-3"><i class="fas fa-wallet" style="font-size:30px; color:gray"></i></div>
                             </div>
-                            <div id="total_revenue" class="flex-1 text-right md:text-center">
+                            <div id="total_revenue" class="flex-1 text-right md:text-center p-4">
                                     <total-revenue></total-revenue>
                             </div>
 
@@ -79,7 +79,7 @@
                                 <div class="rounded p-3"><i class="fas fa-users" style="font-size:30px; color:gray"></i></div>
                             </div>
 
-                            <div id="total_customers" class="flex-1 text-right md:text-center">
+                            <div id="total_customers" class="flex-1 text-right md:text-center  p-4">
                                 <total-customers></total-customers>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                                 <div class="rounded p-3"><i class="fas fa-user-plus"style="font-size:30px; color:gray"></i></div>
                             </div>
 
-                            <div id="new_customers" class="flex-1 text-right md:text-center">
+                            <div id="new_customers" class="flex-1 text-right md:text-center  p-4">
                                 <new-customers></new-customers>
                             </div>
                         </div>

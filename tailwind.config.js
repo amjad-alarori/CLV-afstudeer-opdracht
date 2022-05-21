@@ -27,7 +27,8 @@ module.exports = {
                     Pink: '#F10051',
                     Pink_hover: '#ba003f',
                     Orange: '#EC4E12',
-                    Gray: '#E6E6E6'
+                    Gray: '#E6E6E6',
+                    Green: '#24AB21'
 
                 }
                 },

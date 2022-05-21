@@ -1,7 +1,7 @@
 <!-- Below code is tested on SheetJS v0.14.0 -->
 <template>
-        <h5 class="text-base font-extrabold text-2xl text-gray-400">Total Revenue</h5>
-        <h3 id="total" class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">&euro;{{ totalRevenue }} <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
+        <h5 class="text-base text-2xl text-gray-400">Total Revenue</h5>
+        <h3 id="total" class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Green to-RFM-Green">&euro;{{ totalRevenue }} <span class="text-green-500"><i class="fas fa-caret-up"></i></span></h3>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     props: ['results'],
     data() {
         return {
-            totalRevenue: []
+            totalRevenue: ''
         };
     },
 
