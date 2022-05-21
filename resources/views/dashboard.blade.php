@@ -8,7 +8,7 @@
         <nav id="header" class="bg-RFM-Black fixed w-full z-10 top-0 shadow"></nav>
 
 
-		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0">
+		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0 p-4">
 			<div class="w-1/2 pl-2 md:pl-0">
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-RFM-Black z-20" id="nav-content">
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
@@ -30,7 +30,7 @@
 			</div>
             </div>
 			<div class="w-1/2 pr-0">
-				<div class="flex relative inline-block float-right">
+				<div class="flex relative inline-block float-right p-4">
                 @if (Route::has('login'))
                 <div class="space-x-4">
                     @auth
@@ -46,13 +46,13 @@
 
 
     <!--Container-->
-    <div class="container w-full mx-auto pt-20">
+    <div class="container w-full mx-auto">
 
-        <div class="w-full px-4 md:px-0 md:mt-8 mb-8 text-gray-800 leading-normal">
+        <div class="w-full px-4 md:px-0 md:mt-8 mb-4 text-gray-800 leading-normal">
 
 			<!--Console Content-->
 
-			<div class="flex flex-wrap">
+			<div class="flex flex-wrap p-6">
                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
@@ -61,10 +61,10 @@
                             <div class="flex-shrink pr-4">
                                 <div class="rounded p-3"><i class="fas fa-wallet" style="font-size:30px; color:gray"></i></div>
                             </div>
-
-                            <div id="total_revenue">
-                                <total-revenue></total-revenue>
+                            <div id="total_revenue" class="flex-1 text-right md:text-center">
+                                    <total-revenue></total-revenue>
                             </div>
+
                         </div>
                         </div>
                     </div>
@@ -78,7 +78,8 @@
                             <div class="flex-shrink pr-4">
                                 <div class="rounded p-3"><i class="fas fa-users" style="font-size:30px; color:gray"></i></div>
                             </div>
-                            <div id="total_customers">
+
+                            <div id="total_customers" class="flex-1 text-right md:text-center">
                                 <total-customers></total-customers>
                             </div>
                         </div>
@@ -94,7 +95,8 @@
                             <div class="flex-shrink pr-4">
                                 <div class="rounded p-3"><i class="fas fa-user-plus"style="font-size:30px; color:gray"></i></div>
                             </div>
-                            <div id="new_customers">
+
+                            <div id="new_customers" class="flex-1 text-right md:text-center">
                                 <new-customers></new-customers>
                             </div>
                         </div>
@@ -104,24 +106,19 @@
                 </div>
 
             </div>
-
-			<!--Divider-->
-
-			<div class="bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange my-8 mx-4"></div>
-            <div  id="app">
-            @if (Laratrust::hasRole(['admin', 'marketer']))
-                @auth
-                        <div id="xslx">
-                            <xslx-download></xslx-download>
-                        </div>
-                @endauth
-            @endif
-            </div>
         </div>
 
+        @if (Laratrust::hasRole(['admin', 'marketer']))
+            @auth
+                <div id="xslx">
+                    <xslx-download></xslx-download>
+                </div>
+            @endauth
+        @endif
+    </div>
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 {{--                bubble chart--}}
-                <div class="w-full p-3">
+                <div class="w-full p-9">
                     <!--Graph Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                          <div class="bg-RFM-Black">
@@ -137,7 +134,7 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full p-3">
+                <div class="w-full p-9">
                     <!--Graph Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                          <div class="bg-RFM-Black">

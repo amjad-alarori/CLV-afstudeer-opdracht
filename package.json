@@ -15,8 +15,6 @@
         "@vue/compiler-sfc": "^3.2.19",
         "autoprefixer": "^10.3.5",
         "axios": "^0.21.4",
-        "browser-sync": "^1.9.2",
-        "browser-sync-webpack-plugin": "^0.1.0",
         "laravel-mix": "^6.0.37",
         "laravel-mix-tailwind": "^0.1.2",
         "lodash": "^4.17.19",
@@ -32,12 +30,8 @@
     "dependencies": {
         "alpinejs": "^3.10.2",
         "jquery": "^3.6.0",
-        "json-query": "^2.2.2",
-        "searchjs": "^1.1.0",
         "tailwindcss-border-gradient-radius": "^3.0.1",
         "vue": "^3.2.31",
-        "vue-spinner": "^1.0.4",
-        "vuex": "^4.0.2",
         "xlsx": "^0.18.5"
     }
 }
