@@ -9,6 +9,9 @@ import BarChart from "./components/BarChart";
 import store from "./src/store/index.js";
 
 
+
+
+
 const XslxComponent = createApp({
     render: ()=>h(XslxDownload),
     components: {
@@ -23,7 +26,7 @@ const buubleComponent = createApp({
         BubbleChart,
         store,
     }
-}).use(store).mount('#bubble');
+}).mount('#bubble');
 
 const newCustomers = createApp({
     render: ()=>h(NewCustomers),
@@ -41,6 +44,7 @@ const totalCustomers = createApp({
         store,
     }
 }).use(store).mount('#total_customers');
+
 
 const totalRevenue = createApp({
     render: ()=>h(TotalRevenue),

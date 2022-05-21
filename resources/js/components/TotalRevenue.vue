@@ -11,12 +11,12 @@
 import axios from 'axios'
 
 export default {
+    props: ['results'],
     data() {
         return {
             totalRevenue: []
         };
     },
-
 
     async created() {
         try {
