@@ -47,7 +47,7 @@
       </nav>
     </div>
 
- 
+
 
   </header>
 
@@ -58,11 +58,11 @@
           <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
             <div class="lg:py-24">
 
-              <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+              <h1 class="mt-4 text-4xl tracking-tight font-sans font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                 <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange xl:text-5xl">GMU. ONLINE</span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange xl:text-5xl">DATA GEDREVEN ONLINE MARKETING</span>
               </h1>
-              <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">Wij zijn een big data marketing agency. In tegenstelling tot veel traditionele AdWords-bureaus maken wij gebruik van onze eigen innovatieve Big Data software. Wij combineren de beste expertise met onze software en besparen zo veel tijd om weer te investeren in uw online marketing. Terwijl verschillende berekeningen en advertenties worden geautomatiseerd, kan onze Google AdWords specialist zich focussen op het behalen van hoge rendementen en verhogen van uw winstgevendheid en vindbaarheid.</p>
+              <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-sans">Wij zijn een big data marketing agency. In tegenstelling tot veel traditionele AdWords-bureaus maken wij gebruik van onze eigen innovatieve Big Data software. Wij combineren de beste expertise met onze software en besparen zo veel tijd om weer te investeren in uw online marketing. Terwijl verschillende berekeningen en advertenties worden geautomatiseerd, kan onze Google AdWords specialist zich focussen op het behalen van hoge rendementen en verhogen van uw winstgevendheid en vindbaarheid.</p>
 
             </div>
           </div>
@@ -88,7 +88,7 @@
   </div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
     <div class="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
-      <p class="mt-3 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange">Get actionable data that will help grow your business</p>
+      <p class="mt-3 text-3xl font-head font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange">Get actionable data that will help grow your business</p>
       <p class="mt-5 text-lg text-gray-300">Als partner van uw onderneming geloven we dat Big Data- diepteanalyse door onze online marketingexperts onmisbaar is.</p>
       <div class="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
         <p>

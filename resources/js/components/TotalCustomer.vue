@@ -3,8 +3,8 @@
 
     <orbit-spinner style="margin-left: 100px; margin-right: 100px;" v-if="isLoading" :animation-duration="2000" :size="40" color="#F10051"/>
     <div v-else>
-        <h5 class="float-left text-base text-2xl text-gray-400">Total Customers:</h5>
-        <h3 class="block text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Green to-RFM-Green">{{totalCustomers}} <span class="text-green-500"><i class="fas fa-exchange-alt"></i></span></h3>
+        <h5 class="float-left block text-2xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">Total Customers:</h5>
+        <h3 class="block text-2xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Green to-RFM-Green">{{totalCustomers}} <span class="text-RFM-Pink"><i class="fas fa-exchange-alt"></i></span></h3>
     </div>
 </template>
 

@@ -2,9 +2,9 @@
 <template>
 
     <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
-        <fingerprint-spinner v-if="isLoading" :animation-duration="2000" :size="60" color="#ff1d5e"/>
+        <fingerprint-spinner v-if="isLoading" :animation-duration="2000" :size="60" color="#F10051"/>
         <div v-else>
-        <button class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-gray-200 hover:bg-RFM-Black" type="button" v-on:click="onexport">Download RFM Overview</button>
+        <button class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-sans font-bold text-gray-200 hover:bg-RFM-Black" type="button" v-on:click="onexport">Download RFM Overview</button>
     </div>
     </div>
 </template>

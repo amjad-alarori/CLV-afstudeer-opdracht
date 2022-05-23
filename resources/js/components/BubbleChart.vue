@@ -181,20 +181,20 @@ export default {
 
             // Add scrollbars
             // https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-            chart.set("scrollbarX", am5.Scrollbar.new(root, {
-                orientation: "horizontal"
-            }));
-
             chart.set("scrollbarY", am5.Scrollbar.new(root, {
                 orientation: "vertical"
+            }));
+
+            chart.set("scrollbarX", am5.Scrollbar.new(root, {
+                orientation: "horizontal"
             }));
 
 
 
             // Make stuff animate on load
             // https://www.amcharts.com/docs/v5/concepts/animations/
-            series.appear(1000);
-            chart.appear(1000, 100);
+            series.appear(100);
+            chart.appear(100, 100);
 
 
         } catch (e) {

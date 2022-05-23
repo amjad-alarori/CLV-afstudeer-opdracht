@@ -7,7 +7,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['DM Sans', ...defaultTheme.fontFamily.sans],
-                head: ['Outfit'],
+                head: ['Outfit', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 RFM: {
