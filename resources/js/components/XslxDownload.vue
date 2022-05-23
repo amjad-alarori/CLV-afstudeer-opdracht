@@ -1,7 +1,11 @@
 <!-- Below code is tested on SheetJS v0.14.0 -->
 <template>
+
     <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+        <fingerprint-spinner v-if="isLoading" :animation-duration="2000" :size="60" color="#ff1d5e"/>
+        <div v-else>
         <button class="mr-4 bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-gray-200 hover:bg-RFM-Black" type="button" v-on:click="onexport">Download RFM Overview</button>
+    </div>
     </div>
 </template>
 
@@ -10,13 +14,18 @@
 
 
 import writeFileXLSX from 'xlsx';
-
+import { FingerprintSpinner } from 'epic-spinners'
 export default {
+    components: {
+        FingerprintSpinner
+    },
     data: () => ({
+        isLoading: false,
     }),
 
     methods: {
         onexport () { // On Click Excel download button
+            this.isLoading = true
             getData();
             async function getData(){
                 const url = 'https://rfm.gmu.online/api/rfms';
@@ -95,7 +104,7 @@ export default {
             XLSX.utils.book_append_sheet(wb, New_Customers, 'New_Customers')
             XLSX.utils.book_append_sheet(wb, Potential_Loyalists, 'Potential_Loyalists')
             XLSX.utils.book_append_sheet(wb, Promising, 'Promising')
-
+                this.isLoading = false
             // export Excel file
             XLSX.writeFile(wb, 'RFM_Results.xlsx') // name of the file is 'book.xlsx'
             })

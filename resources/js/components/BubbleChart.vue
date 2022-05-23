@@ -8,6 +8,7 @@
 import axios from 'axios'
 
 export default {
+
     data() {
         return {
             bubble: ''
@@ -17,7 +18,8 @@ export default {
     async created() {
         try {
             const get = await axios.get('https://rfm.gmu.online/api/rfms');
-            let arr = get.data;
+            let arr = get.data
+
             let array = [];
             arr.forEach((current)=>{
                 let newArray;
@@ -167,7 +169,6 @@ export default {
 
                 bubbleArray
             );
-
 
             // Add cursor
             // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/

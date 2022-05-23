@@ -59,7 +59,7 @@
                     <div class="bg-RFM-Black">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3"><i class="fas fa-wallet" style="font-size:30px; color:gray"></i></div>
+                                <div class="rounded p-3"><img src="https://img.icons8.com/fluency/48/000000/money-bag-euro.png"/></div>
                             </div>
                             <div id="total_revenue" class="flex-1 text-right md:text-center p-4">
                                     <total-revenue></total-revenue>
@@ -76,7 +76,7 @@
                     <div class="bg-RFM-Black">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3"><i class="fas fa-users" style="font-size:30px; color:gray"></i></div>
+                                <div class="rounded p-3"><img src="https://img.icons8.com/color/48/000000/group.png"/></div>
                             </div>
 
                             <div id="total_customers" class="flex-1 text-right md:text-center  p-4">
@@ -93,7 +93,7 @@
                     <div class="bg-RFM-Black">
                         <div class="flex flex-row items-center">
                             <div class="flex-shrink pr-4">
-                                <div class="rounded p-3"><i class="fas fa-user-plus"style="font-size:30px; color:gray"></i></div>
+                                <div class="rounded p-3"><img src="https://img.icons8.com/fluency/48/000000/user-engagement-male.png"/></div>
                             </div>
 
                             <div id="new_customers" class="flex-1 text-right md:text-center  p-4">
