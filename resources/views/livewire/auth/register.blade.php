@@ -80,7 +80,7 @@
 
                     <div class="mt-1 rounded-md shadow-sm">
                         <select wire:model.lazy="type" id="type" type="type" required class="bg-RFM-Black text-white block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 appearance-none rounded-md focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5">
-                            
+
                             <option value=""></option>
                             <option value="admin">Admin</option>
                             <option value="marketer">Marketer</option>

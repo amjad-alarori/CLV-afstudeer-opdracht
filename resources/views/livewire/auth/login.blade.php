@@ -18,7 +18,7 @@
             </p>
         @endif
     </div>
- 
+
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 shadow sm:rounded-lg sm:px-10">

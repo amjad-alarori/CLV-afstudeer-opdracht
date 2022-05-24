@@ -8,7 +8,7 @@
     <div class="bg-RFM-Black pt-6">
       <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
         <div class="flex items-center flex-1">
-          <div class="flex items-center justify-between w-full md:w-auto">
+          <div data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="900" data-aos-duration="900" class="flex items-center justify-between w-full md:w-auto">
             <a href="https://gmu.online/">
 
               <img class="h-8 w-auto sm:h-10" src="{{asset('favicon.png')}}" alt="">
@@ -19,7 +19,7 @@
         </div>
 
         @if (Route::has('login'))
-                <div class="space-x-4">
+                <div data-aos="fade-left" class="space-x-4">
                     @auth
                         <a
                             href="{{ route('logout') }}"
@@ -56,7 +56,7 @@
       <div class="mx-auto max-w-7xl lg:px-8">
         <div class="lg:grid lg:grid-cols-2 lg:gap-8">
           <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
-            <div class="lg:py-24">
+            <div data-aos="fade-right" class="lg:py-24">
 
               <h1 class="mt-4 text-4xl tracking-tight font-sans font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                 <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange xl:text-5xl">GMU. ONLINE</span>
@@ -66,7 +66,7 @@
 
             </div>
           </div>
-          <div class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+          <div data-aos="fade-left" class="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
             <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
               <!-- Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ -->
               <img class="" src="{{asset('background.png')}}" alt="">
@@ -87,7 +87,7 @@
     </div>
   </div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
-    <div class="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
+    <div data-aos="fade-up" class="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
       <p class="mt-3 text-3xl font-head font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange">Get actionable data that will help grow your business</p>
       <p class="mt-5 text-lg text-gray-300">Als partner van uw onderneming geloven we dat Big Data- diepteanalyse door onze online marketingexperts onmisbaar is.</p>
       <div class="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
@@ -120,7 +120,7 @@
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
     <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
-      <div class="grid grid-cols-2 gap-8 xl:col-span-4">
+      <div data-aos="fade-down" class="grid grid-cols-2 gap-8 xl:col-span-4">
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
             <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Solutions</h3>
@@ -210,7 +210,7 @@
 
       </div>
     </div>
-    <div class="border-t border-gray-700 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0">
+    <div data-aos="fade-right" class="border-t border-gray-700 pt-8 lg:flex lg:items-center lg:justify-between xl:mt-0">
       <div>
         <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Subscribe to our newsletter</h3>
         <p class="mt-2 text-base text-gray-300">The latest news, articles, and resources, sent to your inbox weekly.</p>

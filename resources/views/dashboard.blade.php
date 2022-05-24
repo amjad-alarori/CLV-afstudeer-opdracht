@@ -10,7 +10,7 @@
 
 		<div class="w-full container mx-auto flex flex-wrap items-center mt-0 pt-3 pb-3 md:pb-0 p-4">
 			<div class="w-1/2 pl-2 md:pl-0">
-            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-RFM-Black z-20" id="nav-content">
+            <div data-aos="fade-right" class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-RFM-Black z-20" id="nav-content">
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
 					<li class="mr-6 my-2 md:my-0">
                         <a href="{{ url('/') }}" class="block py-1 md:py-3 pl-1 align-middle text-gray-300 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-RFM-Pink">
@@ -32,7 +32,7 @@
 			<div class="w-1/2 pr-0">
 				<div class="flex relative inline-block float-right p-4">
                 @if (Route::has('login'))
-                <div class="space-x-4">
+                <div data-aos="fade-left" class="space-x-4">
                     @auth
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Pink_hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
@@ -53,7 +53,7 @@
 			<!--Console Content-->
 
 			<div class="flex flex-wrap p-6">
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                     <div class="bg-RFM-Black">
@@ -70,7 +70,8 @@
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+
+                <div data-aos="fade-down" data-aos-duration="300" class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                     <div class="bg-RFM-Black">
@@ -87,7 +88,7 @@
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"  class="w-full md:w-1/2 xl:w-1/3 p-3">
                     <!--Metric Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                     <div class="bg-RFM-Black">
@@ -110,7 +111,7 @@
 
         @if (Laratrust::hasRole(['admin', 'marketer']))
             @auth
-                <div id="xslx">
+                <div data-aos="fade-up" data-aos-anchor-placement="top-center" id="xslx">
                     <xslx-download></xslx-download>
                 </div>
             @endauth
@@ -118,7 +119,7 @@
     </div>
             <div class="flex flex-row flex-wrap flex-grow mt-2">
 {{--                bubble chart--}}
-                <div class="w-full p-9">
+                <div data-aos="zoom-out" class="w-full p-9">
                     <!--Graph Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                          <div class="bg-RFM-Black">
@@ -134,7 +135,7 @@
                     <!--/Graph Card-->
                 </div>
 
-                <div class="w-full p-9">
+                <div data-aos="zoom-out" class="w-full p-9">
                     <!--Graph Card-->
                     <div class="p-0.5 bg-gradient-to-tr from-RFM-Cyan to-RFM-Orange rounded shadow">
                          <div class="bg-RFM-Black">
@@ -154,7 +155,7 @@
                     <footer class="bg-RFM-Black">
                         <div class="float-left container max-w-md mx-auto flex py-8">
 
-                            <div class="float-left mx-auto flex flex-wrap">
+                            <div data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="900" data-aos-duration="900" class="float-left mx-auto flex flex-wrap">
                                 <div class="float-left flex w-full md:w-1/2 ">
                                     <div class="float-left">
                                         <h3 class="block text-2xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
