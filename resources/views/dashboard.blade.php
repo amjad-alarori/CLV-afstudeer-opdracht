@@ -39,6 +39,7 @@
                     @endauth
                 </div>
                  @endif
+
 			</div>
 		</div>
 

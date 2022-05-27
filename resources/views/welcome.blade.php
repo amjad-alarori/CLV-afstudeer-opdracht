@@ -7,7 +7,17 @@
   <header class="relative">
     <div class="bg-RFM-Black pt-6">
       <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
-        <div class="flex items-center flex-1">
+          @if (Route::has('logout'))
+              @auth
+          <button onclick="location.href='{{ url('dashboard') }}'" type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+              </svg>
+          </button>
+        @endauth
+
+      @endif
+          <div class="flex items-center flex-1">
           <div data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="900" data-aos-duration="900" class="flex items-center justify-between w-full md:w-auto">
             <a href="https://gmu.online/">
 
@@ -34,16 +44,20 @@
                         </form>
                     @else
 
+
                     <div class="flex items-stretch ...">
                           <a href="{{ route('login') }}" class="mr-4 w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Log in</a>
 
                           @if (Route::has('register'))
                            <a href="{{ route('register') }}" class="ml-2 w-full bg-gradient-to-br from-RFM-Pink to-RFM-Orange hover:text-RFM-Black border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-RFM-Pink_hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">Register</a>
                           @endif
+
                         </div>
+
                     @endauth
                 </div>
             @endif
+
       </nav>
     </div>
 
