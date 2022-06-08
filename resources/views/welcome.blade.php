@@ -76,7 +76,7 @@
                 <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange xl:text-5xl">GMU. ONLINE</span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-br from-RFM-Cyan to-RFM-Orange xl:text-5xl">DATA GEDREVEN ONLINE MARKETING</span>
               </h1>
-              <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-sans">Wij zijn een big data marketing agency. In tegenstelling tot veel traditionele AdWords-bureaus maken wij gebruik van onze eigen innovatieve Big Data software. Wij combineren de beste expertise met onze software en besparen zo veel tijd om weer te investeren in uw online marketing. Terwijl verschillende berekeningen en advertenties worden geautomatiseerd, kan onze Google AdWords specialist zich focussen op het behalen van hoge rendementen en verhogen van uw winstgevendheid en vindbaarheid.</p>
+              <p class="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl font-head">Wij zijn een big data marketing agency. In tegenstelling tot veel traditionele AdWords-bureaus maken wij gebruik van onze eigen innovatieve Big Data software. Wij combineren de beste expertise met onze software en besparen zo veel tijd om weer te investeren in uw online marketing. Terwijl verschillende berekeningen en advertenties worden geautomatiseerd, kan onze Google AdWords specialist zich focussen op het behalen van hoge rendementen en verhogen van uw winstgevendheid en vindbaarheid.</p>
 
             </div>
           </div>

@@ -14,14 +14,14 @@
 				<ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
 					<li class="mr-6 my-2 md:my-0">
                         <a href="{{ url('/') }}" class="block py-1 md:py-3 pl-1 align-middle text-gray-300 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-RFM-Pink">
-                            <i class="fas fa-home fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Home</span>
+                            <i class="fas fa-home fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm font-head">Home</span>
                         </a>
                     </li>
                     @if (Laratrust::hasRole('admin'))
                     @auth
 					<li class="mr-6 my-2 md:my-0">
                         <a href="#"  onclick="window.location.href='/edit-users'" class="block py-1 md:py-3 pl-1 align-middle text-gray-300 no-underline hover:text-gray-100 border-b-2 border-gray-900  hover:border-RFM-Pink">
-                            <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm">Edit Roles and Permissions</span>
+                            <i class="fas fa-tasks fa-fw mr-3"></i><span class="pb-1 md:pb-0 text-sm font-head">Edit Roles and Permissions</span>
                         </a>
                     </li>
                     @endauth
@@ -159,7 +159,7 @@
                             <div data-aos="fade-right" data-aos-anchor="#example-anchor" data-aos-offset="900" data-aos-duration="900" class="float-left mx-auto flex flex-wrap">
                                 <div class="float-left flex w-full md:w-1/2 ">
                                     <div class="float-left">
-                                        <h3 class="block text-2xl font-sans font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
+                                        <h3 class="block text-2xl font-head font-bold text-transparent bg-clip-text bg-gradient-to-br from-RFM-Pink to-RFM-Orange">About</h3>
                                         <p class="mt-1 block font-sans text-base text-gray-300">
                                             Designers en developers weten wij altijd het maximale uit de e-commerce van onze klanten te halen.
                                         </p>
