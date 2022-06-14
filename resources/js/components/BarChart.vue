@@ -104,6 +104,8 @@ export default {
                     })
                 }));
 
+
+
                 series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5 });
                 series.columns.template.adapters.add("fill", function(fill, target) {
                     return chart.get("colors").getIndex(series.columns.indexOf(target));
