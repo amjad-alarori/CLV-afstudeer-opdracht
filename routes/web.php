@@ -10,7 +10,7 @@ use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Verify;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\rfmController;
-
+use App\Http\Controllers\uploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +71,9 @@ Route::group(['middleware' => ['role:admin|marketer|client']], function() {
     Route::get('/dashboard', [rfmController::class, 'index'])->name('/dashboard');
 });
 
+
+Route::get('/upload-file', [uploadController::class, 'createForm']);
+Route::post('/upload-file', [uploadController::class, 'fileUpload'])->name('fileUpload');
 
 
 
