@@ -1,9 +1,27 @@
 import pandas as pd
 from datetime import datetime
 import csv
+import psycopg2 as pg
+import pandas.io.sql as psql
+import sys
+
+
+
+ 
+# SQL Data
+# connection = pg.connect("host= db-postgresql-ams3-07962-do-user-11061998-0.b.db.ondigitalocean.com port=25060 dbname=rfm user=doadmin password=pKBKfj6yN2LSJ24g")
+# sql = "SELECT * FROM rfm_table"
+# data_rfm = psql.read_sql(sql, connection)
+# data_rfm['InvoiceDate'] = pd.to_datetime(data_rfm['InvoiceDate'])
+
+
+
+
 
 # Read Lightspeed Data
-data_rfm = pd.read_csv("data_lightspeed.csv", sep=';')
+data_rfm = pd.read_csv('../storage/app/public/uploads/data_lightspeed.csv', sep=';')
+
+
 
 # reader = pd.read_csv('data_magento.csv', sep = None, iterator = True, engine='python')
 # inferred_sep = reader._engine.data.dialect.delimiter
@@ -141,5 +159,7 @@ from sqlalchemy import create_engine
 engine = create_engine('postgresql+psycopg2://doadmin:pKBKfj6yN2LSJ24g@db-postgresql-ams3-07962-do-user-11061998-0.b.db.ondigitalocean.com:25060/clv_laravel')
 modified.to_sql('rfms', engine, if_exists='replace',index=False)
 print('Done')
+
+
 
 
