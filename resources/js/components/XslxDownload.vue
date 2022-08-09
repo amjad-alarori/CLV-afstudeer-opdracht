@@ -12,6 +12,8 @@ web-button font-title subtitle background-gradient-purple-orange color-white col
 <script>
 
 
+// fix the empty new customer
+
 
 import writeFileXLSX from 'xlsx';
 import { FingerprintSpinner } from 'epic-spinners'
@@ -67,7 +69,7 @@ export default {
                     'Hibernating': 'Hibernating',
                     'Loyal Customers': 'Loyal_Customers',
                     'Need Attention': 'Need_Attention',
-                    'New Customers': 'New_Customers',
+                   
                     'Potential Loyalists': 'Potential_Loyalists',
                     'Promising': 'Promising'
                 }
