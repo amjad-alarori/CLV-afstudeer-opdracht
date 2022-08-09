@@ -33,9 +33,6 @@ class uploadController extends Controller
             $fileModel->name = $req->file->getClientOriginalName();
             $fileModel->file_path = '/storage/' . $filePath;
             $fileModel->save();
-
-           
-    
             $process = new Process(['python', '../storage/app/public/COMBINED_CSV_MAPPER.py', $fileName]);
             $process->run();
 
