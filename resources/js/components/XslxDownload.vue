@@ -10,11 +10,6 @@
 </template>
 web-button font-title subtitle background-gradient-purple-orange color-white color-black-hover wysiwyg-button
 <script>
-
-
-// fix the empty new customer
-
-
 import writeFileXLSX from 'xlsx';
 import { FingerprintSpinner } from 'epic-spinners'
 export default {
@@ -24,7 +19,6 @@ export default {
     data: () => ({
         isLoading: false,
     }),
-
     methods: {
         onexport () { // On Click Excel download button
             this.isLoading = true
@@ -32,35 +26,23 @@ export default {
             async function getData(){
                 const url = 'https://rfm.gmu.online/api/rfms';
                 const response = await fetch(url);
-                const datapoints = await response.json();
-
+                let datapoints = await response.json();
+                
                 return datapoints;
+                
             };
             getData().then(datapoints => {
-                let data = datapoints.map(item => {
-                    return {
-                        "customer_id": item.customer_id,
-                        "frequency": item.frequency,
-                        "frequency_score": item.frequency_score,
-                        "monetary": "€" + item.monetary,
-                        "monetary_score": item.monetary_score,
-                        "recency": item.recency,
-                        "recency_score": item.recency_score,
-                        "rfm_score": item.rfm_score,
-                        "segment": item.segment
-                    }
-                });
-                let result = data.reduce(function (r, a) {
+           
+               
+                let result = datapoints.reduce(function (r, a) {
                     r[a.segment] = r[a.segment] || [];
                     r[a.segment].push(a);
                     return r;
                 }, Object.create(null));
-
                 const replaceKeys = (result, mapping) =>
                     Object.fromEntries(
                         Object.entries(result).map(([k, v]) => [mapping[k] || k, v])
                     )
-
                 const mapping = {
                     'About to Sleep': 'About_To_Sleep',
                     'At Risk': 'At_Risk',
@@ -69,14 +51,15 @@ export default {
                     'Hibernating': 'Hibernating',
                     'Loyal Customers': 'Loyal_Customers',
                     'Need Attention': 'Need_Attention',
-                   
+                    'New Customers': 'New_Customers',
                     'Potential Loyalists': 'Potential_Loyalists',
                     'Promising': 'Promising'
                 }
                let newResult = replaceKeys(result, mapping)
 
-
-
+               
+                
+              
             // export json to Worksheet of Excel
             // only array possible
             var About_to_Sleep = XLSX.utils.json_to_sheet(newResult.About_To_Sleep)
@@ -86,16 +69,15 @@ export default {
             var Hibernating = XLSX.utils.json_to_sheet(newResult.Hibernating)
             var Loyal_Customers = XLSX.utils.json_to_sheet(newResult.Loyal_Customers)
             var Need_Attention = XLSX.utils.json_to_sheet(newResult.Need_Attention)
+            if (newResult.New_Customers !== null){
             var New_Customers = XLSX.utils.json_to_sheet(newResult.New_Customers)
+            }
             var Potential_Loyalists = XLSX.utils.json_to_sheet(newResult.Potential_Loyalists)
             var Promising = XLSX.utils.json_to_sheet(newResult.Promising)
-
             // A workbook is the name given to an Excel file
             var wb = XLSX.utils.book_new() // make Workbook of Excel
-
             // add Worksheet to Workbook
             // Workbook contains one or more worksheets
-
             XLSX.utils.book_append_sheet(wb, About_to_Sleep, 'About_To_Sleep') // sheetAName is name of Worksheet
             XLSX.utils.book_append_sheet(wb, At_Risk, 'At_Risk')
             XLSX.utils.book_append_sheet(wb, Cant_Loose, 'Cant_Loose')
@@ -103,7 +85,9 @@ export default {
             XLSX.utils.book_append_sheet(wb, Hibernating, 'Hibernating')
             XLSX.utils.book_append_sheet(wb, Loyal_Customers, 'Loyal_Customers')
             XLSX.utils.book_append_sheet(wb, Need_Attention, 'Need_Attention')
+               if (newResult.New_Customers !== null){
             XLSX.utils.book_append_sheet(wb, New_Customers, 'New_Customers')
+            }
             XLSX.utils.book_append_sheet(wb, Potential_Loyalists, 'Potential_Loyalists')
             XLSX.utils.book_append_sheet(wb, Promising, 'Promising')
                 this.isLoading = false
@@ -114,6 +98,4 @@ export default {
     }
 }
 </script>
-
-
 
