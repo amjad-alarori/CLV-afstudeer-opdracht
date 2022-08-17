@@ -33,7 +33,7 @@ class uploadController extends Controller
             $fileModel->name = $req->file->getClientOriginalName();
             $fileModel->file_path = '/storage/' . $filePath;
             $fileModel->save();
-            $process = new Process(['python', '../app/Http/Controllers/python/COMBINED_CSV_MAPPER.py', $fileName]);
+            $process = new Process(['python', '../app/Http/Controllers/python/lightspeed_script.py', $fileName]);
             $process->run();
 
             // error handling

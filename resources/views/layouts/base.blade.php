@@ -32,6 +32,7 @@
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
+
 </head>
 <div class="loader">
     <div></div>
