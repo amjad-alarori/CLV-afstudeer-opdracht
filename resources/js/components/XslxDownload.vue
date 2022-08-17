@@ -8,7 +8,6 @@
     </div>
     </div>
 </template>
-web-button font-title subtitle background-gradient-purple-orange color-white color-black-hover wysiwyg-button
 <script>
 import writeFileXLSX from 'xlsx';
 import { FingerprintSpinner } from 'epic-spinners'
@@ -57,42 +56,20 @@ export default {
                 }
                let newResult = replaceKeys(result, mapping)
 
-               
-                
-              
-            // export json to Worksheet of Excel
-            // only array possible
-            var About_to_Sleep = XLSX.utils.json_to_sheet(newResult.About_To_Sleep)
-            var At_Risk = XLSX.utils.json_to_sheet(newResult.At_Risk)
-            var Cant_Loose = XLSX.utils.json_to_sheet(newResult.Cant_Loose)
-            var Champions = XLSX.utils.json_to_sheet(newResult.Champions)
-            var Hibernating = XLSX.utils.json_to_sheet(newResult.Hibernating)
-            var Loyal_Customers = XLSX.utils.json_to_sheet(newResult.Loyal_Customers)
-            var Need_Attention = XLSX.utils.json_to_sheet(newResult.Need_Attention)
-            if (newResult.New_Customers !== null){
-            var New_Customers = XLSX.utils.json_to_sheet(newResult.New_Customers)
+                var wb = XLSX.utils.book_new()
+               for (var key in newResult) {
+                if (newResult.hasOwnProperty(key)) {
+                    console.log(key);
+                    console.log(newResult[key]);
+                    var sheetData = XLSX.utils.json_to_sheet(newResult[key])
+                    
+                    XLSX.utils.book_append_sheet(wb, sheetData, key)
+                }
             }
-            var Potential_Loyalists = XLSX.utils.json_to_sheet(newResult.Potential_Loyalists)
-            var Promising = XLSX.utils.json_to_sheet(newResult.Promising)
-            // A workbook is the name given to an Excel file
-            var wb = XLSX.utils.book_new() // make Workbook of Excel
-            // add Worksheet to Workbook
-            // Workbook contains one or more worksheets
-            XLSX.utils.book_append_sheet(wb, About_to_Sleep, 'About_To_Sleep') // sheetAName is name of Worksheet
-            XLSX.utils.book_append_sheet(wb, At_Risk, 'At_Risk')
-            XLSX.utils.book_append_sheet(wb, Cant_Loose, 'Cant_Loose')
-            XLSX.utils.book_append_sheet(wb, Champions, 'Champions')
-            XLSX.utils.book_append_sheet(wb, Hibernating, 'Hibernating')
-            XLSX.utils.book_append_sheet(wb, Loyal_Customers, 'Loyal_Customers')
-            XLSX.utils.book_append_sheet(wb, Need_Attention, 'Need_Attention')
-               if (newResult.New_Customers !== null){
-            XLSX.utils.book_append_sheet(wb, New_Customers, 'New_Customers')
-            }
-            XLSX.utils.book_append_sheet(wb, Potential_Loyalists, 'Potential_Loyalists')
-            XLSX.utils.book_append_sheet(wb, Promising, 'Promising')
-                this.isLoading = false
-            // export Excel file
-            XLSX.writeFile(wb, 'RFM_Results.xlsx') // name of the file is 'book.xlsx'
+                  this.isLoading = false
+                    // export Excel file
+                    XLSX.writeFile(wb, 'RFM_Results.xlsx') // name of the file is 'book.xlsx'
+            
             })
         }
     }
