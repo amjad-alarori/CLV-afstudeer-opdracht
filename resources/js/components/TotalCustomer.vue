@@ -26,7 +26,7 @@ export default {
     async created() {
         this.loading = true
         try {
-            const get = await axios.get('https://rfm.gmu.online/api/rfms');
+            const get = await axios.get('http://clv.test/rfms');
             this.totalCustomers = get.data.length;
             this.isLoading = false
         } catch (e) {

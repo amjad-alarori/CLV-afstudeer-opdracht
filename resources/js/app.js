@@ -9,8 +9,6 @@ import BarChart from "./components/BarChart";
 
 
 
-
-
 const XslxComponent = createApp({
     render: ()=>h(XslxDownload),
     components: {

@@ -13,14 +13,6 @@ use Illuminate\Support\Facades\Storage;
 class uploadController extends Controller
 {
 
-
-
-  public function createForm(){
-    return view('file-upload');
-  }
-
-
-
   public function fileUpload(Request $req){
         $req->validate([
         'file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:20048'
@@ -43,10 +35,14 @@ class uploadController extends Controller
             $output_data = $process->getOutput();
             // Delete dataset from storage
             unlink(storage_path('app/public/uploads/'.$fileName));
+
+           
+
+
             
-            return back()
-            ->with('success','File has been uploaded.')
-            ->with('file', $fileName);
+             return back()
+             ->with('success','File has been uploaded.')
+             ->with('file', $fileName);
         }
    }
 }

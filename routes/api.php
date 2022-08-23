@@ -15,9 +15,15 @@ use App\Http\Controllers\rfmController;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+    
     return $request->user();
 });
 
 
 
-Route::get('/rfms', [rfmController::class, 'api']);
+
+//auth route for both
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/rfms', [rfmController::class, 'api']);
+});

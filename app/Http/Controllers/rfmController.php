@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Response;
 use App\Models\Rfm;
 use DB;
 use Spatie\Async\Pool;
+use \stdClass;
 
 class rfmController extends Controller
 
@@ -16,6 +18,9 @@ class rfmController extends Controller
         return view ("/dashboard");
 
     }
+
+
+ 
 
 
     public function api(){
@@ -29,6 +34,7 @@ class rfmController extends Controller
         });
 
         await($pool);
+
 
         return $this->results;
 

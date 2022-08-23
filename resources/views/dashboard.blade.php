@@ -111,26 +111,27 @@
         </div>
 
 
-        <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data">
+
+        
+
+
+        <div class="w-full" style="display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+            <form action="{{route('fileUpload')}}" method="post" enctype="multipart/form-data">
       
             @csrf
-    
-          
+
+      
             <div class="custom-file">
-                <input type="file" name="file" class="custom-file-input" id="chooseFile">
-                <label class="custom-file-label" for="chooseFile">Select file</label>
+                <input type="file" name="file" class="" id="chooseFile">
+               
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
                 Upload Files
             </button>
-        </form>
+            </form>
+        </div>
 
-
-   
-  <VueFileAgent :uploadUrl="uploadUrl" v-model="fileRecords"></VueFileAgent>
-
-  
-
+        
         @if (Laratrust::hasRole(['admin', 'marketer']))
             @auth
                 <div data-aos="fade-up" data-aos-anchor-placement="top-center" id="xslx">

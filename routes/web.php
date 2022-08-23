@@ -66,16 +66,19 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::group(['middleware' => ['role:admin|marketer|client']], function() {
+Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/dashboard', [rfmController::class, 'index'])->name('/dashboard');
 });
 
 
-Route::get('/upload-file', [uploadController::class, 'createForm']);
-Route::post('/upload-file', [uploadController::class, 'fileUpload'])->name('fileUpload');
 
-
+//auth route for both
+Route::group(['middleware' => ['role:admin|marketer|client']], function() {
+    Route::get('/rfms', [rfmController::class, 'api']);
+    Route::get('/upload-file', [uploadController::class, 'createForm']);
+    Route::post('/upload-file', [uploadController::class, 'fileUpload'])->name('fileUpload');
+});
 
 
 

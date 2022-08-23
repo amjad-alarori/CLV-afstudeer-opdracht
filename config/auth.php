@@ -40,6 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+            'hash' => true,
+        ]
+        
+        
     ],
 
     /*
@@ -107,5 +114,16 @@ return [
     */
 
     'password_timeout' => 10800,
+
+
+    'api' => [
+
+        //for API authentication with Passport
+    
+        'driver' => 'passport',
+    
+        'provider' => 'users',
+    
+    ],
 
 ];

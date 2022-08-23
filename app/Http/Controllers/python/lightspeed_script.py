@@ -4,6 +4,9 @@ import psycopg2 as pg
 import pandas.io.sql as psql
 import datetime as dt
 import sys
+import os
+
+
 
 
 # data = pd.read_csv('app\Http\Controllers\python\data_lightspeed.csv', sep=';')
@@ -100,11 +103,6 @@ for feature in ["Quantity","Price_total","TotalPrice"]:
     upper = Q3 + 1.5*IQR
     lower = Q1 - 1.5*IQR
 
-    if df[(df[feature] > upper) | (df[feature] < lower)].any(axis=None):
-        print(feature,"yes")
-        print(df[(df[feature] > upper) | (df[feature] < lower)].shape[0])
-    else:
-        print(feature, "no")
 
 
 df['Added'] =  pd.to_datetime(df['Added'], format='%d-%m-%Y @ %H:%M')
@@ -150,7 +148,7 @@ monetary_df = df.groupby("Customer").agg({"TotalPrice":"sum"})
 
 monetary_df.rename(columns={"TotalPrice": "Monetary"}, inplace = True)
 
-print(recency_df.shape,freq_df.shape,monetary_df.shape)
+
 
 rfm = pd.concat([recency_df, freq_df, monetary_df],  axis=1)
 
@@ -165,13 +163,13 @@ rfm = pd.concat([recency_df, freq_df, monetary_df],  axis=1)
 # - Let's start with the last 5 here. Let's use the 'qcut' method to score.
 
 
-rfm["RecencyScore"] = pd.qcut(rfm['Recency'], 5, labels = [5, 4, 3, 2, 1])   
+rfm["RecencyScore"] = pd.qcut(rfm['Recency'], 5, labels = [5, 4, 3, 2, 1])
 rfm["FrequencyScore"] = pd.qcut(rfm['Frequency'].rank(method = "first"), 5, labels = [1, 2, 3, 4, 5])
 rfm["MonetaryScore"] = pd.qcut(rfm['Monetary'], 5, labels = [1, 2, 3, 4, 5])
 
 
-(rfm['RecencyScore'].astype(str) + 
- rfm['FrequencyScore'].astype(str) + 
+(rfm['RecencyScore'].astype(str) +
+ rfm['FrequencyScore'].astype(str) +
  rfm['MonetaryScore'].astype(str))
 
 rfm["RFM_SCORE"] = rfm['RecencyScore'].astype(str) + rfm['FrequencyScore'].astype(str) + rfm['MonetaryScore'].astype(str)
@@ -207,7 +205,27 @@ modified = rfm.reset_index()
 modified.rename(columns={"Customer": "customer_id", "Recency": "recency", "Frequency": "frequency", "Monetary": "monetary", "RecencyScore": "recency_score", "FrequencyScore": "frequency_score", "MonetaryScore": "monetary_score", "RFM_SCORE": "rfm_score", "Segment": "segment"}, inplace = True)
 
 
+
+
 from sqlalchemy import create_engine
 engine = create_engine('postgresql+psycopg2://doadmin:pKBKfj6yN2LSJ24g@db-postgresql-ams3-07962-do-user-11061998-0.b.db.ondigitalocean.com:25060/clv_laravel')
 modified.to_sql('rfms', engine, if_exists='replace',index=False)
+
+
+# if os.path.isfile('data.csv'):
+#     os.remove('data.csv')
+#     modified.to_csv('data.csv', index=False)
+# else:
+#    modified.to_csv('data.csv', index=False)
+
+
+
+
+
+# dataset = modified.to_dict(orient='list')
+# post_data = {'dataset ID': "makis", 'date start': "1", 'date end': "2", 'payload': dataset}
+# url = "http://clv.test/api/testapi"
+# r = requests.post(url, json=post_data)
+
+
 

@@ -289,7 +289,7 @@ return [
         | The route where the go back link should point
         |
         */
-        'go_back_route' => '/admin/home',
+        'go_back_route' => '/dashboard',
 
         /*
         |--------------------------------------------------------------------------
@@ -300,6 +300,7 @@ return [
         |
         */
         'middleware' => ['web'],
+       
 
         /*
         |--------------------------------------------------------------------------

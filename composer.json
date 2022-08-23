@@ -14,6 +14,7 @@
         "laravel-frontend-presets/tall": "^4.0",
         "laravel/framework": "^9.0",
         "laravel/horizon": "^5.9",
+        "laravel/passport": "^10.4",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.10",

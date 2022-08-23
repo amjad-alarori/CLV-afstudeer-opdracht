@@ -17,7 +17,7 @@ export default {
 
     async created() {
         try {
-            const get = await axios.get('https://rfm.gmu.online/api/rfms');
+            const get = await axios.get('http://clv.test/rfms');
             let arr = get.data
 
             let array = [];

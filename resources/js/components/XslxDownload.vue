@@ -23,16 +23,16 @@ export default {
             this.isLoading = true
             getData();
             async function getData(){
-                const url = 'https://rfm.gmu.online/api/rfms';
+                const url = 'https://http://clv.test/rfms';
                 const response = await fetch(url);
                 let datapoints = await response.json();
-                
+
                 return datapoints;
-                
+
             };
             getData().then(datapoints => {
-           
-               
+
+
                 let result = datapoints.reduce(function (r, a) {
                     r[a.segment] = r[a.segment] || [];
                     r[a.segment].push(a);
@@ -56,20 +56,20 @@ export default {
                 }
                let newResult = replaceKeys(result, mapping)
 
-                var wb = XLSX.utils.book_new()
-               for (var key in newResult) {
+                let wb = XLSX.utils.book_new()
+               for (let key in newResult) {
                 if (newResult.hasOwnProperty(key)) {
                     console.log(key);
                     console.log(newResult[key]);
-                    var sheetData = XLSX.utils.json_to_sheet(newResult[key])
-                    
+                    let sheetData = XLSX.utils.json_to_sheet(newResult[key])
+
                     XLSX.utils.book_append_sheet(wb, sheetData, key)
                 }
             }
                   this.isLoading = false
                     // export Excel file
                     XLSX.writeFile(wb, 'RFM_Results.xlsx') // name of the file is 'book.xlsx'
-            
+
             })
         }
     }
